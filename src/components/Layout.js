@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 export default class Layout extends Component {
   render() {
-    return (
-    )
+    return <div>조기요</div>;
   }
 }
