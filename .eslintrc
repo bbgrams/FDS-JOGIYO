@@ -1,7 +1,18 @@
 {
+<<<<<<< HEAD
+    "extends": "react-app",
+    "plugins": [
+        "prettier"
+    ],
+    "rules": {
+        "prettier/prettier": "error"
+    }
+}
+=======
   "extends": "react-app",
   "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": "error"
   }
 }
+>>>>>>> 28cf33552aae38e8336da12efa65ff18dc472373
