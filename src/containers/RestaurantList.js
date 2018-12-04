@@ -7,12 +7,16 @@ export default class RestaurantList extends Component {
     super(props);
 
     this.state = {
+
       storeList: []
+  
     };
   }
 
   async componentDidMount() {
+
     const { data: storeList } = await api.get("/restaurants/api/restaurant/");
+
     this.setState({
       storeList
     });
