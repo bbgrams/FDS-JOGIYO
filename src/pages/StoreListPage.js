@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import Layout from "../components/Layout";
-import RestaurantList from "../containers/RestaurantList";
+import StoreList from "../containers/StoreList";
 
-export default class RestaurantListPage extends Component {
+export default class StoreListPage extends Component {
   render() {
     return (
       <Layout>
-        <RestaurantList />
+        <StoreList />
       </Layout>
     );
   }
