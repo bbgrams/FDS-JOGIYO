@@ -5,8 +5,8 @@ import Hero from "./containers/Hero";
 
 import FoodCategoryPage from "./pages/FoodCategoryPage";
 import { BrowserRouter, Route } from "react-router-dom";
-import RestaurantListPage from "./pages/RestaurantListPage";
-import RestaurantList from "./containers/RestaurantList";
+import StoreListPage from "./pages/StoreListPage";
+import StoreList from "./containers/StoreList";
 
 class App extends Component {
   render() {
@@ -14,9 +14,9 @@ class App extends Component {
       <BrowserRouter>
         <React.Fragment>
           <Route exact path="/" component={FoodCategoryPage} />
-          <Route path="/all" component={RestaurantListPage} />
-          <Route path="/franchise" component={RestaurantList} />
-          <Route path="/chicken" component={RestaurantList} />
+          <Route path="/all" component={StoreListPage} />
+          <Route path="/franchise" component={StoreList} />
+          <Route path="/chicken" component={StoreList} />
         </React.Fragment>
       </BrowserRouter>
     );

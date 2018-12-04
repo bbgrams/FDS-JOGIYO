@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Hero from '../containers/Hero';
+import React, { Component } from "react";
+import Hero from "../containers/Hero";
 
 export default class Layout extends Component {
   render() {
