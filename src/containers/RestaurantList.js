@@ -7,12 +7,16 @@ export default class RestaurantList extends Component {
     super(props);
 
     this.state = {
+      loading: true,     
       list: [],
     };
   }
 
   async componentDidMount() {
     const { data: list } = await api.get('/restaurants/api/restaurant/');
+    // params: {
+    //   category,
+    //   },
     this.setState({
       list,
     });
