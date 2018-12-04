@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 export default class RestaurantListView extends Component {
   static defaultProps = {
-    list: [],
+    storeList: []
   };
 
   render() {
-    const { list } = this.props;
+    const { storeList } = this.props;
     return (
       <ul>
-        {list.map(l => (
+        {storeList.map(l => (
           <li className="RestaurantList__item" key={l.id}>
             <img src={l.logoUrl} alt={l.name} className="RestaurantList__img" />
             <h1 className="RestaurantList__name">{l.name}</h1>

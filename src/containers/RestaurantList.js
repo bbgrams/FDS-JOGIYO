@@ -1,25 +1,25 @@
-import React, { Component } from 'react';
-import RestaurantListView from '../components/RestaurantListView';
-import api from '../api';
+import React, { Component } from "react";
+import RestaurantListView from "../components/RestaurantListView";
+import api from "../api";
 
 export default class RestaurantList extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      list: [],
+      storeList: []
     };
   }
 
   async componentDidMount() {
-    const { data: list } = await api.get('/restaurants/api/restaurant/');
+    const { data: storeList } = await api.get("/restaurants/api/restaurant/");
     this.setState({
-      list,
+      storeList
     });
   }
 
   render() {
-    const { list } = this.state;
-    return <RestaurantListView list={list} />;
+    const { storeList } = this.state;
+    return <RestaurantListView storeList={storeList} />;
   }
 }
