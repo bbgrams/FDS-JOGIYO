@@ -38,7 +38,7 @@ export default class StoreDetail extends Component {
   async componentDidMount() {
     const { storeId } = this.props;
     const { data: store } = await api.get(
-      "/restaurants/api/restaurant/?id=" + storeId
+      "/restaurants/api/restaurant/" + storeId
     );
 
     this.setState({
