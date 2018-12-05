@@ -6,7 +6,7 @@ export default class StoreDetailPage extends Component {
   render() {
     return (
       <Layout>
-        <StoreDetail />;
+        <StoreDetail />
       </Layout>
     );
   }
