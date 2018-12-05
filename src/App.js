@@ -7,6 +7,7 @@ import FoodCategoryPage from "./pages/FoodCategoryPage";
 import { BrowserRouter, Route } from "react-router-dom";
 import StoreListPage from "./pages/StoreListPage";
 import StoreList from "./containers/StoreList";
+import StoreDetailPage from "./pages/StoreDetailPage";
 
 class App extends Component {
   render() {
@@ -17,6 +18,10 @@ class App extends Component {
           <Route path="/all" component={StoreListPage} />
           <Route path="/franchise" component={StoreList} />
           <Route path="/chicken" component={StoreList} />
+          <Route
+            path="/restaurants/api/restaurant/?id=:id"
+            component={StoreDetailPage}
+          />
         </React.Fragment>
       </BrowserRouter>
     );
