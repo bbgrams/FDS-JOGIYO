@@ -1,7 +1,32 @@
 import React, { Component } from "react";
 
 export default class StoreDetailView extends Component {
+  static defaultProps = {
+    id: null,
+    name: "",
+    logoUrl: "",
+    reviewAvg: "",
+    minOrderAmount: 0,
+    reviewCount: null,
+    payment: true,
+    estimatedDeliveryTime: ""
+  };
   render() {
-    return <div>상세페이지view</div>;
+    const {
+      id,
+      name,
+      logoUrl,
+      reviewAvg,
+      minOrderAmount,
+      reviewCount,
+      payment,
+      estimatedDeliveryTime
+    } = this.props;
+    console.log(name);
+    return (
+      <div className="StoreDetail__info-wrap">
+        <h1 className="StoreDetail__name">{name}</h1>
+      </div>
+    );
   }
 }

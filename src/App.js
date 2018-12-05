@@ -18,7 +18,10 @@ class App extends Component {
           <Route path="/all" component={StoreListPage} />
           <Route path="/franchise" component={StoreList} />
           <Route path="/chicken" component={StoreList} />
-          <Route path="/store" component={StoreDetailPage} />
+          <Route
+            path="/restaurants/api/restaurant/?id=:id"
+            component={StoreDetailPage}
+          />
         </React.Fragment>
       </BrowserRouter>
     );
