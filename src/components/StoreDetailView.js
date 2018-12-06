@@ -11,6 +11,13 @@ export default class StoreDetailView extends Component {
     payment: true,
     estimatedDeliveryTime: ""
   };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
   render() {
     const {
       id,
@@ -22,11 +29,11 @@ export default class StoreDetailView extends Component {
       payment,
       estimatedDeliveryTime
     } = this.props;
-    console.log(`gg`);
+    console.log(this.props);
     return (
       <div className="StoreDetail__info-wrap">
         <h1 className="StoreDetail__name">{name}</h1>
-        {console.log(name)}
+        {console.log(`name ${this.props.name}`)}
         store
       </div>
     );
