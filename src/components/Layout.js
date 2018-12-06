@@ -11,8 +11,8 @@ export default class Layout extends Component {
           <button className="Layout__register-btn">회원가입</button>
           {/* 스프라이트 기법을 이용한 이미지 배치 */}
           <button>성수2가3동</button>
-          <Hero />
         </div>
+        <Hero />
         {this.props.children}
         <div className="Layout__footer">
           <ul className="Layout__footer-menu">
