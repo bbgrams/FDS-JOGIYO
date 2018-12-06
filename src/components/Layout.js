@@ -9,15 +9,6 @@ export default class Layout extends Component {
     return (
       <React.Fragment>
         <div className="Layout__header">
-<<<<<<< HEAD
-          <h1 className="Layout__logo">요기요</h1>
-
-          <button className="Layout__login-btn">로그인</button>
-          <button className="Layout__register-btn">회원가입</button>
-          {/* 스프라이트 기법을 이용한 이미지 배치 */}
-          <button>성수2가3동</button>
-          <Hero />
-=======
           <h1 className="Layout__header__logo">
             <Link to="/">
               <img src={logo} alt="요기요" />
@@ -32,7 +23,6 @@ export default class Layout extends Component {
               <span className="Layout__header__location-icon" />
             </button>
           </div>
->>>>>>> bcefdb224cd2f81b8a5a2c2e5c41b9c3afe6b241
         </div>
         <Hero />
         {this.props.children}
