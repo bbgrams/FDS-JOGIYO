@@ -1,30 +1,37 @@
 import React, { Component } from 'react';
 import Hero from '../containers/Hero';
+import { Link } from 'react-router-dom';
+import logo from '../images/logo-yogiyo.png';
+import './Layout.scss';
 
 export default class Layout extends Component {
   render() {
     return (
       <React.Fragment>
         <div className="Layout__header">
-          <h1 className="Layout__logo">요기요</h1>
-          <button className="Layout__login-btn">로그인</button>
-          <button className="Layout__register-btn">회원가입</button>
+          <h1 className="Layout__header__logo">
+            <Link to="/">
+              <img src={logo} alt="요기요" />
+            </Link>
+          </h1>
+          <button className="Layout__header__login-btn">로그인</button>
+          <button className="Layout__header__register-btn">회원가입</button>
           {/* 스프라이트 기법을 이용한 이미지 배치 */}
           <button>성수2가3동</button>
-          <Hero />
         </div>
+        <Hero />
         {this.props.children}
         <div className="Layout__footer">
-          <ul className="Layout__footer-menu">
+          <ul className="Layout__footer__menu">
             <li>이용약관</li>
             <li>개인정보처리방침</li>
             <li>통합포인트정책</li>
             <li>입점문의</li>
             <li>공지사항</li>
           </ul>
-          <div className="Layout__company-wrap">
-            <div className="Layout__company-name">(유)알지피코리아</div>
-            <div className="Layout__company-info">
+          <div className="Layout__company">
+            <div className="Layout__company__name">(유)알지피코리아</div>
+            <div className="Layout__company__info">
               서울시 강남구 테헤란로 5길 7 KG타워 10, 11, 12층 유한회사
               알지피코리아|대표자 : 강신봉|사업자등록번호:211-88-68802
               사업자정보확인통신판매업신고:제
