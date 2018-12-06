@@ -82,7 +82,8 @@ mark,
 audio,
 video,
 fieldset,
-button {
+button,
+input {
   margin: 0;
   padding: 0;
   border: 0;
@@ -112,7 +113,7 @@ main {
   display: block;
 }
 body {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 ul {
   list-style: none;
@@ -120,6 +121,10 @@ ul {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+button {
+  background-color: transparent;
+  cursor: pointer;
 }
 
 /******** CSS 모듈 ********/
@@ -159,4 +164,8 @@ img {
 body {
   background-color: #fff;
   min-height: 100vh;
+}
+
+input {
+  padding: 8px;
 }

@@ -6,20 +6,35 @@
   background-color: $main-color;
 
   &__logo {
-    display: inline-block;
+    position: absolute;
     width: 96px;
-    height: 40px;
     a,
     img {
       display: block;
     }
   }
+  &__button {
+    margin-left: 100px;
+  }
   &__login-btn,
   &__register-btn {
-    background-color: transparent;
     color: #fff;
     border: 1px solid #fff;
     padding: 8px;
     margin-left: 8px;
+  }
+  &__location {
+    float: right;
+    font-size: 1.6rem;
+    color: #fff;
+    line-height: 30px;
+    height: 30px;
+    &-icon {
+      display: inline-block;
+      background: $main-color url('../images/sprite-icon.png') no-repeat -168px 0;
+      background-size: 333px;
+      width: 30px;
+      height: 30px;
+    }
   }
 }
