@@ -6,6 +6,13 @@ export default class StoreDetailView extends Component {
     name: '',
     menuSet: [],
   };
+
+  constructor(props) {
+    super(props);
+
+    this.state = {};
+  }
+
   render() {
     const { id, name, menuSet } = this.props;
 
