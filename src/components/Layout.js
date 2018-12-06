@@ -9,6 +9,7 @@ export default class Layout extends Component {
     return (
       <React.Fragment>
         <div className="Layout__header">
+<<<<<<< HEAD
           <h1 className="Layout__logo">요기요</h1>
 
           <button className="Layout__login-btn">로그인</button>
@@ -16,6 +17,8 @@ export default class Layout extends Component {
           {/* 스프라이트 기법을 이용한 이미지 배치 */}
           <button>성수2가3동</button>
           <Hero />
+=======
+>>>>>>> dd757ecbc6c8ee495d8d4dac3f9d56014e0a8bbf
           <h1 className="Layout__header__logo">
             <Link to="/">
               <img src={logo} alt="요기요" />
@@ -35,15 +38,27 @@ export default class Layout extends Component {
         {this.props.children}
         <div className="Layout__footer">
           <ul className="Layout__footer__menu">
-            <li>이용약관</li>
-            <li>개인정보처리방침</li>
-            <li>통합포인트정책</li>
-            <li>입점문의</li>
-            <li>공지사항</li>
+            <li>
+              <Link to="#">이용약관</Link>
+            </li>
+            <li>
+              <Link to="#">개인정보처리방침</Link>
+            </li>
+            <li>
+              <Link to="#">통합포인트정책</Link>
+            </li>
+            <li>
+              <Link to="#">입점문의</Link>
+            </li>
+            <li>
+              <Link to="#">공지사항</Link>
+            </li>
           </ul>
-          <div className="Layout__company">
-            <div className="Layout__company__name">(유)알지피코리아</div>
-            <div className="Layout__company__info">
+          <div className="Layout__footer__company">
+            <div className="Layout__footer__company__name">
+              (유)딜리버리히어로 코리아
+            </div>
+            <div className="Layout__footer__company__info">
               서울시 강남구 테헤란로 5길 7 KG타워 10, 11, 12층 유한회사
               알지피코리아|대표자 : 강신봉|사업자등록번호:211-88-68802
               사업자정보확인통신판매업신고:제
@@ -53,7 +68,7 @@ export default class Layout extends Component {
               연중무휴) support@yogiyo.co.kr|호스트서비스사업자 :
               (주)심플렉스인터넷
             </div>
-            <div className="Layout__copyright">
+            <div className="Layout__footer__copyright">
               유한회사 알지피코리아는 통신판매중개자이며 통신판매의 당사자가
               아닙니다. 따라서 상품/ 거래정보 및 거래와 관련하여 요기요에 등록된
               판매자의 고의 또는 과실로 소비자에게 발생하는 손해에 대해 유한회사
