@@ -9,8 +9,8 @@ export default class FoodCategoryPage extends Component {
     const { location } = this.props;
     const p = new URLSearchParams(location.search);
     const categories = p.get("categories");
-    console.log(location.search);
-    console.log(categories);
+    // console.log(location.search);
+    // console.log(categories);
     return (
       <Layout>
         <Link className="FoodCategory__link--all" to="/all">
