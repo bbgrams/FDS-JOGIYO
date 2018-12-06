@@ -13,7 +13,7 @@ export default class StoreList extends Component {
 
   async componentDidMount() {
     const { categories } = this.props;
-    const { data: storeList } = await api.get('/restaurants/api/restaurant/', {
+    const { data: storeList } = await api.get('restaurants/api/restaurant/', {
       params: {
         categories,
       },

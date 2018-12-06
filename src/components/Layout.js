@@ -7,6 +7,7 @@ export default class Layout extends Component {
       <React.Fragment>
         <div className="Layout__header">
           <h1 className="Layout__logo">요기요</h1>
+
           <button className="Layout__login-btn">로그인</button>
           <button className="Layout__register-btn">회원가입</button>
           {/* 스프라이트 기법을 이용한 이미지 배치 */}

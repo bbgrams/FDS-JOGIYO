@@ -1,14 +1,14 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
-import Layout from "../components/Layout";
-import { Link } from "react-router-dom";
-import StoreList from "../containers/StoreList";
+import Layout from '../components/Layout';
+import { Link } from 'react-router-dom';
+import StoreList from '../containers/StoreList';
 
 export default class FoodCategoryPage extends Component {
   render() {
     const { location } = this.props;
     const p = new URLSearchParams(location.search);
-    const categories = p.get("categories");
+    const categories = p.get('categories');
     // console.log(location.search);
     // console.log(categories);
     return (
@@ -16,10 +16,10 @@ export default class FoodCategoryPage extends Component {
         <Link className="FoodCategory__link--all" to="/all">
           전체 보기
         </Link>
-        <Link className="FoodCategory__link--franchise" to="/?categories=5">
+        <Link className="FoodCategory__link--franchise" to="/?categories=2">
           프랜차이즈
         </Link>
-        <Link className="FoodCategory__link--chicken" to="/?categories=10">
+        <Link className="FoodCategory__link--chicken" to="/?categories=6">
           치킨
         </Link>
         {/* <Link className="FoodCategory__link--all" to="/restaurant/?category=">
