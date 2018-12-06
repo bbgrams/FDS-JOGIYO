@@ -1,13 +1,13 @@
-import React, { Component } from "react";
-import "./App.css";
-import Layout from "./components/Layout";
-import Hero from "./containers/Hero";
+import React, { Component } from 'react';
+import './App.css';
+import Layout from './components/Layout';
+import Hero from './containers/Hero';
 
-import FoodCategoryPage from "./pages/FoodCategoryPage";
-import { BrowserRouter, Route } from "react-router-dom";
-import StoreListPage from "./pages/StoreListPage";
-import StoreList from "./containers/StoreList";
-import StoreDetailPage from "./pages/StoreDetailPage";
+import FoodCategoryPage from './pages/FoodCategoryPage';
+import { BrowserRouter, Route } from 'react-router-dom';
+import StoreListPage from './pages/StoreListPage';
+import StoreList from './containers/StoreList';
+import StoreDetailPage from './pages/StoreDetailPage';
 
 class App extends Component {
   render() {

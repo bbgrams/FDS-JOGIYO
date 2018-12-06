@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class StoreListView extends Component {
   static defaultProps = {
-    storeList: []
+    storeList: [],
   };
 
   render() {
@@ -13,11 +13,6 @@ export default class StoreListView extends Component {
         {storeList.map(l => (
           <li className="StoreList__item" key={l.id}>
             <Link to={`/store/${l.id}`}>
-<<<<<<< HEAD
-=======
-              {console.log(`/store/${l.id}`)}
-
->>>>>>> ca1ca623e88e5581fe05ec935b386b00330e35f0
               <img src={l.logoUrl} alt={l.name} className="StoreList__img" />
               <h1 className="StoreList__name">{l.name}</h1>
               <div className="StoreList__info-wrap">
