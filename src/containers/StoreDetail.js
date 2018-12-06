@@ -1,18 +1,19 @@
-import React, { Component } from "react";
-import StoreDetailView from "../components/StoreDetailView";
-import api from "../api";
+import React, { Component } from 'react';
+import StoreDetailView from '../components/StoreDetailView';
+import api from '../api';
 
 export default class StoreDetail extends Component {
   static defaultProps = {
-    // 표시해주어야하는 상점의 id
-    storeId: null
+    // 표시해주어야 하는 상점의 id
+    storeId: null,
   };
   constructor(props) {
     super(props);
 
     this.state = {
+      name: '',
       id: null,
-      name: "",
+      menuSet: [],
     };
   }
 
@@ -28,6 +29,10 @@ export default class StoreDetail extends Component {
   }
 
   render() {
-    return <StoreDetailView {...this.state} />;
+    return (
+      <div>
+        <StoreDetailView {...this.state} />
+      </div>
+    );
   }
 }

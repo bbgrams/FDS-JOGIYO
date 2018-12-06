@@ -1,27 +1,25 @@
-import React, { Component } from "react";
-import StoreListView from "../components/StoreListView";
-import api from "../api";
+import React, { Component } from 'react';
+import StoreListView from '../components/StoreListView';
+import api from '../api';
 
 export default class StoreList extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-
-      storeList: []
-  
+      storeList: [],
     };
   }
 
   async componentDidMount() {
     const { categories } = this.props;
-    const { data: storeList } = await api.get("/restaurants/api/restaurant/", {
+    const { data: storeList } = await api.get('/restaurants/api/restaurant/', {
       params: {
-        categories
-      }
+        categories,
+      },
     });
     this.setState({
-      storeList
+      storeList,
     });
   }
 
