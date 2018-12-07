@@ -1,0 +1,68 @@
+@import '../_common.scss';
+
+// 최대 767px까지
+
+.FoodCategory {
+  @include breakpoint('mobile') {
+    padding: 10px 0 0px 10px;
+    background-color: $bg-color;
+    a {
+      display: inline-block;
+      width: calc(50% - 10px);
+      border: 1px solid $border-color;
+      height: 220px;
+      margin-bottom: 10px;
+      margin-right: 10px;
+      padding: 16px;
+      background-color: #fff;
+    }
+    &__link--all {
+      background: url('../images/category-01.png') no-repeat 100% 100%;
+      background-size: cover;
+    }
+    &__link--alone {
+      background: url('../images/category-onedish.png') no-repeat 100% 100%;
+      background-size: cover;
+    }
+    &__link--franchise {
+      background: url('../images/category-10.png') no-repeat 100% 100%;
+      background-size: cover;
+    }
+    &__link--chicken {
+      background: url('../images/category-02.png') no-repeat 100% 100%;
+      background-size: cover;
+    }
+    &__link--pizza {
+      background: url('../images/category-03.png') no-repeat 100% 100%;
+      background-size: cover;
+    }
+    &__link--chinese {
+      background: url('../images/category-04.png') no-repeat 100% 100%;
+      background-size: cover;
+    }
+    &__link--korean {
+      background: url('../images/category-05.png') no-repeat 100% 100%;
+      background-size: cover;
+    }
+    &__link--japanese {
+      background: url('../images/category-06.png') no-repeat 100% 100%;
+      background-size: cover;
+    }
+    &__link--pig {
+      background: url('../images/category-07.png') no-repeat 100% 100%;
+      background-size: cover;
+    }
+    &__link--night {
+      background: url('../images/category-08.png') no-repeat 100% 100%;
+      background-size: cover;
+    }
+    &__link--snack {
+      background: url('../images/category-09.png') no-repeat 100% 100%;
+      background-size: cover;
+    }
+    &__link--cafe {
+      background: url('../images/category-11.png') no-repeat 100% 100%;
+      background-size: cover;
+    }
+  }
+}
