@@ -18,10 +18,10 @@ export default class Layout extends Component {
             <button className="Layout__header__login-btn">로그인</button>
             <button className="Layout__header__register-btn">회원가입</button>
             {/* 스프라이트 기법을 이용한 이미지 배치 */}
-            <button className="Layout__header__location">
-              성수성수성수서우서숭서수어
-              <span className="Layout__header__location-icon" />
-            </button>
+            <div className="Layout__header__location">
+              위치 알 수 없음
+              <i class="fas fa-map-marker-alt" />
+            </div>
           </div>
         </div>
         <Hero />
