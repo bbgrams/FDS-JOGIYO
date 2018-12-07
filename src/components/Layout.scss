@@ -1,27 +1,27 @@
-@import '../common.scss';
+@import '../_common.scss';
 
 .Layout__header {
   box-sizing: content-box;
-  padding: 16px;
+  padding: 14px 8px;
   background-color: $main-color;
 
   &__logo {
     position: absolute;
-    width: 96px;
+    width: 86px;
     a,
     img {
       display: block;
     }
   }
   &__button {
-    margin-left: 100px;
+    margin-left: 90px;
   }
   &__login-btn,
   &__register-btn {
     color: #fff;
     border: 1px solid #fff;
-    padding: 8px;
-    margin-left: 8px;
+    padding: 6px 4px;
+    margin-left: 4px;
   }
   &__location {
     float: right;
@@ -30,11 +30,44 @@
     line-height: 30px;
     height: 30px;
     &-icon {
-      display: inline-block;
       background: $main-color url('../images/sprite-icon.png') no-repeat -168px 0;
+      display: inline-block;
       background-size: 333px;
-      width: 30px;
+      width: 24px;
       height: 30px;
     }
+  }
+}
+
+// 푸터 스타일링
+.Layout__footer {
+  &__menu {
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+    text-align: center;
+    li {
+      display: inline-block;
+      font-size: 1.4rem;
+      a {
+        display: inline-block;
+        padding: 8px;
+      }
+    }
+  }
+
+  &__company {
+    font-size: 1.2rem;
+    padding: 8px;
+    letter-spacing: 1px;
+    &__name {
+      font-size: 1.4rem;
+      font-weight: 700;
+      padding: 5px 0 10px;
+    }
+  }
+
+  &__copyright {
+    margin-top: 12px;
+    color: gray;
   }
 }
