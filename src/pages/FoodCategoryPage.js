@@ -14,42 +14,6 @@ export default class FoodCategoryPage extends Component {
     // console.log(categories);
     return (
       <Layout>
-<<<<<<< HEAD
-        <Link className="FoodCategory__link--all" to="/all">
-          전체 보기
-        </Link>
-        <Link className="FoodCategory__link--franchise" to="/?categories=2">
-          프랜차이즈
-        </Link>
-        <Link className="FoodCategory__link--chicken" to="/?categories=6">
-          치킨
-        </Link>
-        {/* <Link className="FoodCategory__link--all" to="/restaurant/?category=">
-          피자/양식
-        </Link>
-        <Link className="FoodCategory__link--all" to="/restaurant/?category=">
-          중국집
-        </Link>
-        <Link className="FoodCategory__link--all" to="/restaurant/?category=">
-          한식
-        </Link>
-        <Link className="FoodCategory__link--all" to="/restaurant/?category=">
-          일식/돈까스
-        </Link>
-        <Link className="FoodCategory__link--all" to="/restaurant/?category=">
-          족발/보쌈
-        </Link>
-      <Link className="FoodCategory__link--latenightsnack" to="/latenightsnack">
-          야식
-        </Link>
-      <Link className="FoodCategory__link--carbsnacks" to="/carbsnacks">
-          분식
-        </Link>
-        <Link className="FoodCategory__link--all" to="cafedessert">
-          카페/디저트
-        </Link> */}
-        <StoreList key={categories} categories={categories} />
-=======
         <div className="FoodCategory">
           <Link className="FoodCategory__link--all" to="/all">
             전체 보기
@@ -101,7 +65,6 @@ export default class FoodCategoryPage extends Component {
           </Link>
         </div>
         {/* <StoreList key={categories} categories={categories} /> */}
->>>>>>> de05c5c531de035702cea84f155ffd5299477d64
       </Layout>
     );
   }
