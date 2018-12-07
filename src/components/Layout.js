@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 import logo from '../images/logo-yogiyo.png';
 import './Layout.scss';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+
 export default class Layout extends Component {
   render() {
     return (
@@ -19,8 +22,7 @@ export default class Layout extends Component {
             <button className="Layout__header__register-btn">회원가입</button>
             {/* 스프라이트 기법을 이용한 이미지 배치 */}
             <div className="Layout__header__location">
-              위치 알 수 없음
-              <i class="fas fa-map-marker-alt" />
+              위치 알 수 없음 <FontAwesomeIcon icon={faMapMarkerAlt} />
             </div>
           </div>
         </div>
