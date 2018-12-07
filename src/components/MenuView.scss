@@ -6,20 +6,32 @@
   .PhotoMenu {
     overflow-x: scroll;
     white-space: nowrap;
+    padding: 8px;
     &__content {
-      margin: 4px;
+      margin-right: 8px;
       padding: 8px;
       display: inline-block;
       border: 1px solid $border-color;
-      &__img {
-        width: 138px;
+      width: 138px;
+      text-align: center;
+
+      img {
+        height: 98px;
+        width: auto;
       }
+
       &__name {
+        padding: 4px;
+        text-align: left;
         font-size: 1.4rem;
         font-weight: 700;
         text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
       }
       &__price {
+        padding-left: 4px;
+        text-align: left;
         font-size: 1.2rem;
       }
     }
@@ -28,28 +40,30 @@
   .RestOfMenu {
     &__list {
       &__item {
-        // position: relative;
-        // min-height: 104px;
         border-bottom: 1px solid $border-color;
 
         padding: 12px 10px 12px 15px;
+        clear: both;
+        height: 105px;
+        &__text {
+          // 마진 값으로 위치이동 하는게 옳아?
+          margin-top: 12px;
+          padding-right: 12px;
+          float: left;
+          width: calc(100% - 112px);
+          &__name {
+            font-size: 1.6rem;
+            font-weight: 700;
+          }
+          &__price {
+            font-size: 1.6rem;
+          }
+        }
 
-        &__name {
-          // span에 블락 줘도 됨?
-          // display: block;
-          font-size: 1.6rem;
-          font-weight: 700;
-        }
-        &__price {
-          font-size: 1.6rem;
-        }
         img {
-          // 화면이 좁아지면 이미지가 글씨를 덮는다
-          // position: absolute;
-          // top: 12px;
-          // right: 3px;
+          float: right;
           width: 112px;
-          // 상속해야해? 정해줘야해?
+
           height: 80px;
         }
       }
