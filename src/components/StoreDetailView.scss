@@ -1,0 +1,46 @@
+@import '../_common.scss';
+
+.StoreDetailContainer {
+  background-color: $bg-color;
+  padding: 10px;
+}
+
+.StoreDetail {
+  background-color: #fff;
+  border: 1px solid $border-color;
+  height: 147px;
+
+  &__name {
+    padding: 10px;
+    height: 42px;
+    font-size: 1.6rem;
+    font-weight: 400;
+  }
+
+  &__info {
+    border-top: 1px solid $border-color;
+    padding: 10px;
+    height: 103px;
+
+    &__logo {
+      float: left;
+      width: 80px;
+      height: 80px;
+    }
+  }
+}
+
+.StoreDetail__menu {
+  margin-top: 10px;
+
+  border: 1px solid $border-color;
+  height: 100px;
+  &__select {
+    button {
+      display: inline-block;
+      width: 33%;
+      height: 46px;
+      border: 1px solid $border-color;
+    }
+  }
+}

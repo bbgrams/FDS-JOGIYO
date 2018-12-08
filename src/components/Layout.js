@@ -17,7 +17,7 @@ export default class Layout extends Component {
               <img src={logo} alt="요기요" />
             </Link>
           </h1>
-          <div class="Layout__header__button">
+          <div className="Layout__header__button">
             <button className="Layout__header__login-btn">로그인</button>
             <button className="Layout__header__register-btn">회원가입</button>
             {/* 스프라이트 기법을 이용한 이미지 배치 */}
