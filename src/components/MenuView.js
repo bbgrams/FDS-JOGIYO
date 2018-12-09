@@ -1,14 +1,22 @@
 import React, { Component } from 'react';
+import './MenuView.scss';
 
 export default class MenuView extends Component {
+  static defaultProps = {
+    menu: [],
+  };
   render() {
+    const { menu } = this.props;
     return (
-      <div>
-        가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사
-        가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사
-        가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사
-        가나다라마바사 가나다라마바사
-      </div>
+      <React.Fragment>
+        <div>
+          {menu.map(m => (
+            <div className="store-title" key={m.id}>
+              {m.name}
+            </div>
+          ))}
+        </div>
+      </React.Fragment>
     );
   }
 }

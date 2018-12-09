@@ -34,9 +34,10 @@
   margin-top: 10px;
 
   border: 1px solid $border-color;
-  height: 100px;
+  height: 100%;
   &__select {
     button {
+      // 어떻게 딱 끼워 맞춰야 할까?
       display: inline-block;
       width: 33%;
       height: 46px;

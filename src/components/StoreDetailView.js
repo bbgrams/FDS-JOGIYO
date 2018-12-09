@@ -3,6 +3,7 @@ import './StoreDetailView.scss';
 import MenuPage from '../pages/MenuPage';
 import UserReviewPage from '../pages/UserReviewPage';
 import StoreInfoPage from '../pages/StoreInfoPage';
+import Menu from '../containers/Menu';
 
 export default class StoreDetailView extends Component {
   static defaultProps = {
@@ -42,7 +43,7 @@ export default class StoreDetailView extends Component {
   }
 
   render() {
-    const { name, minOrderAmount, reviewAvg, logoUrl } = this.props;
+    const { name, minOrderAmount, reviewAvg, logoUrl, id } = this.props;
 
     return (
       <div className="StoreDetailContainer">
@@ -71,7 +72,7 @@ export default class StoreDetailView extends Component {
           <div className="StoreDetail__menu__box">
             <div>
               {this.state.selected === 'menu' ? (
-                <MenuPage />
+                <Menu storeId={id} />
               ) : this.state.selected === 'user-review' ? (
                 <UserReviewPage />
               ) : this.state.selected === 'store-info' ? (
