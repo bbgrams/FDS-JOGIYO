@@ -3,6 +3,40 @@
 .StoreList {
   background-color: $bg-color;
   padding: 8px;
+  &__category {
+    position: relative;
+    &-btn {
+      border: 1px solid $border-color;
+      background-color: #fff;
+      font-size: 1.5rem;
+      width: 100%;
+      text-align: left;
+      padding: 8px;
+      position: relative;
+      svg {
+        position: absolute;
+        right: 8px;
+        top: 12px;
+      }
+    }
+    &-item {
+      position: absolute;
+      top: 45px;
+      li {
+        float: left;
+        width: 50%;
+        padding: 8px;
+        font-size: 1.5rem;
+        background-color: #fff;
+        border: 1px solid $border-color;
+        cursor: pointer;
+        svg {
+          margin-right: 3px;
+        }
+      }
+    }
+  }
+
   &__store {
     font-size: 1.6rem;
     float: left;
