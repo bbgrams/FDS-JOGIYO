@@ -1,6 +1,45 @@
 @import '../_common.scss';
 
-.store-title {
-  background-color: lightgrey;
-  border: 1px solid white;
+.MenuContent {
+  width: 100%;
+  overflow-x: scroll;
+  white-space: nowrap;
+  // padding: 8px;
+  .PhotoMenu {
+    &__content {
+      margin: 4px;
+      padding: 8px;
+      display: inline-block;
+      border: 1px solid $border-color;
+      &__img {
+        width: 138px;
+      }
+      &__name {
+        font-size: 1.4rem;
+        font-weight: 700;
+        text-overflow: ellipsis;
+      }
+      &__price {
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  .RestOfMenu {
+    &__menu {
+      position: relative;
+      background-color: #e6e6e6;
+      height: 48px;
+      padding: 10px 15px;
+      border-bottom: 1px solid $border-color;
+
+      &__name {
+        font-weight: 500;
+      }
+      &__down {
+        position: absolute;
+        right: 8px;
+      }
+    }
+  }
 }

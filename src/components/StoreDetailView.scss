@@ -39,7 +39,7 @@
     button {
       // 어떻게 딱 끼워 맞춰야 할까?
       display: inline-block;
-      width: 33%;
+      width: calc(100% / 3);
       height: 46px;
       border: 1px solid $border-color;
     }

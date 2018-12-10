@@ -10,24 +10,29 @@ export default class Menu extends Component {
     super(props);
 
     this.state = {
-      menu: [],
+      food: [],
+      rest: [],
     };
   }
 
   async componentDidMount() {
     const { storeId } = this.props;
     // 어떻게 id 값을 받아와야하는 것일 까?
-    const { data: menu } = await api.get('/restaurants/api/' + 12 + '/menu/');
+    const { data: menu } = await api.get(
+      '/restaurants/api/' + storeId + '/menu/'
+    );
+    const [first, ...rest] = menu;
     this.setState({
-      menu,
+      food: first.food,
+      rest,
     });
   }
 
   render() {
-    const { menu } = this.state;
+    const { food, rest } = this.state;
     return (
       <div>
-        <MenuView menu={menu} />
+        <MenuView food={food} rest={rest} />
       </div>
     );
   }

@@ -26,14 +26,16 @@ export default class StoreDetail extends Component {
       `/restaurants/api/${storeId}/info/`
     );
     this.setState({
-      ...storeInfo[0],
+      ...storeInfo,
     });
   }
 
   render() {
+    // console.log('storeId', this.state.id);
+    const { storeId } = this.props;
     return (
       <div>
-        <StoreDetailView {...this.state} />
+        <StoreDetailView {...this.state} id={storeId} />
       </div>
     );
   }
