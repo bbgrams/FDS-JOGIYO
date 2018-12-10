@@ -3,7 +3,6 @@
 // 최대 767px까지
 
 .FoodCategory {
-  // @include breakpoint('mobile') {
   padding: 10px 0 0px 10px;
   background-color: $bg-color;
   text-align: center;
@@ -22,6 +21,14 @@
     margin-right: 10px;
     padding: 16px;
     background-color: #fff;
+    @include breakpoint('tablet') {
+      width: calc(33.3% - 10px);
+      height: 220px;
+    }
+    @include breakpoint('laptop') {
+      width: calc(1020px / 4 - 10px);
+      height: calc(1020px / 4 - 10px);
+    }
   }
   &__link--all {
     background: url('../images/category-01.png') no-repeat 100% 100%;
@@ -71,7 +78,6 @@
     background: url('../images/category-11.png') no-repeat 100% 100%;
     background-size: cover;
   }
-  // }
 }
 .FoodCategory {
   a {
