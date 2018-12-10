@@ -21,7 +21,9 @@ export default class Menu extends Component {
     const { data: menu } = await api.get(
       '/restaurants/api/' + storeId + '/menu/'
     );
+
     const [first, ...rest] = menu;
+
     this.setState({
       food: first.food,
       rest,

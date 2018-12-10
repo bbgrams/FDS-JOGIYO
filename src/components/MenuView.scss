@@ -4,7 +4,7 @@
   width: 100%;
   overflow-x: scroll;
   white-space: nowrap;
-  // padding: 8px;
+
   .PhotoMenu {
     &__content {
       margin: 4px;
@@ -25,21 +25,11 @@
     }
   }
 
-  .RestOfMenu {
-    &__menu {
-      position: relative;
-      background-color: #e6e6e6;
-      height: 48px;
-      padding: 10px 15px;
-      border-bottom: 1px solid $border-color;
-
-      &__name {
-        font-weight: 500;
-      }
-      &__down {
-        position: absolute;
-        right: 8px;
-      }
-    }
-  }
+  // .RestOfMenu {
+  //   &__list {
+  //     &__item {
+  //       height: 104px;
+  //     }
+  //   }
+  // }
 }
