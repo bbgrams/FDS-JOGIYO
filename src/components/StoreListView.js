@@ -10,60 +10,48 @@ export default class StoreListView extends Component {
   static defaultProps = {
     storeList: [],
   };
+  constructor(props) {
+    super(props);
 
+    this.state = {
+      show: false,
+    };
+  }
   render() {
     const { storeList, category } = this.props;
+    const { show } = this.state;
     return (
       <div className="StoreList">
         <div className="StoreList__category-sort-wrap">
           <div className="StoreList__category">
-            <button className="StoreList__category-btn">
+            <button
+              className="StoreList__category-btn"
+              onClick={e =>
+                this.setState(prevState => ({
+                  show: !prevState.show,
+                }))
+              }
+            >
               음식점 전체보기
               <FontAwesomeIcon icon={faCaretRight} />
             </button>
-            <ul className="StoreList__category-item">
-              {category.map(c => (
-                <li key={c.id}>
-                  <FontAwesomeIcon icon={faUtensils} /> {c.name}
-                </li>
-              ))}
-              {/* <li>
-                <FontAwesomeIcon icon={faUtensils} /> 음식점 전체보기
-              </li>
-              <li>
-                <FontAwesomeIcon icon={faUtensils} /> 1인분 주문
-              </li>
-              <li>
-                <FontAwesomeIcon icon={faUtensils} /> 프랜차이즈
-              </li>
-              <li>
-                <FontAwesomeIcon icon={faUtensils} /> 치킨
-              </li>
-              <li>
-                <FontAwesomeIcon icon={faUtensils} /> 피자/양식
-              </li>
-              <li>
-                <FontAwesomeIcon icon={faUtensils} /> 중국집
-              </li>
-              <li>
-                <FontAwesomeIcon icon={faUtensils} /> 한식
-              </li>
-              <li>
-                <FontAwesomeIcon icon={faUtensils} /> 일식/돈까스
-              </li>
-              <li>
-                <FontAwesomeIcon icon={faUtensils} /> 족발/보쌈
-              </li>
-              <li>
-                <FontAwesomeIcon icon={faUtensils} /> 야식
-              </li>
-              <li>
-                <FontAwesomeIcon icon={faUtensils} /> 분식
-              </li>
-              <li>
-                <FontAwesomeIcon icon={faUtensils} /> 카페/디저트
-              </li> */}
-            </ul>
+            {show && (
+              <ul className="StoreList__category-item">
+                {category.map(c => (
+                  <li key={c.id}>
+                    <FontAwesomeIcon icon={faUtensils} /> {c.name}
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+          <div className="StoreList__sort">
+            <select name="" id="" className="StoreList__sort__select">
+              <option value="">기본 정렬순</option>
+              <option value="">별점순</option>
+              <option value="">리뷰 많은순</option>
+              <option value="">최소 주문 금액순</option>
+            </select>
           </div>
         </div>
         <h2 className="StoreList__store">요기요 등록 음식점</h2>
