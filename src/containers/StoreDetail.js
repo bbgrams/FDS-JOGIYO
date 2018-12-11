@@ -16,6 +16,7 @@ export default class StoreDetail extends Component {
       minOrderAmount: '',
       reviewAvg: 0,
       logoUrl: '',
+      reviewCount: 0,
     };
   }
 

@@ -12,6 +12,7 @@ export default class StoreDetailView extends Component {
     minOrderAmount: '',
     reviewAvg: 0,
     logoUrl: '',
+    reviewCount: 0,
   };
 
   constructor(props) {
@@ -43,7 +44,14 @@ export default class StoreDetailView extends Component {
   }
 
   render() {
-    const { name, minOrderAmount, reviewAvg, logoUrl, id } = this.props;
+    const {
+      name,
+      minOrderAmount,
+      reviewAvg,
+      reviewCount,
+      logoUrl,
+      id,
+    } = this.props;
 
     return (
       <div className="StoreDetailContainer">
@@ -64,7 +72,7 @@ export default class StoreDetailView extends Component {
           <div className="StoreDetail__menu__select">
             <button onClick={() => this.handleMenuPage()}>메뉴</button>
             <button onClick={() => this.handleUserReviewPage()}>
-              클린리뷰
+              클린리뷰 {reviewCount}
             </button>
             <button onClick={() => this.handleStoreInfoPage()}>정보</button>
           </div>

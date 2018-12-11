@@ -42,9 +42,6 @@ export default class MenuView extends Component {
         <div className="RestOfMenu">
           {rest.map(item => (
             <Collapse key={item.id} name={item.name}>
-              {/* 이제 여기에 더 상세한 메뉴가 와야 한다... */}
-              {/* rest.food(array) */}
-              {/* id, image(112,80), name(333, bold,1.1), price */}
               <div className="RestOfMenu__list">
                 {item.food.map(f => (
                   <div className="RestOfMenu__list__item" key={f.id}>
@@ -52,7 +49,7 @@ export default class MenuView extends Component {
                       {f.name}
                     </span>
                     <span className="RestOfMenu__list__item__price">
-                      {f.price}
+                      {f.price.toLocaleString()} 원
                     </span>
                     <img src={f.image} alt={f.name} />
                   </div>

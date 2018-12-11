@@ -2,10 +2,10 @@
 
 .MenuContent {
   width: 100%;
-  overflow-x: scroll;
-  white-space: nowrap;
 
   .PhotoMenu {
+    overflow-x: scroll;
+    white-space: nowrap;
     &__content {
       margin: 4px;
       padding: 8px;
@@ -25,11 +25,34 @@
     }
   }
 
-  // .RestOfMenu {
-  //   &__list {
-  //     &__item {
-  //       height: 104px;
-  //     }
-  //   }
-  // }
+  .RestOfMenu {
+    &__list {
+      &__item {
+        // position: relative;
+        // min-height: 104px;
+        border-bottom: 1px solid $border-color;
+
+        padding: 12px 10px 12px 15px;
+
+        &__name {
+          // span에 블락 줘도 됨?
+          // display: block;
+          font-size: 1.6rem;
+          font-weight: 700;
+        }
+        &__price {
+          font-size: 1.6rem;
+        }
+        img {
+          // 화면이 좁아지면 이미지가 글씨를 덮는다
+          // position: absolute;
+          // top: 12px;
+          // right: 3px;
+          width: 112px;
+          // 상속해야해? 정해줘야해?
+          height: 80px;
+        }
+      }
+    }
+  }
 }
