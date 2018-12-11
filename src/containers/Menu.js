@@ -17,7 +17,7 @@ export default class Menu extends Component {
 
   async componentDidMount() {
     const { storeId } = this.props;
-    // 어떻게 id 값을 받아와야하는 것일 까?
+
     const { data: menu } = await api.get(
       '/restaurants/api/' + storeId + '/menu/'
     );

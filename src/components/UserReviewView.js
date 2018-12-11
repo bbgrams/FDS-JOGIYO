@@ -3,16 +3,7 @@ import './UserReviewView.scss';
 
 export default class UserReviewView extends Component {
   static defaultProps = {
-    review: [
-      // "id": 361,
-      // "comment": "빠르고 맛있어요~또 시킬게요~~",
-      // "rating": "5.0",
-      // "ratingDelivery": "5.0",
-      // "ratingQuantity": "5.0",
-      // "ratingTaste": "5.0",
-      // "reviewImages": null,
-      // "time": "2018-12-06T15:17:50.044301+09:00",
-    ],
+    review: [],
   };
 
   render() {

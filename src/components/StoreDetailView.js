@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import './StoreDetailView.scss';
-import MenuPage from '../pages/MenuPage';
-import UserReviewPage from '../pages/UserReviewPage';
-import StoreInfoPage from '../pages/StoreInfoPage';
+
 import Menu from '../containers/Menu';
 
+import UserReview from '../containers/UserReview';
+import StoreInfo from '../containers/StoreInfo';
 export default class StoreDetailView extends Component {
   static defaultProps = {
     id: null,
@@ -82,9 +82,9 @@ export default class StoreDetailView extends Component {
               {this.state.selected === 'menu' ? (
                 <Menu storeId={id} />
               ) : this.state.selected === 'user-review' ? (
-                <UserReviewPage />
+                <UserReview storeId={id} />
               ) : this.state.selected === 'store-info' ? (
-                <StoreInfoPage />
+                <StoreInfo storeId={id} />
               ) : null}
             </div>
           </div>

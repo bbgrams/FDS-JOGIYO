@@ -9,14 +9,6 @@ export default class MenuView extends Component {
     food: [],
   };
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      currentOptionId: '',
-    };
-  }
-
   render() {
     const { food, rest } = this.props;
 
@@ -45,12 +37,14 @@ export default class MenuView extends Component {
               <div className="RestOfMenu__list">
                 {item.food.map(f => (
                   <div className="RestOfMenu__list__item" key={f.id}>
-                    <span className="RestOfMenu__list__item__name">
-                      {f.name}
-                    </span>
-                    <span className="RestOfMenu__list__item__price">
-                      {f.price.toLocaleString()} 원
-                    </span>
+                    <div className="RestOfMenu__list__item__text">
+                      <p className="RestOfMenu__list__item__text__name">
+                        {f.name}
+                      </p>
+                      <p className="RestOfMenu__list__item__text__price">
+                        {f.price.toLocaleString()} 원
+                      </p>
+                    </div>
                     <img src={f.image} alt={f.name} />
                   </div>
                 ))}
