@@ -79,15 +79,3 @@
     background-size: cover;
   }
 }
-.FoodCategory {
-  a {
-    @include breakpoint('tablet') {
-      width: calc(33.3% - 10px);
-      height: 220px;
-    }
-    @include breakpoint('laptop') {
-      width: calc(1020px / 4 - 10px);
-      height: calc(1020px / 4 - 10px);
-    }
-  }
-}
