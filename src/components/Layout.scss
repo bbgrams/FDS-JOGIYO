@@ -30,7 +30,7 @@
     line-height: 30px;
     height: 30px;
     &-icon {
-      background: $main-color url('../images/sprite-icon.png') no-repeat -168px 0;
+      background: url('../images/sprite-icon.png') no-repeat -168px 0;
       display: inline-block;
       background-size: 333px;
       width: 24px;
@@ -47,7 +47,7 @@
     text-align: center;
     li {
       display: inline-block;
-      font-size: 1.4rem;
+      font-size: 1.1rem;
       a {
         display: inline-block;
         padding: 8px;
