@@ -28,7 +28,7 @@ export default class MenuView extends Component {
               <img
                 className="PhotoMenu__content__img"
                 src={m.image}
-                alt="{m.name}"
+                alt={m.name}
               />
               <div className="PhotoMenu__content__name">{m.name}</div>
               <div className="PhotoMenu__content__price">
