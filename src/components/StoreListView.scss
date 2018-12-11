@@ -1,0 +1,98 @@
+@import '../_common.scss';
+
+.StoreList {
+  background-color: $bg-color;
+  padding: 8px;
+  &__category {
+    position: relative;
+    &-btn {
+      border: 1px solid $border-color;
+      background-color: #fff;
+      font-size: 1.5rem;
+      width: 100%;
+      text-align: left;
+      padding: 8px;
+      position: relative;
+      svg {
+        position: absolute;
+        right: 8px;
+        top: 12px;
+      }
+    }
+    &-item {
+      position: absolute;
+      top: 45px;
+      li {
+        float: left;
+        width: 50%;
+        padding: 8px;
+        font-size: 1.5rem;
+        background-color: #fff;
+        border: 1px solid $border-color;
+        cursor: pointer;
+        svg {
+          margin-right: 3px;
+        }
+      }
+    }
+  }
+
+  &__store {
+    font-size: 1.6rem;
+    float: left;
+  }
+  &__store-count {
+    text-align: right;
+    font-size: 1.3rem;
+    padding: 3px 0 14px 0;
+    strong {
+      color: $main-color;
+    }
+  }
+  &__item {
+    border: 1px solid $border-color;
+    background-color: #fff;
+    margin-bottom: 8px;
+    padding: 16px 8px 8px 8px;
+  }
+  &__img {
+    width: 70px;
+    border: 1px solid $border-color;
+    float: left;
+  }
+  &__name,
+  &__info-wrap {
+    margin-left: 78px;
+  }
+  &__name {
+    font-size: 1.7rem;
+    padding: 3px 0;
+  }
+  &__info-wrap {
+    font-size: 1.3rem;
+  }
+  &__star {
+    color: $star-color;
+  }
+  &__payment {
+    color: $main-color;
+  }
+  &__star:after,
+  &__payment:after {
+    display: inline-block;
+    content: '';
+    margin: 0 8px;
+    color: $border-color;
+    width: 1px;
+    height: 1.2rem;
+    background-color: $border-color;
+  }
+  &__min-price {
+    color: $text-sub-color;
+  }
+  &__delivery-time {
+    text-align: right;
+    font-size: 1.1rem;
+    color: $text-sub-color;
+  }
+}
