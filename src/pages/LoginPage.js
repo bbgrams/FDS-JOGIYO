@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+import Login from '../containers/Login';
+import Layout from '../components/Layout';
 
 export default class LoginPage extends Component {
   render() {
-    return <div>갓졔</div>;
+    return (
+      <Layout>
+        <Login />
+      </Layout>
+    );
   }
 }

@@ -1,0 +1,48 @@
+@import '../_common.scss';
+.UserReview {
+  background-color: #fff;
+}
+
+.UserReview__avg {
+  height: 102px;
+  border-bottom: 1px solid $border-color;
+}
+
+.UserReview__count {
+  height: 57px;
+  border-top: 8px solid $bg-color;
+  border-bottom: 1px solid $border-color;
+  padding: 16px;
+  font-size: 1.2rem;
+}
+
+.UserReview__content {
+  border-bottom: 1px solid $border-color;
+  padding: 20px 16px 16px 16px;
+  &__stars {
+    // span에는 보더 속성이 적용이 안되나요?
+    border-right: 1px solid $border-color;
+  }
+
+  &__name {
+    // 우선순위때문에 적용이 안되는 것일까?
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+  &__time {
+    color: lightgray;
+    font-size: 1.2rem;
+  }
+
+  &__order {
+    margin-top: 10px;
+    color: goldenrod;
+    font-size: 1.2rem;
+  }
+
+  &__comment {
+    margin-bottom: 10px;
+    color: gray;
+    font-size: 1.4rem;
+  }
+}
