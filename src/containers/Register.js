@@ -1,11 +1,7 @@
 import React, { Component } from 'react';
-
+import RegisterView from '../components/RegisterView';
 export default class RegisterForm extends Component {
   render() {
-    return (
-      <React.Fragment>
-    <h1>Register 컨테이너</h1>;
-    <Regi
-      </React.Fragment>
+    return <RegisterView />;
   }
 }
