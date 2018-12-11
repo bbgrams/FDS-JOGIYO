@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
 import './UserReviewView.scss';
 
 export default class UserReviewView extends Component {
@@ -45,11 +44,5 @@ export default class UserReviewView extends Component {
         </div>
       </div>
     );
-=======
-
-export default class UserReviewView extends Component {
-  render() {
-    return <div>유저리뷰</div>;
->>>>>>> 상점 상세 정보 페이지 구현 중: StoreDetailView 수정, MenuPage, UserReviewPage, StoreInfoPage 와 관련된 cc, pc 생성 및 적용
   }
 }

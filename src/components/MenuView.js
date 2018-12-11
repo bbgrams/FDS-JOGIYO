@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-<<<<<<< HEAD
 import './MenuView.scss';
 
 import Collapse from './Collapse';
@@ -53,16 +52,6 @@ export default class MenuView extends Component {
             </Collapse>
           ))}
         </div>
-=======
-export default class MenuView extends Component {
-  render() {
-    return (
-      <div>
-        가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사
-        가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사
-        가나다라마바사 가나다라마바사 가나다라마바사 가나다라마바사
-        가나다라마바사 가나다라마바사
->>>>>>> 상점 상세 정보 페이지 구현 중: StoreDetailView 수정, MenuPage, UserReviewPage, StoreInfoPage 와 관련된 cc, pc 생성 및 적용
       </div>
     );
   }

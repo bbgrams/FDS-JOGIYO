@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import MenuView from '../components/MenuView';
-<<<<<<< HEAD
 import api from '../api';
 
 export default class Menu extends Component {
@@ -36,14 +35,6 @@ export default class Menu extends Component {
     return (
       <div>
         <MenuView food={food} rest={rest} />
-=======
-
-export default class Menu extends Component {
-  render() {
-    return (
-      <div>
-        <MenuView />
->>>>>>> 상점 상세 정보 페이지 구현 중: StoreDetailView 수정, MenuPage, UserReviewPage, StoreInfoPage 와 관련된 cc, pc 생성 및 적용
       </div>
     );
   }
