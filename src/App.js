@@ -13,6 +13,9 @@ import StoreDetailPage from './pages/StoreDetailPage';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStroopwafel } from '@fortawesome/free-solid-svg-icons';
+
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
 library.add(faStroopwafel);
 
 class App extends Component {
@@ -25,6 +28,8 @@ class App extends Component {
           <Route path="/franchise" component={StoreList} />
           <Route path="/chicken" component={StoreList} />
           <Route path="/store/:id" component={StoreDetailPage} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/register" component={RegisterPage} />
         </React.Fragment>
       </BrowserRouter>
     );
