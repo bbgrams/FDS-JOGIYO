@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './StoreDetailView.scss';
-import MenuPage from '../pages/MenuPage';
 import UserReviewPage from '../pages/UserReviewPage';
 import StoreInfoPage from '../pages/StoreInfoPage';
 import Menu from '../containers/Menu';
