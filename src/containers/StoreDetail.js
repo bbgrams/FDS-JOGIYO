@@ -16,7 +16,10 @@ export default class StoreDetail extends Component {
       minOrderAmount: '',
       reviewAvg: 0,
       logoUrl: '',
+<<<<<<< HEAD
       reviewCount: 0,
+=======
+>>>>>>> 상점 상세 정보 페이지 구현 중: StoreDetailView 수정, MenuPage, UserReviewPage, StoreInfoPage 와 관련된 cc, pc 생성 및 적용
     };
   }
 
@@ -27,7 +30,11 @@ export default class StoreDetail extends Component {
       `/restaurants/api/${storeId}/info/`
     );
     this.setState({
+<<<<<<< HEAD
       ...storeInfo,
+=======
+      ...storeInfo[0],
+>>>>>>> 상점 상세 정보 페이지 구현 중: StoreDetailView 수정, MenuPage, UserReviewPage, StoreInfoPage 와 관련된 cc, pc 생성 및 적용
     });
   }
 

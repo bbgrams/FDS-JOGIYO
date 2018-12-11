@@ -1,5 +1,11 @@
 import React, { Component } from 'react';
 import './StoreDetailView.scss';
+<<<<<<< HEAD
+=======
+import MenuPage from '../pages/MenuPage';
+import UserReviewPage from '../pages/UserReviewPage';
+import StoreInfoPage from '../pages/StoreInfoPage';
+>>>>>>> 상점 상세 정보 페이지 구현 중: StoreDetailView 수정, MenuPage, UserReviewPage, StoreInfoPage 와 관련된 cc, pc 생성 및 적용
 
 import Menu from '../containers/Menu';
 
@@ -12,7 +18,10 @@ export default class StoreDetailView extends Component {
     minOrderAmount: '',
     reviewAvg: 0,
     logoUrl: '',
+<<<<<<< HEAD
     reviewCount: 0,
+=======
+>>>>>>> 상점 상세 정보 페이지 구현 중: StoreDetailView 수정, MenuPage, UserReviewPage, StoreInfoPage 와 관련된 cc, pc 생성 및 적용
   };
 
   constructor(props) {
@@ -44,6 +53,7 @@ export default class StoreDetailView extends Component {
   }
 
   render() {
+<<<<<<< HEAD
     const {
       name,
       minOrderAmount,
@@ -52,6 +62,9 @@ export default class StoreDetailView extends Component {
       logoUrl,
       id,
     } = this.props;
+=======
+    const { name, minOrderAmount, reviewAvg, logoUrl } = this.props;
+>>>>>>> 상점 상세 정보 페이지 구현 중: StoreDetailView 수정, MenuPage, UserReviewPage, StoreInfoPage 와 관련된 cc, pc 생성 및 적용
 
     return (
       <div className="StoreDetailContainer">
@@ -72,7 +85,11 @@ export default class StoreDetailView extends Component {
           <div className="StoreDetail__menu__select">
             <button onClick={() => this.handleMenuPage()}>메뉴</button>
             <button onClick={() => this.handleUserReviewPage()}>
+<<<<<<< HEAD
               클린리뷰 {reviewCount}
+=======
+              클린리뷰
+>>>>>>> 상점 상세 정보 페이지 구현 중: StoreDetailView 수정, MenuPage, UserReviewPage, StoreInfoPage 와 관련된 cc, pc 생성 및 적용
             </button>
             <button onClick={() => this.handleStoreInfoPage()}>정보</button>
           </div>
@@ -80,11 +97,19 @@ export default class StoreDetailView extends Component {
           <div className="StoreDetail__menu__box">
             <div>
               {this.state.selected === 'menu' ? (
+<<<<<<< HEAD
                 <Menu storeId={id} />
               ) : this.state.selected === 'user-review' ? (
                 <UserReview storeId={id} />
               ) : this.state.selected === 'store-info' ? (
                 <StoreInfo storeId={id} />
+=======
+                <MenuPage />
+              ) : this.state.selected === 'user-review' ? (
+                <UserReviewPage />
+              ) : this.state.selected === 'store-info' ? (
+                <StoreInfoPage />
+>>>>>>> 상점 상세 정보 페이지 구현 중: StoreDetailView 수정, MenuPage, UserReviewPage, StoreInfoPage 와 관련된 cc, pc 생성 및 적용
               ) : null}
             </div>
           </div>

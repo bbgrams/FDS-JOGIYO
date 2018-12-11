@@ -34,12 +34,20 @@
   margin-top: 10px;
 
   border: 1px solid $border-color;
+<<<<<<< HEAD
   height: 100%;
   &__select {
     button {
       // 어떻게 딱 끼워 맞춰야 할까?
       display: inline-block;
       width: calc(100% / 3);
+=======
+  height: 100px;
+  &__select {
+    button {
+      display: inline-block;
+      width: 33%;
+>>>>>>> 상점 상세 정보 페이지 구현 중: StoreDetailView 수정, MenuPage, UserReviewPage, StoreInfoPage 와 관련된 cc, pc 생성 및 적용
       height: 46px;
       border: 1px solid $border-color;
     }
