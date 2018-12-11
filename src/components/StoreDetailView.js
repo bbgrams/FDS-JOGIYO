@@ -9,10 +9,20 @@ export default class StoreDetailView extends Component {
   static defaultProps = {
     id: null,
     name: '',
-    minOrderAmount: '',
+    minOrderAmount: 0,
     reviewAvg: 0,
     logoUrl: '',
     reviewCount: 0,
+    begin: '',
+    end: '',
+    companyName: '',
+    companyNumber: '',
+    countryOrigin: '',
+    introductionText: '',
+    estimatedDeliveryTime: '',
+    exceptCash: null,
+    paymentMethods: [],
+    deliveryFee: 0,
   };
 
   constructor(props) {
@@ -51,6 +61,16 @@ export default class StoreDetailView extends Component {
       reviewCount,
       logoUrl,
       id,
+      begin,
+      end,
+      companyName,
+      companyNumber,
+      countryOrigin,
+      introductionText,
+      estimatedDeliveryTime,
+      exceptCash,
+      paymentMethods,
+      deliveryFee,
     } = this.props;
 
     return (
@@ -62,8 +82,26 @@ export default class StoreDetailView extends Component {
             {/* 이미지를 왼쪽에 위치시키고 나머지는 디스플레이 : 블록 으로? */}
             <img className="StoreDetail__info__logo" src={logoUrl} alt={name} />
 
-            <div>최소주문금액 {minOrderAmount}</div>
-            <div>평점: {reviewAvg}</div>
+            <p>평점: {reviewAvg}</p>
+            <p>최소주문금액 {minOrderAmount}</p>
+            <p>
+              결제 <span>{exceptCash ? '현금' : null}, </span>
+              <span>
+                {paymentMethods.map(m => (
+                  <span key={m.id}>
+                    {m.name === 'creditcard'
+                      ? '신용카드'
+                      : 'online'
+                      ? '요기서결제, '
+                      : null}
+                  </span>
+                ))}
+              </span>
+            </p>
+            <p>
+              배달시간 <span>{estimatedDeliveryTime}</span>{' '}
+              <button>{/* 어떻게 통계를 내는지에 대한 도움말버튼 */}?</button>
+            </p>
           </div>
         </div>
         {/* 3개 메뉴 셀렉트 */}
@@ -84,7 +122,20 @@ export default class StoreDetailView extends Component {
               ) : this.state.selected === 'user-review' ? (
                 <UserReview storeId={id} />
               ) : this.state.selected === 'store-info' ? (
-                <StoreInfo storeId={id} />
+                <StoreInfo
+                  storeId={id}
+                  begin={begin}
+                  end={end}
+                  companyName={companyName}
+                  companyNumber={companyNumber}
+                  countryOrigin={countryOrigin}
+                  introductionText={introductionText}
+                  estimatedDeliveryTime={estimatedDeliveryTime}
+                  deliveryFee={deliveryFee}
+                  paymentMethods={paymentMethods}
+                  exceptCash={exceptCash}
+                  minOrderAmount={minOrderAmount}
+                />
               ) : null}
             </div>
           </div>
