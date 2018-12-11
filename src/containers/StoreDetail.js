@@ -11,25 +11,32 @@ export default class StoreDetail extends Component {
     super(props);
 
     this.state = {
-      name: '',
       id: null,
-      menuSet: [],
+      name: '',
+      minOrderAmount: '',
+      reviewAvg: 0,
+      logoUrl: '',
+      reviewCount: 0,
     };
   }
 
   async componentDidMount() {
     const { storeId } = this.props;
-    const { data: store } = await api.get(`/restaurants/api/${storeId}/menu`);
-
+    // const { data: store } = await api.get(`/restaurants/api/${storeId}/menu/`);
+    const { data: storeInfo } = await api.get(
+      `/restaurants/api/${storeId}/info/`
+    );
     this.setState({
-      ...store[0],
+      ...storeInfo,
     });
   }
 
   render() {
+    // console.log('storeId', this.state.id);
+    const { storeId } = this.props;
     return (
       <div>
-        <StoreDetailView {...this.state} />
+        <StoreDetailView {...this.state} id={storeId} />
       </div>
     );
   }
