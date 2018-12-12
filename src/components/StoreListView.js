@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import './StoreListView.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,18 +7,14 @@ import { faUtensils } from '@fortawesome/free-solid-svg-icons';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 
 export default class StoreListView extends Component {
-  static defaultProps = {
-    storeList: [],
-  };
+  static defaultProps = { storeList: [] };
   constructor(props) {
     super(props);
 
-    this.state = {
-      show: false,
-    };
+    this.state = { show: false };
   }
   render() {
-    const { storeList, category } = this.props;
+    const { storeList, category, handleClick } = this.props;
     const { show } = this.state;
     return (
       <div className="StoreList">
@@ -37,9 +33,17 @@ export default class StoreListView extends Component {
             </button>
             {show && (
               <ul className="StoreList__category-item">
+                <li key="all">
+                  <Link to="/category">
+                    <FontAwesomeIcon icon={faUtensils} />
+                    음식 전체보기
+                  </Link>
+                </li>
                 {category.map(c => (
                   <li key={c.id}>
-                    <FontAwesomeIcon icon={faUtensils} /> {c.name}
+                    <Link to={`/category/${c.id}`} onClick={handleClick}>
+                      <FontAwesomeIcon icon={faUtensils} /> {c.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
