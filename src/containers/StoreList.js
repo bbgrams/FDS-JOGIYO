@@ -12,6 +12,7 @@ export default class StoreList extends Component {
 
     this.state = {
       storeList: [],
+      filter: false,
     };
   }
 
@@ -24,14 +25,16 @@ export default class StoreList extends Component {
       },
     });
 
-    this.setState({
-      storeList,
-      category,
-    });
+    this.setState({ storeList, category });
   }
-
   render() {
     const { storeList, category } = this.state;
-    return <StoreListView storeList={storeList} category={category} />;
+    return (
+      <StoreListView
+        storeList={storeList}
+        category={category}
+        handleClick={this.handleClick}
+      />
+    );
   }
 }

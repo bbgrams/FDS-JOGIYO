@@ -6,9 +6,11 @@ export default class StoreListPage extends Component {
   render() {
     const { match } = this.props;
     const categoryId = match.params.id;
+    console.log('page   실행');
+
     return (
       <Layout>
-        <StoreList categoryId={categoryId} />
+        <StoreList key={categoryId} categoryId={categoryId} />
       </Layout>
     );
   }
