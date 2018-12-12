@@ -85,14 +85,14 @@ export default class StoreDetailView extends Component {
             <p>평점: {reviewAvg}</p>
             <p>최소주문금액 {minOrderAmount}</p>
             <p>
-              결제 <span>{exceptCash ? '현금' : null}, </span>
+              결제 <span>{exceptCash ? '현금' : null} </span>
               <span>
                 {paymentMethods.map(m => (
                   <span key={m.id}>
                     {m.name === 'creditcard'
                       ? '신용카드'
                       : 'online'
-                      ? '요기서결제, '
+                      ? '요기서결제'
                       : null}
                   </span>
                 ))}

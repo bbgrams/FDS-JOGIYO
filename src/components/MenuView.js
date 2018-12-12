@@ -8,6 +8,7 @@ import Modal from './Modal';
 export default class MenuView extends Component {
   static defaultProps = {
     food: [],
+    info: [],
   };
 
   constructor(props) {
@@ -35,7 +36,7 @@ export default class MenuView extends Component {
   };
 
   render() {
-    const { food, rest } = this.props;
+    const { food, rest, info } = this.props;
 
     return (
       <React.Fragment>
@@ -110,64 +111,9 @@ export default class MenuView extends Component {
           image={this.state.foodImage}
           name={this.state.foodName}
           price={this.state.foodPrice}
+          minAmount={info.minOrderAmount}
         />
       </React.Fragment>
     );
   }
 }
-
-// Modal 컴포넌트
-// const Modal = ({ handleClose, show, id, image, name, price }) => {
-//   const showHideClassName = show ? 'modal display-block' : 'modal display-none';
-//   return (
-//     <div className={showHideClassName}>
-//       <div className="modal-main">
-//         <div>
-//           <p>{name}</p>
-//           <img src={image} alt={name} />
-//           <p>가격: {price.toLocaleString()}</p>
-//           <p>수량</p>
-//           {/* 추가되면 추가되었다는 팝업과 함께 모달이 닫힘 */}
-//           <button>주문표에 추가</button>
-//           <button>주문하기</button>
-//         </div>
-//         <button onClick={handleClose}>닫기</button>
-//       </div>
-//     </div>
-//   );
-// };
-
-// class Modal2 extends Component {
-//   defaultProps = {
-//     handleClose: () => {},
-//     show: null,
-//     id: 0,
-//     image: '',
-//     name: '',
-//     price: 0,
-//   };
-
-//   render() {
-//     const { handleClose, show, id, image, name, price } = this.props;
-
-//     const showHideClassName = show
-//       ? 'modal display-block'
-//       : 'modal display-none';
-//     return (
-//       <div className={showHideClassName}>
-//         <div className="modal-main">
-//           <div>
-//             <p>{name}</p>
-//             <img src={image} alt={name} />
-//             <p>가격: {price.toLocaleString()}</p>
-//             <p>수량</p>
-//             {/* 추가되면 추가되었다는 팝업과 함께 모달이 닫힘 */}
-//             <button>주문표에 추가</button>
-//             <button>주문하기</button>
-//           </div>
-//           <button onClick={handleClose}>닫기</button>
-//         </div>
-//       </div>
-//     );
-//   }
-// }

@@ -9,6 +9,7 @@ export default class Modal extends Component {
     image: '',
     name: '',
     price: 0,
+    minAmount: 0,
   };
 
   constructor(props) {
@@ -39,7 +40,7 @@ export default class Modal extends Component {
   }
 
   render() {
-    const { show, id, image, name, price } = this.props;
+    const { show, id, image, name, price, minAmount } = this.props;
 
     const { quantity } = this.state;
 
@@ -54,7 +55,8 @@ export default class Modal extends Component {
           <div>
             <p>{name}</p>
             <img src={image} alt={name} />
-            <p>가격: {totalPrice.toLocaleString()}</p>
+            <p>가격: {totalPrice.toLocaleString()}원</p>
+            <p>최소주문금액: {minAmount.toLocaleString()}원</p>
             <span>수량</span>
             <input
               type="number"
