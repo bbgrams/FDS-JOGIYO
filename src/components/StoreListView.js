@@ -37,9 +37,17 @@ export default class StoreListView extends Component {
             </button>
             {show && (
               <ul className="StoreList__category-item">
+                <li key="all">
+                  <Link to="/all">
+                    <FontAwesomeIcon icon={faUtensils} />
+                    음식 전체보기
+                  </Link>
+                </li>
                 {category.map(c => (
                   <li key={c.id}>
-                    <FontAwesomeIcon icon={faUtensils} /> {c.name}
+                    <Link to={`/?categories=${c.id}`}>
+                      <FontAwesomeIcon icon={faUtensils} /> {c.name}
+                    </Link>
                   </li>
                 ))}
               </ul>
