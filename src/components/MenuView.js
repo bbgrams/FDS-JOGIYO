@@ -6,7 +6,9 @@ import Collapse from './Collapse';
 import Modal from './Modal';
 
 export default class MenuView extends Component {
-  static defaultProps = { food: [] };
+  static defaultProps = {
+    food: [],
+  };
 
   constructor(props) {
     super(props);

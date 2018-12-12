@@ -25,11 +25,17 @@ export default class Modal extends Component {
       quantity: parseInt(e.target.value),
     });
   }
-  handleQuantityReset() {
+  handleModalClose() {
     this.props.handleClose();
     this.setState({
       quantity: 1,
     });
+  }
+
+  // 이 방식의 선언이 화살표 함수보다 안전할까?
+  // 이제 이것을 통해 장바구니에 정보를 넘겨주자...
+  handleAddToCart(id, name, quantity, totalPrice) {
+    alert(`${id}, ${name}, ${quantity}, ${totalPrice}`);
   }
 
   render() {
@@ -57,10 +63,16 @@ export default class Modal extends Component {
               onChange={e => this.handleQuantityChange(e)}
             />
             {/* 추가되면 추가되었다는 팝업과 함께 모달이 닫힘 */}
-            <button>주문표에 추가</button>
+            <button
+              onClick={() =>
+                this.handleAddToCart(id, name, totalPrice, quantity)
+              }
+            >
+              추가
+            </button>
             <button>주문하기</button>
           </div>
-          <button onClick={() => this.handleQuantityReset()}>닫기</button>
+          <button onClick={() => this.handleModalClose()}>닫기</button>
         </div>
       </div>
     );
