@@ -8,9 +8,7 @@ export default class Collapse extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      show: false,
-    };
+    this.state = { show: false };
   }
 
   handleClick() {
@@ -26,6 +24,7 @@ export default class Collapse extends Component {
       <React.Fragment>
         <div className="Menu" onClick={() => this.handleClick()}>
           <span className="Menu__title">{name}</span>
+
           {show ? (
             <span className="Menu__arrow__up">
               <FontAwesomeIcon icon={faAngleUp} />
@@ -36,7 +35,8 @@ export default class Collapse extends Component {
             </span>
           )}
         </div>
-        <div> {show && children}</div>
+
+        <div>{show && children}</div>
       </React.Fragment>
     );
   }
