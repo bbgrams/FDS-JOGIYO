@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import './MenuView.scss';
 
 import Collapse from './Collapse';
+import Modal from './Modal';
 
 export default class MenuView extends Component {
   static defaultProps = { food: [] };
@@ -10,20 +11,27 @@ export default class MenuView extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { show: false };
+    this.state = {
+      show: false,
+      foodId: 0,
+      foodImage: '',
+      foodName: '',
+      foodPrice: 0,
+    };
   }
 
-  showModal = () => {
+  handleShowModal = () => {
     this.setState({
       show: true,
     });
   };
 
-  hideModal = () => {
+  handleHideModal = () => {
     this.setState({
       show: false,
     });
   };
+
   render() {
     const { food, rest } = this.props;
 
@@ -31,20 +39,28 @@ export default class MenuView extends Component {
       <React.Fragment>
         <div className="MenuContent">
           <div className="PhotoMenu">
-            {food.map(m => (
+            {food.map(f => (
               <div
                 className="PhotoMenu__content"
-                key={m.id}
-                onClick={this.showModal}
+                key={f.id}
+                onClick={() => {
+                  this.setState({
+                    foodId: f.id,
+                    foodImage: f.image,
+                    foodName: f.name,
+                    foodPrice: f.price,
+                  });
+                  this.handleShowModal();
+                }}
               >
                 <img
                   className="PhotoMenu__content__img"
-                  src={m.image}
-                  alt={m.name}
+                  src={f.image}
+                  alt={f.name}
                 />
-                <div className="PhotoMenu__content__name">{m.name}</div>
+                <div className="PhotoMenu__content__name">{f.name}</div>
                 <div className="PhotoMenu__content__price">
-                  {m.price.toLocaleString()} 원
+                  {f.price.toLocaleString()} 원
                 </div>
               </div>
             ))}
@@ -58,7 +74,15 @@ export default class MenuView extends Component {
                     <div
                       className="RestOfMenu__list__item"
                       key={f.id}
-                      onClick={this.showModal}
+                      onClick={() => {
+                        this.setState({
+                          foodId: f.id,
+                          foodImage: f.image,
+                          foodName: f.name,
+                          foodPrice: f.price,
+                        });
+                        this.handleShowModal();
+                      }}
                     >
                       <div className="RestOfMenu__list__item__text">
                         <p className="RestOfMenu__list__item__text__name">
@@ -77,26 +101,71 @@ export default class MenuView extends Component {
           </div>
         </div>
 
-        <Modal show={this.state.show} handleClose={this.hideModal} />
+        <Modal
+          show={this.state.show}
+          handleClose={this.handleHideModal}
+          id={this.state.foodId}
+          image={this.state.foodImage}
+          name={this.state.foodName}
+          price={this.state.foodPrice}
+        />
       </React.Fragment>
     );
   }
 }
 
-// Modal 함수형 컴포넌트
-const Modal = ({ handleClose, show }) => {
-  const showHideClassName = show ? 'modal display-block' : 'modal display-none';
-  return (
-    <div className={showHideClassName}>
-      <section className="modal-main">
-        <div>
-          컨텐츠가 들어올 자리입니다.
-          <p>이름</p>
-          <p>가격</p>
-          <p>수량</p>
-        </div>
-        <button onClick={handleClose}>CLOSE</button>
-      </section>
-    </div>
-  );
-};
+// Modal 컴포넌트
+// const Modal = ({ handleClose, show, id, image, name, price }) => {
+//   const showHideClassName = show ? 'modal display-block' : 'modal display-none';
+//   return (
+//     <div className={showHideClassName}>
+//       <div className="modal-main">
+//         <div>
+//           <p>{name}</p>
+//           <img src={image} alt={name} />
+//           <p>가격: {price.toLocaleString()}</p>
+//           <p>수량</p>
+//           {/* 추가되면 추가되었다는 팝업과 함께 모달이 닫힘 */}
+//           <button>주문표에 추가</button>
+//           <button>주문하기</button>
+//         </div>
+//         <button onClick={handleClose}>닫기</button>
+//       </div>
+//     </div>
+//   );
+// };
+
+// class Modal2 extends Component {
+//   defaultProps = {
+//     handleClose: () => {},
+//     show: null,
+//     id: 0,
+//     image: '',
+//     name: '',
+//     price: 0,
+//   };
+
+//   render() {
+//     const { handleClose, show, id, image, name, price } = this.props;
+
+//     const showHideClassName = show
+//       ? 'modal display-block'
+//       : 'modal display-none';
+//     return (
+//       <div className={showHideClassName}>
+//         <div className="modal-main">
+//           <div>
+//             <p>{name}</p>
+//             <img src={image} alt={name} />
+//             <p>가격: {price.toLocaleString()}</p>
+//             <p>수량</p>
+//             {/* 추가되면 추가되었다는 팝업과 함께 모달이 닫힘 */}
+//             <button>주문표에 추가</button>
+//             <button>주문하기</button>
+//           </div>
+//           <button onClick={handleClose}>닫기</button>
+//         </div>
+//       </div>
+//     );
+//   }
+// }
