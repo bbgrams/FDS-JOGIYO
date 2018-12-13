@@ -42,6 +42,7 @@ export default class Hero extends Component {
   handleSetState = (longitude, latitude) => {
     this.setState({ locationX: longitude, locationY: latitude });
   };
+
   handleGpsClick = async e => {
     e.preventDefault();
     console.log(this.state.locationX, this.state.locationY);
