@@ -8,7 +8,12 @@ export default class Collapse extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { show: false };
+
+    this.state = {
+      //prop에 따른 초기상태 설정
+      show: props.initialShow,
+    };
+
   }
 
   handleClick() {
