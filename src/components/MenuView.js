@@ -112,6 +112,7 @@ export default class MenuView extends Component {
           name={this.state.foodName}
           price={this.state.foodPrice}
           minAmount={info.minOrderAmount}
+          storeName={info.name}
         />
       </React.Fragment>
     );

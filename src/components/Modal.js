@@ -10,6 +10,7 @@ export default class Modal extends Component {
     name: '',
     price: 0,
     minAmount: 0,
+    storeName: '',
   };
 
   constructor(props) {
@@ -35,12 +36,12 @@ export default class Modal extends Component {
 
   // 이 방식의 선언이 화살표 함수보다 안전할까?
   // 이제 이것을 통해 장바구니에 정보를 넘겨주자...
-  handleAddToCart(id, name, quantity, totalPrice) {
-    alert(`${id}, ${name}, ${quantity}, ${totalPrice}`);
+  handleAddToCart(id, name, quantity, totalPrice, storeName) {
+    alert(`${id}, ${name}, ${quantity}, ${totalPrice}, ${storeName}`);
   }
 
   render() {
-    const { show, id, image, name, price, minAmount } = this.props;
+    const { show, id, image, name, price, minAmount, storeName } = this.props;
 
     const { quantity } = this.state;
 
@@ -67,7 +68,7 @@ export default class Modal extends Component {
             {/* 추가되면 추가되었다는 팝업과 함께 모달이 닫힘 */}
             <button
               onClick={() =>
-                this.handleAddToCart(id, name, totalPrice, quantity)
+                this.handleAddToCart(id, name, totalPrice, quantity, storeName)
               }
             >
               추가
