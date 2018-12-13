@@ -33,7 +33,7 @@ export default class MenuView extends Component {
 
         <div className="RestOfMenu">
           {rest.map(item => (
-            <Collapse key={item.id} name={item.name}>
+            <Collapse key={item.id} name={item.name} initialShow={false}>
               <div className="RestOfMenu__list">
                 {item.food.map(f => (
                   <div className="RestOfMenu__list__item" key={f.id}>
