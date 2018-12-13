@@ -3,7 +3,6 @@ import './Modal.scss';
 
 export default class Modal extends Component {
   static defaultProps = {
-    handleClose: () => {},
     show: null,
     id: 0,
     image: '',
