@@ -66,7 +66,6 @@ export default class MenuView extends Component {
                   {f.price.toLocaleString()} 원
                 </div>
               </div>
-
             ))}
           </div>
 
