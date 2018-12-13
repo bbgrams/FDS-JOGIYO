@@ -29,12 +29,6 @@ export default class StoreList extends Component {
   }
   render() {
     const { storeList, category } = this.state;
-    return (
-      <StoreListView
-        storeList={storeList}
-        category={category}
-        handleClick={this.handleClick}
-      />
-    );
+    return <StoreListView storeList={storeList} category={category} />;
   }
 }

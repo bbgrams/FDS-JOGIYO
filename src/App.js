@@ -16,6 +16,7 @@ import { faStroopwafel } from '@fortawesome/free-solid-svg-icons';
 
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import PayPage from './pages/PayPage';
 library.add(faStroopwafel);
 
 class App extends Component {
@@ -28,6 +29,7 @@ class App extends Component {
           <Route path="/store/:id" component={StoreDetailPage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/register" component={RegisterPage} />
+          <Route path="/pay" component={PayPage} />
         </React.Fragment>
       </BrowserRouter>
     );
