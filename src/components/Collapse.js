@@ -9,7 +9,8 @@ export default class Collapse extends Component {
     super(props);
 
     this.state = {
-      show: false,
+      //prop에 따른 초기상태 설정
+      show: props.initialShow,
     };
   }
 
