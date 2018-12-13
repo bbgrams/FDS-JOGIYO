@@ -11,6 +11,7 @@ export default class Menu extends Component {
 
     this.state = {
       food: [],
+      info: [],
       rest: [],
     };
   }
@@ -26,15 +27,17 @@ export default class Menu extends Component {
 
     this.setState({
       food: first.food,
+      info: first.restaurant,
       rest,
     });
   }
 
   render() {
-    const { food, rest } = this.state;
+    const { food, rest, info } = this.state;
+
     return (
       <div>
-        <MenuView food={food} rest={rest} />
+        <MenuView food={food} rest={rest} info={info} />
       </div>
     );
   }
