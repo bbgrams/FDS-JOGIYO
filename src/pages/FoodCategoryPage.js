@@ -2,69 +2,48 @@ import React, { Component } from 'react';
 
 import Layout from '../components/Layout';
 import { Link } from 'react-router-dom';
-import StoreList from '../containers/StoreList';
 import './FoodCategoryPage.scss';
 
 export default class FoodCategoryPage extends Component {
   render() {
-    const { location } = this.props;
-    const p = new URLSearchParams(location.search);
-    const categories = p.get('categories');
-    // console.log(location.search);
-    // console.log(categories);
     return (
       <Layout>
         <div className="FoodCategory">
           <div className="FoodCategory__link-wrap">
-            <Link className="FoodCategory__link--all" to="/all">
+            <Link className="FoodCategory__link--all" to="/category">
               전체 보기
             </Link>
-            <Link className="FoodCategory__link--alone" to="/?categories=2">
+            <Link className="FoodCategory__link--alone" to="/category/10">
               1인분 주문
             </Link>
-            <Link className="FoodCategory__link--franchise" to="/?categories=2">
+            <Link className="FoodCategory__link--franchise" to="/category/2">
               프랜차이즈
             </Link>
-            <Link className="FoodCategory__link--chicken" to="/?categories=6">
+            <Link className="FoodCategory__link--chicken" to="/category/3">
               치킨
             </Link>
-            <Link
-              className="FoodCategory__link--pizza"
-              to="/restaurant/?category="
-            >
+            <Link className="FoodCategory__link--pizza" to="/category/1">
               피자/양식
             </Link>
-            <Link
-              className="FoodCategory__link--chinese"
-              to="/restaurant/?category="
-            >
+            <Link className="FoodCategory__link--chinese" to="/category/1">
               중국집
             </Link>
-            <Link
-              className="FoodCategory__link--korean"
-              to="/restaurant/?category="
-            >
+            <Link className="FoodCategory__link--korean" to="/category/6">
               한식
             </Link>
-            <Link
-              className="FoodCategory__link--japanese"
-              to="/restaurant/?category="
-            >
+            <Link className="FoodCategory__link--japanese" to="/category/11">
               일식/돈까스
             </Link>
-            <Link
-              className="FoodCategory__link--pig"
-              to="/restaurant/?category="
-            >
+            <Link className="FoodCategory__link--pig" to="/category/7">
               족발/보쌈
             </Link>
-            <Link className="FoodCategory__link--night" to="/all">
+            <Link className="FoodCategory__link--night" to="/category/9">
               야식
             </Link>
-            <Link className="FoodCategory__link--snack" to="/all">
+            <Link className="FoodCategory__link--snack" to="/category/8">
               분식
             </Link>
-            <Link className="FoodCategory__link--cafe" to="/all">
+            <Link className="FoodCategory__link--cafe" to="/category/4">
               카페/디저트
             </Link>
           </div>

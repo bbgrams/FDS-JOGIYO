@@ -1,31 +1,51 @@
 import React, { Component } from 'react';
 import StoreInfoView from '../components/StoreInfoView';
-import api from '../api';
 
 export default class StoreInfo extends Component {
   static defaultProps = {
     storeId: null,
+    begin: '',
+    end: '',
+    companyName: '',
+    companyNumber: '',
+    countryOrigin: '',
+    introductionText: '',
+    estimatedDeliveryTime: '',
+    exceptCash: null,
+    paymentMethods: [],
+    deliveryFee: 0,
+    minOrderAmount: 0,
   };
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      info: [],
-    };
-  }
-  async componentDidMount() {
-    const storeId = this.props;
-    const { data: info } = await api.get(`restaurants/api/${storeId}/info/`);
-    this.setState({
-      info,
-    });
-  }
 
   render() {
-    const { info } = this.state;
+    const {
+      begin,
+      end,
+      companyName,
+      companyNumber,
+      countryOrigin,
+      introductionText,
+      estimatedDeliveryTime,
+      exceptCash,
+      paymentMethods,
+      deliveryFee,
+      minOrderAmount,
+    } = this.props;
     return (
       <div>
-        <StoreInfoView info={info} />
+        <StoreInfoView
+          begin={begin}
+          end={end}
+          companyName={companyName}
+          companyNumber={companyNumber}
+          countryOrigin={countryOrigin}
+          introductionText={introductionText}
+          estimatedDeliveryTime={estimatedDeliveryTime}
+          deliveryFee={deliveryFee}
+          paymentMethods={paymentMethods}
+          exceptCash={exceptCash}
+          minOrderAmount={minOrderAmount}
+        />
       </div>
     );
   }

@@ -33,8 +33,8 @@ export default class UserReviewView extends Component {
                     별 {r.rating}
                   </span>
                   맛★ {Math.trunc(r.ratingTaste)}
-                  양★ {r.ratingQuantity}
-                  배달★ {r.ratingDelivery}
+                  양★ {Math.trunc(r.ratingQuantity)}
+                  배달★ {Math.trunc(r.ratingDelivery)}
                 </p>
               </div>
               <div className="UserReview__content__order">주문한 음식</div>

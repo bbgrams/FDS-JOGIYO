@@ -13,16 +13,26 @@ export default class StoreDetail extends Component {
     this.state = {
       id: null,
       name: '',
-      minOrderAmount: '',
+      minOrderAmount: 0,
       reviewAvg: 0,
       logoUrl: '',
       reviewCount: 0,
+      begin: '',
+      end: '',
+      companyName: '',
+      companyNumber: '',
+      countryOrigin: '',
+      introductionText: '',
+      estimatedDeliveryTime: '',
+      exceptCash: null,
+      paymentMethods: [],
+      deliveryFee: 0,
     };
   }
 
   async componentDidMount() {
     const { storeId } = this.props;
-    // const { data: store } = await api.get(`/restaurants/api/${storeId}/menu/`);
+
     const { data: storeInfo } = await api.get(
       `/restaurants/api/${storeId}/info/`
     );
@@ -32,7 +42,6 @@ export default class StoreDetail extends Component {
   }
 
   render() {
-    // console.log('storeId', this.state.id);
     const { storeId } = this.props;
     return (
       <div>

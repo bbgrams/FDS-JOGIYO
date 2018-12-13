@@ -31,6 +31,7 @@
       position: absolute;
       top: 45px;
       width: calc(200% + 10px);
+      box-shadow: 5px 5px 9px 0px rgba(0, 0, 0, 0.4);
       li {
         float: left;
         width: 50%;
@@ -63,6 +64,8 @@
       height: 40px;
       padding-left: 10px;
       border: 1px solid $border-color;
+      font-size: 1.5rem;
+      font-weight: 300;
     }
   }
 
