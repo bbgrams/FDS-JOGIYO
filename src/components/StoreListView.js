@@ -41,7 +41,7 @@ export default class StoreListView extends Component {
                 </li>
                 {category.map(c => (
                   <li key={c.id}>
-                    <Link to={`/category/${c.id}`} onClick={handleClick}>
+                    <Link to={`/category/${c.id}`}>
                       <FontAwesomeIcon icon={faUtensils} /> {c.name}
                     </Link>
                   </li>
