@@ -1,0 +1,37 @@
+@import '../_common.scss';
+
+.CartWrap {
+  box-sizing: border-box;
+  max-width: 1020px;
+  margin: 0 auto 30px auto;
+  padding: 10px;
+  &__subTitle {
+    vertical-align: middle;
+    background-color: #333;
+    font-size: 110%;
+    padding: 10px 10px 10px 15px;
+    span {
+      color: #fff;
+    }
+    &__icon {
+      float: right;
+      background: url('../images/sprite-icon.png') no-repeat -135px 0;
+      background-size: 330px;
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      vertical-align: middle;
+    }
+    &::after {
+      content: '';
+      display: table;
+      clear: both;
+    }
+  }
+  &__coupon {
+    &__delivery {
+    }
+    &__coupon-style {
+    }
+  }
+}
