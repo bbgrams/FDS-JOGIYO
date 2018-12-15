@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import './Modal.scss';
+let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
+
+sessionStorage.setItem('cart', JSON.stringify(cart));
+console.log(JSON.parse(sessionStorage.getItem('cart')).length);
 
 export default class Modal extends Component {
   static defaultProps = {
     show: null,
+    storeId: 0,
     id: 0,
     image: '',
     name: '',
@@ -18,6 +23,7 @@ export default class Modal extends Component {
     this.state = {
       quantity: 1,
       totalPrice: 0,
+      cart: [],
     };
   }
 
@@ -26,6 +32,7 @@ export default class Modal extends Component {
       quantity: parseInt(e.target.value),
     });
   }
+
   handleModalClose() {
     this.props.handleClose();
     this.setState({
@@ -33,14 +40,85 @@ export default class Modal extends Component {
     });
   }
 
-  // 이 방식의 선언이 화살표 함수보다 안전할까?
-  // 이제 이것을 통해 장바구니에 정보를 넘겨주자...
-  handleAddToCart(id, name, quantity, totalPrice, storeName) {
-    alert(`${id}, ${name}, ${quantity}, ${totalPrice}, ${storeName}`);
+  handleAddToCart(id, name, quantity, storeName, storeId, totalPrice) {
+    alert(`${id}, ${name}, ${quantity}, ${storeName},${storeId}`);
+
+    const selectedItem = {
+      id,
+      name,
+      totalPrice,
+      quantity,
+      storeId,
+      storeName,
+    };
+
+    let cartItem = this.state.cart;
+    let foodId = id;
+    // let empty = sessionStorage.getItem('cart')
+    // 만약 음식점이 바뀌면 스토라지를 초기화 하고 음식을 담는다.
+    if (
+      JSON.parse(sessionStorage.getItem('cart')).length > 0 &&
+      !this.checkRestaurantId(storeId)
+    ) {
+      alert('다른 음식점 선택 시, 장바구니가 초기화 됩니다.');
+      this.setState({ cart: [] });
+      sessionStorage.clear();
+    }
+
+    // 음식 담기...
+    if (this.checkFood(foodId) && this.checkPrice(totalPrice)) {
+      let foodIndex = cartItem.findIndex(i => {
+        return i.id === foodId;
+      });
+      let priceIndex = cartItem.findIndex(p => {
+        return p.totalPrice === totalPrice;
+      });
+      cartItem[foodIndex].quantity += quantity;
+      cartItem[priceIndex].totalPrice += totalPrice;
+      this.setState({
+        cart: cartItem,
+      });
+    } else {
+      cartItem.push(selectedItem);
+      this.setState({
+        cart: cartItem,
+      });
+    }
+    sessionStorage.setItem('cart', JSON.stringify(this.state.cart));
+
+    console.log(this.state.cart);
+  }
+  // 장바구니에 이미 중복된 것들이 있는지 확인하는 함수들
+  checkFood(foodId) {
+    let cart = this.state.cart;
+    return cart.some(i => {
+      return i.id === foodId;
+    });
+  }
+  checkPrice(totalPrice) {
+    let cart = this.state.cart;
+    return cart.some(p => {
+      return p.totalPrice === totalPrice;
+    });
+  }
+  checkRestaurantId(storeId) {
+    let cart = this.state.cart;
+    return cart.some(i => {
+      return i.storeId === storeId;
+    });
   }
 
   render() {
-    const { show, id, image, name, price, minAmount, storeName } = this.props;
+    const {
+      show,
+      id,
+      image,
+      name,
+      price,
+      minAmount,
+      storeName,
+      storeId,
+    } = this.props;
 
     const { quantity } = this.state;
 
@@ -48,7 +126,7 @@ export default class Modal extends Component {
       ? 'modal display-block'
       : 'modal display-none';
 
-    const totalPrice = price * quantity;
+    let totalPrice = price * quantity;
     return (
       <div className={showHideClassName}>
         <div className="Modal__main">
@@ -64,10 +142,17 @@ export default class Modal extends Component {
               min="1"
               onChange={e => this.handleQuantityChange(e)}
             />
-            {/* 추가되면 추가되었다는 팝업과 함께 모달이 닫힘 */}
+
             <button
               onClick={() =>
-                this.handleAddToCart(id, name, totalPrice, quantity, storeName)
+                this.handleAddToCart(
+                  id,
+                  name,
+                  quantity,
+                  storeName,
+                  storeId,
+                  totalPrice
+                )
               }
             >
               추가

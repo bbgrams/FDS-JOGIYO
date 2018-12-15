@@ -24,6 +24,7 @@ export default class StoreList extends Component {
         categories: categoryId,
       },
     });
+    // 여기다가 정렬과 관련된 정보를 받아올 까?
 
     this.setState({ storeList, category });
   }

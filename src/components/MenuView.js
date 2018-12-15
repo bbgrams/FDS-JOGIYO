@@ -111,6 +111,7 @@ export default class MenuView extends Component {
           image={this.state.foodImage}
           name={this.state.foodName}
           price={this.state.foodPrice}
+          storeId={info.id}
           minAmount={info.minOrderAmount}
           storeName={info.name}
         />
