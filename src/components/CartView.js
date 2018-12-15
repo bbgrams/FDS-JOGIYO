@@ -1,44 +1,40 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import './CartView.scss';
 export default class CartView extends Component {
   render() {
     return (
-      <div className="cart-wrap">
-        <div className="sub-title">
+      <div className="CartWrap">
+        <div className="CartWrap__subTitle">
           <span>주문표</span>
           {/* <Link to='#'></Link> */}
-          <span class="ico-clear" />
+          <span className="CartWrap__subTitle__icon" />
         </div>
-        <div className="cart" />
-        <div className="restaurant-name">
-          <Link className="ng-binding" to="#" />
+        <div className="CartWrap__cart" />
+        <div className="CartWrap__restaurant-name">
+          <Link className="restaurant-name" to="#" />
+          <Link className="CartWrap__ng-binding" to="#" />
           <div>
-            <span className="coupon-base ng-binding">배달할인 3,000원</span>
-            <span className="coupon-base coupon-style1 ng-binding ng-hide">
-              추가할인 0%
-            </span>
-            <span className="txt-info1 ng-binding ng-hide">
-              할인 가능 시간 : ~{' '}
-            </span>
+            <span className="CartWrap__coupon__delivery">배달할인 3,000원</span>
+            <span className="CartWrap__coupon__coupon-style">추가할인 0%</span>
           </div>
         </div>
-        <ul className="list-group">
-          <li className="list-group-item clearfix ng-scope">
-            <div className="row">
-              <div className="menu-name ng-binding">
+        <ul className="CartWrap__list-group">
+          <li className="CartWrap__list-group-item clearfix ng-scope">
+            <div className="CartWrap__row">
+              <div className="CartWrap__menu-name ng-binding">
                 스노우볼 오리지널 크러스트 L
                 <div>
-                  <div className="col-xs-6 pull-left">
-                    <Link className="btn btn-del-menu" to="#" />
-                    <span className="order-price ng-binding" />
+                  <div className="CartWrap__col-xs-6 pull-left">
+                    <Link className="CartWrap__btn btn-del-menu" to="#" />
+                    <span className="CartWrap__order-price ng-binding" />
                   </div>
-                  <div className="col-xs-6 text-right">
-                    <Link className="btn btn-minus" to="#">
+                  <div className="CartWrap__col-xs-6 text-right">
+                    <Link className="CartWrap__btn btn-minus" to="#">
                       감소
                     </Link>
-                    <span className="order-num ng-binding">1</span>
-                    <Link className="btn btn-plus" to="#">
+                    <span className="CartWrap__order-num ng-binding">1</span>
+                    <Link className="CartWrap__btn btn-plus" to="#">
                       증가
                     </Link>
                   </div>
@@ -46,23 +42,25 @@ export default class CartView extends Component {
               </div>
             </div>
           </li>
-          <li className="list-group-item clearfix ng-scope">
-            <div className="row">
-              <div className="menu-name ng-binding">
+          <li className="CartWrap__list-group-item clearfix ng-scope">
+            <div className="CartWrap__row">
+              <div className="CartWrap__menu-name ng-binding">
                 갈릭 페퍼 스테이크 오리지널 크러스트 L
                 <div>
-                  <div className="col-xs-6 pull-left">
-                    <Link className="btn btn-del-menu" to="#">
+                  <div className="CartWrap__col-xs-6 pull-left">
+                    <Link className="CartWrap__btn btn-del-menu" to="#">
                       삭제
                     </Link>
-                    <span className="order-price ng-binding">29,500원</span>
+                    <span className="CartWrap__order-price ng-binding">
+                      29,500원
+                    </span>
                   </div>
-                  <div className="col-xs-6 text-right">
-                    <Link className="btn btn-minus" to="#">
+                  <div className="CartWrap__col-xs-6 text-right">
+                    <Link className="CartWrap__btn btn-minus" to="#">
                       감소
                     </Link>
-                    <span className="order-num ng-binding">1</span>
-                    <Link className="btn btn-plus" to="#">
+                    <span className="CartWrap__order-num ng-binding">1</span>
+                    <Link className="CartWrap__btn btn-plus" to="#">
                       증가
                     </Link>
                   </div>
@@ -71,23 +69,23 @@ export default class CartView extends Component {
             </div>
           </li>
         </ul>
-        <div className="clearfix">
-          <span className="list-group-item minimum-order-price">
-            <p className="ng-binding">최소주문금액 : 20,000원 이상</p>
+        <div className="CartWrap__clearfix">
+          <span className="CartWrap__list-group-item minimum-order-price">
+            <p className="CartWrap__ng-binding">최소주문금액 : 20,000원 이상</p>
           </span>
-          <span className="list-group-item cart-total-order-price ng-binding">
+          <span className="CartWrap__list-group-item cart-total-order-price ng-binding">
             합계: 58,000원
           </span>
         </div>
-        <div className="cart-btn">
-          <Link className="btn btn-lg btn-ygy2 btn-left" to="#" />
+        <div className="CartWrap__cart-btn">
+          <Link className="CartWrap__btn btn-lg btn-ygy2 btn-left" to="#" />
           {/* 장바구니가 비어있지 않을 때*/}
-          <span ng-show="add-menu">메뉴추가</span>
+          <span ng-show="CartWrap__add-menu">메뉴추가</span>
           {/* 장바구니가 비어있을 때*/}
           {/* <span ng-show="cart.is_empty()" class="ng-hide">
             홈으로 가기
           </span> */}
-          <Link className="btn btn-lg btn-ygy1 btn-right" to="#">
+          <Link className="CartWrap__btn btn-lg btn-ygy1 btn-right" to="#">
             주문하기
           </Link>
         </div>
