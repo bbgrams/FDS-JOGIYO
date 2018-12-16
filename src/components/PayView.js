@@ -9,6 +9,8 @@ import { faCoins } from '@fortawesome/free-solid-svg-icons';
 export default class PayView extends Component {
   static defaultProps = {
     show: true,
+    // 주문 내역 리스트
+    list: [],
   };
   constructor(props) {
     super(props);
@@ -26,6 +28,8 @@ export default class PayView extends Component {
 
   render() {
     const { infoShow } = this.state;
+    const { list } = this.props;
+    const menu = list.menu;
     return (
       <form className="Pay">
         <fieldset>
@@ -141,6 +145,24 @@ export default class PayView extends Component {
                 <FontAwesomeIcon icon={faCoins} /> 현금
               </label>
             </div> */}
+          </div>
+          <div className="Pay__list">
+            <div className="Menu">
+              <span className="Menu__title">주문내역</span>
+            </div>
+            <p className="Pay__list__store">{list.store}</p>
+            <ul className="Pay__list__menu">
+              {menu.map(m => (
+                <li>
+                  <span className="Pay__list__menu__title">{m}</span>
+                  <span className="Pay__list__menu__price">11000원</span>
+                </li>
+              ))}
+              <li className="Pay__list__menu__all">
+                <span className="Pay__list__menu__title">총 결제 금액</span>
+                <span className="Pay__list__menu__price">11,000원</span>
+              </li>
+            </ul>
           </div>
         </fieldset>
       </form>

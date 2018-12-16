@@ -162,4 +162,36 @@
       }
     }
   }
+  &__list {
+    margin-top: 16px;
+    &__store {
+      background-color: #fff;
+      border: 1px solid $border-color;
+      padding: 8px 16px;
+    }
+    &__menu {
+      li {
+        font-size: 1.4rem;
+        padding: 10px 16px;
+        border: 1px solid $border-color;
+        border-top: none;
+        background-color: #fff8eb;
+      }
+      span {
+        display: inline-block;
+      }
+      &__title {
+        text-align: left;
+        width: 70%;
+      }
+      &__price {
+        text-align: right;
+        width: 30%;
+      }
+      &__all span {
+        font-weight: 600;
+        color: $main-color;
+      }
+    }
+  }
 }
