@@ -3,6 +3,8 @@ import Collapse from './Collapse';
 import './PayView.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
+import { faCoins } from '@fortawesome/free-solid-svg-icons';
 
 export default class PayView extends Component {
   static defaultProps = {
@@ -42,7 +44,8 @@ export default class PayView extends Component {
                   id="address1"
                   disabled
                 />
-                <div className="Pay__check-required">
+                {/* input 상세주소 입력 창이 비어있을 때 클래스에 -required 추가 */}
+                <div className="Pay__check">
                   <label htmlFor="address2" className="readable-hidden">
                     상세주소 입력창
                   </label>
@@ -59,6 +62,7 @@ export default class PayView extends Component {
               </div>
               <p className="Pay__info">휴대전화번호</p>
               <div className="Pay__input-phone">
+                {/* input 휴대폰번호 입력 창이 비어있을 때 클래스에 -required 추가 */}
                 <div className="Pay__check-required">
                   <label htmlFor="phone" className="readable-hidden">
                     휴대전화번호 입력 창
@@ -96,14 +100,48 @@ export default class PayView extends Component {
             </div>
           </Collapse>
           <Collapse name="주문시 요청사항" initialShow={true}>
-            <textarea
-              name=""
-              id=""
-              cols="30"
-              rows="10"
-              placeholder="주문시 요청 사항이 있으시면 남겨주세요"
-            />
+            <div className="Pay__need">
+              <textarea
+                rows="3"
+                placeholder="주문시 요청 사항이 있으시면 남겨주세요"
+              />
+              <p className="Pay__need__text_count">0 / 100</p>
+            </div>
           </Collapse>
+          <div className="Menu">
+            <span className="Menu__title">결제수단 선택</span>
+          </div>
+          <div className="Pay__payment">
+            <p className="Pay__info">
+              현장 결제
+              <span className="Pay__info__side">음식받고 직접 결제</span>
+            </p>
+            <div className="Pay__payment__radio">
+              <input type="radio" name="f-payment" id="f-credit" />
+              <label htmlFor="f-credit">
+                <FontAwesomeIcon icon={faCreditCard} /> 신용카드
+              </label>
+              <input type="radio" name="f-payment" id="f-cash" />
+              <label htmlFor="f-cash">
+                <FontAwesomeIcon icon={faCoins} /> 현금
+              </label>
+            </div>
+            {/* 요기서 결제 숨김처리 */}
+            {/* <p className="Pay__info">
+              요기서 결제
+              <span className="Pay__info__side">웹에서 미리 결제</span>
+            </p>
+            <div className="Pay__payment__radio">
+              <input type="radio" name="payment" id="credit" disabled />
+              <label htmlFor="credit">
+                <FontAwesomeIcon icon={faCreditCard} /> 신용카드
+              </label>
+              <input type="radio" name="payment" id="cash" disabled />
+              <label htmlFor="cash">
+                <FontAwesomeIcon icon={faCoins} /> 현금
+              </label>
+            </div> */}
+          </div>
         </fieldset>
       </form>
     );
