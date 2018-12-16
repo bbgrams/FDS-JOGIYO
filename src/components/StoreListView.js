@@ -14,7 +14,7 @@ export default class StoreListView extends Component {
     this.state = { show: false };
   }
   render() {
-    const { storeList, category, handleClick } = this.props;
+    const { storeList, category } = this.props;
     const { show } = this.state;
     return (
       <div className="StoreList">
