@@ -1,73 +1,99 @@
 import React, { Component } from 'react';
-
 import api from '../api';
-
-const { Provider, Consumer } = React.createContext({
-  id: 0,
-  username: '',
-  login: () => {},
-  logout: () => {},
-});
+const { Provider, Consumer } = React.createContext();
 
 export default class UserProvider extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      id: null,
-      username: null,
+      isLogin: false,
+      login: this.login.bind(this),
+      logout: this.logout.bind(this),
+      register: this.register.bind(this),
+
+      username: '',
+      password: '',
+      passwordConfirm: '',
+      phoneNumber: '',
+      nickName: '',
+      success: false,
     };
   }
 
   async componentDidMount() {
+    // 토큰이 있으면 할 일
     if (localStorage.getItem('token')) {
-      await this.refreshUser();
+      const {
+        data: {
+          username,
+          password,
+          phoneNumber: phone_number,
+          nickName: nick_name,
+        },
+      } =
+        // username에 해당하는 user 정보 객체를 가져온다.
+        await api.get(`/members/api/${username}/user/`, {
+          params: {
+            username,
+          },
+        });
     }
+  }
+  // 회원 가입
+  async register({ ...value }) {
+    const { username, password, phoneNumber, nickName } = value;
+    // 중복 아이디 체크
+    // 사용자 이름 중복체크
+    // 사용자가 입력한 username(이메일 주소)와
+    // DB에서 가져온 모든 user의 username 중 일치하는 데이터가 있을 경우,
+    // 응답으로 온 users의 길이가 0보다 크므로
+    const { data: users } = await api.get(`/members/api/${username}/user`, {
+      params: {
+        username,
+      },
+    });
+    if (users.length === 0) {
+      // 새로운 유저 인스턴스 생성
+      await api.post('members/api/user/', {
+        username,
+        password,
+        phone_number: phoneNumber,
+        nick_name: nickName,
+      });
+    }
+    //TODO: 중복 아이디일 경우, 모달 띄우기
   }
 
   async login(username, password) {
-    const res = await api.post('/users/login', {
+    const res = await api.post(`/members/api/${username}/user`, {
       username,
       password,
     });
     localStorage.setItem('token', res.data.token);
-    await this.refreshUser();
-    // 게시글 목록 보여주기
-    this.props.onPostListPage();
+    //TODO: 로그인 되면 할 일 적기
   }
 
   logout() {
     // 로컬 스토리지에서 토큰 제거
     localStorage.removeItem('token');
+
     // 사용자 정보 캐시 초기화
     this.setState({
-      id: null,
-      username: null,
-    });
-    // TODO: 로그인 폼 보여주기
-  }
-
-  async refreshUser() {
-    const res2 = await api.get('/me');
-    this.setState({
-      id: res2.data.id,
-      username: res2.data.username,
+      isLogin: false,
+      username: '',
+      phoneNumber: '',
+      nickName: '',
     });
   }
 
   render() {
-    const value = {
-      username: this.state.username,
-      id: this.state.id,
-      login: this.login.bind(this),
-      logout: this.logout.bind(this),
-    };
-    return <Provider value={value}>{this.props.children}</Provider>;
+    return <Provider value={this.state}>{this.props.children}</Provider>;
   }
 }
 
 function withUser(WrappedComponent) {
-  return function(props) {
+  return function WithUser(props) {
     return (
       <Consumer>{value => <WrappedComponent {...value} {...props} />}</Consumer>
     );
