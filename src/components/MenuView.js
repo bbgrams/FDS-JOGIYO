@@ -4,6 +4,7 @@ import './MenuView.scss';
 
 import Collapse from './Collapse';
 import Modal from './Modal';
+import ModalContainer from '../containers/ModalContainer';
 
 export default class MenuView extends Component {
   static defaultProps = {
@@ -104,7 +105,7 @@ export default class MenuView extends Component {
           </div>
         </div>
 
-        <Modal
+        <ModalContainer
           show={this.state.show}
           handleClose={this.handleHideModal}
           id={this.state.foodId}

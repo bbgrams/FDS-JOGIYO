@@ -8,11 +8,7 @@ export default class CartView extends Component {
         <div className="CartWrap__subTitle">
           <span>주문표</span>
           {/* <Link to='#'></Link> */}
-<<<<<<< HEAD
-          <span className="ico-clear" />
-=======
           <span className="CartWrap__subTitle__icon" />
->>>>>>> 9620eee71f5e23ed1723f7d18e4f426ed0b92919
         </div>
         <div className="CartWrap__cart" />
         <div className="CartWrap__restaurant-name">

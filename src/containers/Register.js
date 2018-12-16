@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import RegisterView from '../components/RegisterView';
 import api from '../api';
 export default class RegisterForm extends Component {
-<<<<<<< HEAD
-  //  버튼 눌렀을 때, 그 정보를 전송해주게 하는 핸들러
-=======
   constructor(props) {
     super(props);
 
@@ -47,7 +44,6 @@ export default class RegisterForm extends Component {
       [name]: e.target.value,
     });
   }
->>>>>>> 9620eee71f5e23ed1723f7d18e4f426ed0b92919
 
   render() {
     return <RegisterView {...this.state} />;
