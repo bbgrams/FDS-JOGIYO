@@ -11,11 +11,15 @@ export default class StoreListView extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { show: false };
+    this.state = {
+      show: false,
+    };
   }
   render() {
-    const { storeList, category } = this.props;
+    const { storeList, category, categoryId } = this.props;
     const { show } = this.state;
+    let btnTitle = category[categoryId - 1];
+    console.log(btnTitle);
     return (
       <div className="StoreList">
         <div className="StoreList__category-sort-wrap">
@@ -36,7 +40,7 @@ export default class StoreListView extends Component {
                 <li key="all">
                   <Link to="/category">
                     <FontAwesomeIcon icon={faUtensils} />
-                    음식 전체보기
+                    음식점 전체보기
                   </Link>
                 </li>
                 {category.map(c => (
@@ -51,8 +55,6 @@ export default class StoreListView extends Component {
           </div>
           <div className="StoreList__sort">
             <select
-              name=""
-              id=""
               className="StoreList__sort__select"
               onChange={e => this.props.onSortChange(e.target.value)}
             >
