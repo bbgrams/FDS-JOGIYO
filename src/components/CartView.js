@@ -9,6 +9,7 @@ export default class CartView extends Component {
         <div className="CartWrap__subTitle">
           <span>주문표</span>
           {/* <Link to='#'></Link> */}
+
           <span className="CartWrap__subTitle__icon" />
         </div>
         <div className="CartWrap__cart" />

@@ -7,9 +7,11 @@ import './Layout.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { publicDecrypt } from 'crypto';
+import Login from '../containers/Login';
 
 export default class Layout extends Component {
   render() {
+    const { isLogin, logout, history } = this.props;
     return (
       <React.Fragment>
         <div className="Layout__header">
@@ -19,8 +21,28 @@ export default class Layout extends Component {
             </Link>
           </h1>
           <div className="Layout__header__button">
-            <button className="Layout__header__login-btn">로그인</button>
-            <button className="Layout__header__register-btn">회원가입</button>
+            {isLogin ? (
+              <button
+                onClick={() => {
+                  logout();
+                  history.push('/');
+                }}
+                className="Layout__header__logout-btn"
+              >
+                로그아웃
+              </button>
+            ) : (
+              <>
+                <Link to="/login">
+                  <button className="Layout__header__login-btn">로그인</button>
+                </Link>
+                <Link to="/register">
+                  <button className="Layout__header__register-btn">
+                    회원가입
+                  </button>
+                </Link>
+              </>
+            )}
             {/* 스프라이트 기법을 이용한 이미지 배치 */}
             <div className="Layout__header__location">
               위치 알 수 없음 <FontAwesomeIcon icon={faMapMarkerAlt} />

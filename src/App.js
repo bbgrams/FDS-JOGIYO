@@ -14,10 +14,10 @@ class App extends Component {
   render() {
     return (
       <KakaoApiProvider>
-        {' '}
         <BrowserRouter>
           <React.Fragment>
             <Route exact path="/" component={FoodCategoryPage} />
+            <Route exact path="/category" component={StoreListPage} />
             <Route path="/category/:id" component={StoreListPage} />
             <Route path="/store/:id" component={StoreDetailPage} />
             <Route path="/login" component={LoginPage} />

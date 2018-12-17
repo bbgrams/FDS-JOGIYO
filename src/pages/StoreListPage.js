@@ -4,13 +4,21 @@ import StoreList from '../containers/StoreList';
 
 export default class StoreListPage extends Component {
   render() {
-    const { match } = this.props;
+    const { match, history, location } = this.props;
     const categoryId = match.params.id;
-    console.log('page   실행');
+    // const p = new URLSearchParams(location.pathname);
+    // console.log(p);
+    // const hello = p.get('hello');
+    // console.log(hello);
 
     return (
       <Layout>
-        <StoreList key={categoryId} categoryId={categoryId} />
+        <StoreList
+          key={location.pathname + location.search}
+          categoryId={categoryId}
+          history={history}
+          location={location}
+        />
       </Layout>
     );
   }
