@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './CartView.scss';
 export default class CartView extends Component {
   render() {
+    console.log(this.props.orderList);
     return (
       <div className="CartWrap">
         <div className="CartWrap__subTitle">
@@ -10,7 +11,6 @@ export default class CartView extends Component {
           {/* <Link to='#'></Link> */}
 
           <span className="CartWrap__subTitle__icon" />
-
         </div>
         <div className="CartWrap__cart" />
         <div className="CartWrap__restaurant-name">
