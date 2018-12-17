@@ -48,7 +48,7 @@ export default class KakaoApiProvider extends Component {
   };
   handleGpsClick = async e => {
     e.preventDefault();
-    console.log(this.state.locationX, this.state.locationY);
+    // console.log(this.state.locationX, this.state.locationY);
     const res = await api.get(
       'https://dapi.kakao.com//v2/local/geo/coord2address.json',
       {
@@ -58,7 +58,13 @@ export default class KakaoApiProvider extends Component {
         },
       }
     );
+    // console.log(res.data);
     console.log(res.data.documents[0].address.region_1depth_name);
+    const location = {
+      x: this.state.locationX,
+      y: this.state.locationY,
+    };
+    sessionStorage.setItem('location', JSON.stringify(location));
   };
 
   render() {
