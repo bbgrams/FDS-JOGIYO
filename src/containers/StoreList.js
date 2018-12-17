@@ -46,13 +46,24 @@ export default class StoreList extends Component {
   }
 
   onSortChange(value) {
+    const locationXY = JSON.parse(sessionStorage.getItem('location'));
     // 주소 표시줄의 상태를 바꾼다.
+    const { history, categoryId, location } = this.props;
+    history.push('/category/' + categoryId + '/hello=' + value);
+
+    // ~/
     // (history.push, URLSearchParams 사용)
     // 이후, location.search를 보고,
     // 서버에 요청을 다르게 보내거나 화면을 다르게 그려줄 수 있다.
   }
   render() {
     const { storeList, category } = this.state;
-    return <StoreListView storeList={storeList} category={category} />;
+    return (
+      <StoreListView
+        storeList={storeList}
+        category={category}
+        onSortChange={value => this.onSortChange(value)}
+      />
+    );
   }
 }

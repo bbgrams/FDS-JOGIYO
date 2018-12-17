@@ -57,11 +57,11 @@ export default class StoreListView extends Component {
               onChange={e => this.props.onSortChange(e.target.value)}
             >
               <option value="default">기본 정렬순</option>
-              <option value="star">별점순</option>
-              <option value="review">리뷰 많은순</option>
-              <option value="minimum">최소 주문 금액순</option>
+              <option value="-review_avg">별점순</option>
+              <option value="-review_count">리뷰 많은순</option>
+              <option value="min_order_amount">최소 주문 금액순</option>
               <option value="distance">거리순</option>
-              <option value="delivery">배달시간순</option>
+              <option value="estimated_delivery_time">배달시간순</option>
             </select>
           </div>
         </div>
