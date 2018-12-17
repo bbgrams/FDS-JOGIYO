@@ -54,10 +54,12 @@ export default class StoreList extends Component {
   }
   render() {
     const { storeList, category } = this.state;
+    const { categoryId } = this.props;
     return (
       <StoreListView
         storeList={storeList}
         category={category}
+        categoryId={categoryId}
         onSortChange={value => this.onSortChange(value)}
       />
     );
