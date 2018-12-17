@@ -21,21 +21,14 @@ export default class ModalContainer extends Component {
     super(props);
 
     this.state = {
-      cart: [],
+      // 선생님은 여기서 세션스토라지에 담겨있는 것을 불러온 뒤, setState에서 cart값을 조정해서 넘겨주는 것 보다 배열을 하나 만들어서 사용한 뒤 최종적으로 넘겨주는 것이 더 낫다고 말하심
+      cart: JSON.parse(sessionStorage.cart),
     };
     this.handleAddToCart = this.handleAddToCart.bind(this);
     this.checkFoodId = this.checkFoodId.bind(this);
 
     this.checkRestaurantId = this.checkRestaurantId.bind(this);
   }
-
-  // async componentDidMount() {
-  //   console.log(this.state.cart);
-  //   this.setState({
-  //     cart: JSON.parse(sessionStorage.cart),
-  //   });
-
-  // }
 
   handleAddToCart(id, name, quantity, storeName, storeId, totalPrice, price) {
     alert(
@@ -51,8 +44,8 @@ export default class ModalContainer extends Component {
       storeName,
       ordered: false,
     };
+    let cartArray = this.state.cart;
 
-    let cartItem = this.state.cart;
     let foodId = id;
 
     // 만약 음식점이 바뀌면 스토라지를 초기화 하고 음식을 담는다.
@@ -60,38 +53,33 @@ export default class ModalContainer extends Component {
       JSON.parse(sessionStorage.getItem('cart')).length > 0 &&
       !this.checkRestaurantId(storeId)
     ) {
+      cartArray = [];
       alert('다른 음식점 선택 시, 장바구니가 초기화 됩니다.');
-
-      sessionStorage.clear();
-      this.setState({
-        cart: [],
-      });
     }
 
     // 음식 담기...
     if (this.checkFoodId(foodId)) {
-      let foodIndex = cartItem.findIndex(i => {
+      // cartItem 을 cartArray로 바꿔봄, 혹은 selectedItem으로 바꿔봄
+      // 불필요한 코드가 매우 많았다... 당연히 지금 새로 생성한 배열의 id값을 찾아야 하는 것이기에 cartArray의 인덱스 값을 찾는다.
+      let foodIndex = cartArray.findIndex(i => {
         return i.id === foodId;
       });
 
-      cartItem[foodIndex].quantity += quantity;
-      cartItem[foodIndex].totalPrice = cartItem[foodIndex].quantity * price;
-
-      this.setState({
-        cart: cartItem,
-      });
+      // 이미 같은 상품 : foodId => 이미 들어있는 상품의 id값 과 지금 현재 이 함수에서 실행되고 있는 내부 배열에 들어있는 id의 값이 같으면
+      // 그 인덱스.quantity를 찾아서 그 값만 더해주기 위한 코드
+      // cartArray[foodIndex].quantity = cartArray[foodIndex].quantity + quantity
+      cartArray[foodIndex].quantity += quantity;
+      // 가격의 총합을 구해주는 코드
+      cartArray[foodIndex].totalPrice = cartArray[foodIndex].quantity * price;
     } else {
-      cartItem.push(selectedItem);
-      this.setState({
-        cart: cartItem,
-      });
+      // 같은 아이템이 없다면, 배열에 방금 선택한 아이템을 추가시켜주는 코드
+      // 나의 문제는 지금 선택된 새 상품만 배열에 추가하면 되는데, 그 뒤에 또 한 번 더 카트에 추가시키는 이상한 짓을 하고 있었다...
+      cartArray.push(selectedItem);
     }
-
-    sessionStorage.setItem('cart', JSON.stringify(this.state.cart));
-
-    console.log(this.state.cart);
+    // 배열의 최종 결과를 sessionStorage에 저장
+    sessionStorage.setItem('cart', JSON.stringify(cartArray));
   }
-  // 장바구니에 이미 중복된 것들이 있는지 확인하는 함수들
+  // 장바구니에 이미 중복된 것들이 있는지를 확인하기 위해 설정된 함수
   checkFoodId(foodId) {
     let cart = this.state.cart;
     return cart.some(i => {
@@ -107,8 +95,6 @@ export default class ModalContainer extends Component {
   }
 
   render() {
-    console.log(this.state.cart);
-
     return <Modal addToCart={this.handleAddToCart} {...this.props} />;
   }
 }

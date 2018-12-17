@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import './CartView.scss';
 export default class CartView extends Component {
   render() {
+    console.log(this.props.orderList);
     return (
       <div className="CartWrap">
         <div className="CartWrap__subTitle">

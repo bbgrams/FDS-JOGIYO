@@ -5,7 +5,6 @@ import './StoreListView.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUtensils } from '@fortawesome/free-solid-svg-icons';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
-import FilterView from './FilterView';
 
 export default class StoreListView extends Component {
   static defaultProps = { storeList: [] };
@@ -50,15 +49,15 @@ export default class StoreListView extends Component {
               </ul>
             )}
           </div>
-          <FilterView />
-          {/* <div className="StoreList__sort">
+
+          <div className="StoreList__sort">
             <select name="" id="" className="StoreList__sort__select">
               <option value="">기본 정렬순</option>
               <option value="">별점순</option>
               <option value="">리뷰 많은순</option>
               <option value="">최소 주문 금액순</option>
             </select>
-          </div> */}
+          </div>
         </div>
         <h2 className="StoreList__store">요기요 등록 음식점</h2>
         <p className="StoreList__store-count">

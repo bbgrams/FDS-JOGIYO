@@ -12,7 +12,6 @@ export default class StoreList extends Component {
 
     this.state = {
       storeList: [],
-      filter: false,
     };
   }
 
