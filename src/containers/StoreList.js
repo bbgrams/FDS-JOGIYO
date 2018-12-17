@@ -13,45 +13,41 @@ export default class StoreList extends Component {
     this.state = {
       storeList: [],
       filter: false,
+      category: [],
       // location: {},
     };
   }
-
   async componentDidMount() {
+    const p = new URLSearchParams(this.props.location.search);
+    const sortValue = p.get('sort');
     const location = JSON.parse(sessionStorage.getItem('location'));
     console.log(location.x, location.y);
     const { categoryId } = this.props;
     // 카테고리 목록을 보여주는 데이터
     const { data: category } = await api.get('/restaurants/api/category/');
 
-    if (categoryId) {
-      const { data: storeList } = await api.get('restaurants/api/restaurant/', {
-        params: {
-          lng: location.x,
-          lan: location.y,
-          categories: categoryId,
-        },
-      });
-      this.setState({ storeList });
-    } else {
-      const { data: storeList } = await api.get('restaurants/api/restaurant/', {
-        params: {
-          lng: location.x,
-          lan: location.y,
-        },
-      });
-      this.setState({ storeList });
-    }
-    this.setState({ category, location });
+    const { data: storeList } = await api.get('restaurants/api/restaurant/', {
+      params: {
+        lng: location.x,
+        lan: location.y,
+        categories: categoryId,
+        ordering: sortValue,
+      },
+    });
+    this.setState({
+      storeList,
+      category,
+      location,
+    });
   }
 
   onSortChange(value) {
     const locationXY = JSON.parse(sessionStorage.getItem('location'));
     // 주소 표시줄의 상태를 바꾼다.
     const { history, categoryId, location } = this.props;
-    history.push('/category/' + categoryId + '/hello=' + value);
 
-    // ~/
+    history.push('/category/' + categoryId + '/?sort=' + value);
+
     // (history.push, URLSearchParams 사용)
     // 이후, location.search를 보고,
     // 서버에 요청을 다르게 보내거나 화면을 다르게 그려줄 수 있다.
