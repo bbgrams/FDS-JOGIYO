@@ -2,8 +2,38 @@ import React, { Component } from 'react';
 import './HeroView.scss';
 
 export default class HeroView extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      defaultValue: '',
+    };
+  }
+
+  async componentDidMount() {
+    // console.log(addrString.firstRegion);
+    // console.log(addrString.secondRegion);
+    // console.log(addrString.thirdRegion);
+  }
+
   render() {
     const { findMyAddress } = this.props;
+    const addrInput = JSON.parse(sessionStorage.getItem('addrString'));
+    // console.log(
+    //   addrInput.firstRegion +
+    //     ' ' +
+    //     addrInput.secondRegion +
+    //     ' ' +
+    //     addrInput.thirdRegion
+    // );
+
+    const addrShow =
+      addrInput &&
+      addrInput.firstRegion +
+        ' ' +
+        addrInput.secondRegion +
+        ' ' +
+        addrInput.thirdRegion;
     return (
       <form className="Hero">
         <fieldset>
@@ -15,6 +45,7 @@ export default class HeroView extends Component {
             위치 검색
           </label>
           <input
+            defaultValue={addrShow}
             type="text"
             id="location-search"
             className="Hero__address-input"
