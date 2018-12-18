@@ -15,7 +15,6 @@ class App extends Component {
   render() {
     return (
       <KakaoApiProvider>
-<<<<<<< HEAD
         <UserProvider>
           <BrowserRouter>
             <React.Fragment>
@@ -23,26 +22,12 @@ class App extends Component {
               <Route path="/category/:id?" component={StoreListPage} />
               <Route path="/store/:id" component={StoreDetailPage} />
               <Route path="/login" component={LoginPage} />
-              <Route path="/register" component={RegisterPage} />
+              <Route path="/register" compon0ent={RegisterPage} />
               <Route path="/pay" component={PayPage} />
               <Route path="/cart" component={CartPage} />
             </React.Fragment>
           </BrowserRouter>
         </UserProvider>
-=======
-        <BrowserRouter>
-          <React.Fragment>
-            <Route exact path="/" component={FoodCategoryPage} />
-            <Route exact path="/category" component={StoreListPage} />
-            <Route path="/category/:id" component={StoreListPage} />
-            <Route path="/store/:id" component={StoreDetailPage} />
-            <Route path="/login" component={LoginPage} />
-            <Route path="/register" component={RegisterPage} />
-            <Route path="/pay" component={PayPage} />
-            <Route path="/cart" component={CartPage} />
-          </React.Fragment>
-        </BrowserRouter>
->>>>>>> f69421654a5d7a0327cbe829d80f21f52905be66
       </KakaoApiProvider>
     );
   }
