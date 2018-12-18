@@ -69,11 +69,6 @@ export default class StoreListView extends Component {
             </select>
           </div>
         </div>
-        <select value="3">
-          <option value="1">기본</option>
-          <option value="2">기본2</option>
-          <option value="3">기본3</option>
-        </select>
         <h2 className="StoreList__store">요기요 등록 음식점</h2>
         <p className="StoreList__store-count">
           음식점 <strong>{storeList.length}곳</strong>을 찾았습니다.
