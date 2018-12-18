@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './StoreListView.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,16 +11,15 @@ export default class StoreListView extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { show: false };
+    this.state = {
+      show: false,
+    };
   }
   render() {
-    const { storeList, category, categoryId, handleClick } = this.props;
+    const { storeList, category, categoryId } = this.props;
     const { show } = this.state;
-    console.log(category);
-
-    if (!(storeList && category && categoryId)) {
-      return null;
-    }
+    let btnTitle = category[categoryId - 1];
+    console.log(btnTitle);
     return (
       <div className="StoreList">
         <div className="StoreList__category-sort-wrap">
@@ -33,8 +32,7 @@ export default class StoreListView extends Component {
                 }))
               }
             >
-              {category.find(item => item.id === parseInt(categoryId)).name ||
-                '음식점 전체 보기'}
+              음식점 전체보기
               <FontAwesomeIcon icon={faCaretRight} />
             </button>
             {show && (
@@ -55,12 +53,18 @@ export default class StoreListView extends Component {
               </ul>
             )}
           </div>
+
           <div className="StoreList__sort">
-            <select name="" id="" className="StoreList__sort__select">
-              <option value="">기본 정렬순</option>
-              <option value="">별점순</option>
-              <option value="">리뷰 많은순</option>
-              <option value="">최소 주문 금액순</option>
+            <select
+              className="StoreList__sort__select"
+              onChange={e => this.props.onSortChange(e.target.value)}
+            >
+              <option value="default">기본 정렬순</option>
+              <option value="-review_avg">별점순</option>
+              <option value="-review_count">리뷰 많은순</option>
+              <option value="min_order_amount">최소 주문 금액순</option>
+              <option value="distance">거리순</option>
+              <option value="estimated_delivery_time">배달시간순</option>
             </select>
           </div>
         </div>
