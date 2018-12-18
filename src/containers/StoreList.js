@@ -14,7 +14,7 @@ export default class StoreList extends Component {
       storeList: [],
       filter: false,
       category: [],
-      location: {},
+      // location: {},
     };
   }
   async componentDidMount() {
@@ -34,6 +34,7 @@ export default class StoreList extends Component {
         ordering: sortValue,
       },
     });
+
     this.setState({
       storeList,
       category,

@@ -2,12 +2,12 @@
 
 .Layout__header {
   box-sizing: content-box;
-  padding: 14px 8px;
+  padding: 12px 8px;
   background-color: $main-color;
 
   &__logo {
     position: absolute;
-    width: 86px;
+    width: 74px;
     a,
     img {
       display: block;
@@ -21,7 +21,7 @@
   &__logout-btn {
     color: #fff;
     border: 1px solid #fff;
-    padding: 6px 4px;
+    padding: 5px 4px;
     margin-left: 4px;
   }
   &__location {
