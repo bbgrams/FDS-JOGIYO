@@ -10,22 +10,24 @@ import RegisterPage from './pages/RegisterPage';
 import CartPage from './pages/CartPage';
 import PayPage from './pages/PayPage';
 import { KakaoApiProvider } from './contexts/kakaoApiContext';
+import UserProvider from './contexts/UserContext';
 class App extends Component {
   render() {
     return (
       <KakaoApiProvider>
-        {' '}
-        <BrowserRouter>
-          <React.Fragment>
-            <Route exact path="/" component={FoodCategoryPage} />
-            <Route path="/category/:id" component={StoreListPage} />
-            <Route path="/store/:id" component={StoreDetailPage} />
-            <Route path="/login" component={LoginPage} />
-            <Route path="/register" component={RegisterPage} />
-            <Route path="/pay" component={PayPage} />
-            <Route path="/cart" component={CartPage} />
-          </React.Fragment>
-        </BrowserRouter>
+        <UserProvider>
+          <BrowserRouter>
+            <React.Fragment>
+              <Route exact path="/" component={FoodCategoryPage} />
+              <Route path="/category/:id?" component={StoreListPage} />
+              <Route path="/store/:id" component={StoreDetailPage} />
+              <Route path="/login" component={LoginPage} />
+              <Route path="/register" component={RegisterPage} />
+              <Route path="/pay" component={PayPage} />
+              <Route path="/cart" component={CartPage} />
+            </React.Fragment>
+          </BrowserRouter>
+        </UserProvider>
       </KakaoApiProvider>
     );
   }

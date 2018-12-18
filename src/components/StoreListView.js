@@ -14,8 +14,13 @@ export default class StoreListView extends Component {
     this.state = { show: false };
   }
   render() {
-    const { storeList, category, handleClick } = this.props;
+    const { storeList, category, categoryId, handleClick } = this.props;
     const { show } = this.state;
+    console.log(category);
+
+    if (!(storeList && category && categoryId)) {
+      return null;
+    }
     return (
       <div className="StoreList">
         <div className="StoreList__category-sort-wrap">
@@ -28,7 +33,8 @@ export default class StoreListView extends Component {
                 }))
               }
             >
-              음식점 전체보기
+              {category.find(item => item.id === parseInt(categoryId)).name ||
+                '음식점 전체 보기'}
               <FontAwesomeIcon icon={faCaretRight} />
             </button>
             {show && (
@@ -36,7 +42,7 @@ export default class StoreListView extends Component {
                 <li key="all">
                   <Link to="/category">
                     <FontAwesomeIcon icon={faUtensils} />
-                    음식 전체보기
+                    음식점 전체보기
                   </Link>
                 </li>
                 {category.map(c => (
