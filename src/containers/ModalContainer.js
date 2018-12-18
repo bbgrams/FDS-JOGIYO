@@ -42,10 +42,6 @@ export default class ModalContainer extends Component {
     minAmount,
     deliveryFee
   ) {
-    alert(
-      `${id}, ${name}, ${quantity}, ${storeName},${storeId}, ${totalPrice}, ${price}, ${minAmount}, ${deliveryFee}`
-    );
-
     const selectedItem = {
       id,
       name,
