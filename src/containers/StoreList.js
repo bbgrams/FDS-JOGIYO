@@ -49,7 +49,11 @@ export default class StoreList extends Component {
     // 주소 표시줄의 상태를 바꾼다.
     const { history, categoryId, location } = this.props;
 
-    history.push('/category/' + categoryId + '/?sort=' + value);
+    if (categoryId) {
+      history.push('/category/' + categoryId + '/?sort=' + value);
+    } else {
+      history.push('/category/?sort=' + value);
+    }
 
     // (history.push, URLSearchParams 사용)
     // 이후, location.search를 보고,

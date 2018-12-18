@@ -5,6 +5,8 @@ import Menu from '../containers/Menu';
 
 import UserReview from '../containers/UserReview';
 import StoreInfo from '../containers/StoreInfo';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 export default class StoreDetailView extends Component {
   static defaultProps = {
     id: null,
@@ -32,9 +34,7 @@ export default class StoreDetailView extends Component {
     // page === 'menu' -> 메뉴 정보 페이지
     // page === 'user-review' -> 사용자 리뷰 페이지
     // page === 'store-info' -> 음식점 정보 페이지
-    this.state = {
-      selected: 'menu',
-    };
+    this.state = { selected: 'menu', infoShow: false };
   }
 
   handleMenuPage() {
@@ -52,8 +52,14 @@ export default class StoreDetailView extends Component {
       selected: 'store-info',
     });
   }
-
+  // 물음표 클릭 시 배달시간에 대한 안내 문구 출력
+  handleInfoClick() {
+    this.setState(prevState => ({
+      infoShow: !prevState.infoShow,
+    }));
+  }
   render() {
+    const { infoShow } = this.state;
     const {
       name,
       minOrderAmount,
@@ -71,37 +77,59 @@ export default class StoreDetailView extends Component {
       exceptCash,
       paymentMethods,
       deliveryFee,
+      additionalDiscountPerMenu,
     } = this.props;
 
     return (
       <div className="StoreDetailContainer">
         <div className="StoreDetail">
           <h1 className="StoreDetail__name">{name}</h1>
-          <div className="StoreDetail__info">
+          <div className="StoreDetail__info clearfix">
             {/* 로고 이미지 설정 참고 */}
             {/* 이미지를 왼쪽에 위치시키고 나머지는 디스플레이 : 블록 으로? */}
-            <img className="StoreDetail__info__logo" src={logoUrl} alt={name} />
-
-            <p>평점: {reviewAvg}</p>
-            <p>최소주문금액 {minOrderAmount}</p>
-            <p>
-              결제 <span>{exceptCash ? '현금' : null} </span>
-              <span>
-                {paymentMethods.map(m => (
-                  <span key={m.id}>
-                    {m.name === 'creditcard'
-                      ? '신용카드'
-                      : 'online'
-                      ? '요기서결제'
-                      : null}
-                  </span>
-                ))}
-              </span>
-            </p>
-            <p>
-              배달시간 <span>{estimatedDeliveryTime}</span>{' '}
-              <button>{/* 어떻게 통계를 내는지에 대한 도움말버튼 */}?</button>
-            </p>
+            <div className="StoreDetail__info__logo">
+              <img src={logoUrl} alt={name} />
+            </div>
+            <div className="StoreDetail__info__text">
+              <p>평점: {reviewAvg}</p>
+              <p>
+                최소주문금액 <span>{minOrderAmount}원</span>
+              </p>
+              <p>
+                결제 <span>{exceptCash ? '현금' : null}, </span>
+                <span>
+                  {paymentMethods.map(m => (
+                    <span className="StoreDetail__info__text__yogi" key={m.id}>
+                      {m.name === 'creditcard'
+                        ? '신용카드'
+                        : 'online'
+                        ? '요기서결제'
+                        : null}
+                    </span>
+                  ))}
+                </span>
+              </p>
+              <p>
+                배달시간 <span>{estimatedDeliveryTime}</span>{' '}
+                <p className="StoreDetail__info__text__btn">
+                  <button onClick={() => this.handleInfoClick()}>
+                    <FontAwesomeIcon icon={faQuestionCircle} />
+                  </button>
+                  {infoShow ? (
+                    <p className="StoreDetail__info__text__btn__text">
+                      최근 주문의 배달시간을 분석한 정보 입니다. 실제
+                      배달시간과는 차이가 있을 수 있습니다.
+                    </p>
+                  ) : null}
+                </p>
+              </p>
+              <p>
+                <span className="StoreDetail__info__text__delivery_discount">
+                  {' '}
+                  배달할인 {additionalDiscountPerMenu}원
+                </span>
+              </p>
+            </div>
           </div>
         </div>
         {/* 3개 메뉴 셀렉트 */}
