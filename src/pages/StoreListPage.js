@@ -6,10 +6,11 @@ export default class StoreListPage extends Component {
   render() {
     const { match, history, location } = this.props;
     const categoryId = match.params.id;
+    console.log(categoryId);
     // const p = new URLSearchParams(location.pathname);
     // console.log(p);
-    // const hello = p.get('hello');
-    // console.log(hello);
+    // const helloCategory = p.get('category');
+    // console.log(helloCategory);
 
     return (
       <Layout>
