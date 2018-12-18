@@ -14,6 +14,7 @@ export default class StoreList extends Component {
       storeList: [],
       filter: false,
       category: [],
+      selectValue: '',
       // location: {},
     };
   }
@@ -34,11 +35,12 @@ export default class StoreList extends Component {
         ordering: sortValue,
       },
     });
-
+    // 여기다가 정렬과 관련된 정보를 받아올 까?
     this.setState({
       storeList,
       category,
       location,
+      selectValue: sortValue,
     });
   }
 
@@ -54,7 +56,7 @@ export default class StoreList extends Component {
     // 서버에 요청을 다르게 보내거나 화면을 다르게 그려줄 수 있다.
   }
   render() {
-    const { storeList, category } = this.state;
+    const { storeList, category, selectValue } = this.state;
     const { categoryId } = this.props;
     return (
       <StoreListView
@@ -62,6 +64,7 @@ export default class StoreList extends Component {
         category={category}
         categoryId={categoryId}
         onSortChange={value => this.onSortChange(value)}
+        selectValue={selectValue}
       />
     );
   }
