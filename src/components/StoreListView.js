@@ -123,4 +123,3 @@ export default class StoreListView extends Component {
     );
   }
 }
-1;
