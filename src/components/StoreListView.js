@@ -19,7 +19,9 @@ export default class StoreListView extends Component {
     const { storeList, category, categoryId, selectValue } = this.props;
     const { show } = this.state;
     let btnTitle = category[categoryId - 1];
-    console.log(btnTitle);
+    console.log(categoryId);
+    // console.log(btnTitle);
+    console.log(category[categoryId - 1]);
     return (
       <div className="StoreList">
         <div className="StoreList__category-sort-wrap">
@@ -32,7 +34,10 @@ export default class StoreListView extends Component {
                 }))
               }
             >
-              음식점 전체보기
+              {/* {category.find(
+                item => parseInt(item.id) === parseInt(categoryId)
+              )} */}
+              dd
               <FontAwesomeIcon icon={faCaretRight} />
             </button>
             {show && (
