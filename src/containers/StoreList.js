@@ -12,12 +12,9 @@ export default class StoreList extends Component {
 
     this.state = {
       storeList: [],
-<<<<<<< HEAD
-=======
       filter: false,
       category: [],
       // location: {},
->>>>>>> e65b66a1a0670a2cd726e35f92a0f9abfa547c3c
     };
   }
   async componentDidMount() {
@@ -37,16 +34,13 @@ export default class StoreList extends Component {
         ordering: sortValue,
       },
     });
-<<<<<<< HEAD
     // 여기다가 정렬과 관련된 정보를 받아올 까?
-=======
     this.setState({
       storeList,
       category,
       location,
     });
   }
->>>>>>> e65b66a1a0670a2cd726e35f92a0f9abfa547c3c
 
   onSortChange(value) {
     const locationXY = JSON.parse(sessionStorage.getItem('location'));
