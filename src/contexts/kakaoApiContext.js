@@ -17,6 +17,7 @@ export default class KakaoApiProvider extends Component {
       locationX: 0,
       locationY: 0,
       handleGpsClick: this.handleGpsClick,
+      addrString: {},
     };
     this.handleGpsClick = this.handleGpsClick.bind(this);
   }
@@ -59,12 +60,28 @@ export default class KakaoApiProvider extends Component {
       }
     );
     // console.log(res.data);
-    console.log(res.data.documents[0].address.region_1depth_name);
+    // console.log(res.data.documents[0].address.region_1depth_name);
+    // console.log(res.data.documents[0].address.region_2depth_name);
+    // console.log(res.data.documents[0].address.region_3depth_name);
     const location = {
       x: this.state.locationX,
       y: this.state.locationY,
     };
+    const addr = res.data.documents[0].address;
+    const addrString = {
+      firstRegion: addr.region_1depth_name,
+      secondRegion: addr.region_2depth_name,
+      thirdRegion: addr.region_3depth_name,
+    };
+
     sessionStorage.setItem('location', JSON.stringify(location));
+    sessionStorage.setItem('addrString', JSON.stringify(addrString));
+    this.setState({
+      addrString: sessionStorage.setItem(
+        'addrString',
+        JSON.stringify(addrString)
+      ),
+    });
   };
 
   render() {
