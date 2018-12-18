@@ -12,12 +12,9 @@ export default class StoreList extends Component {
 
     this.state = {
       storeList: [],
-<<<<<<< HEAD
-=======
       filter: false,
       category: [],
       // location: {},
->>>>>>> e65b66a1a0670a2cd726e35f92a0f9abfa547c3c
     };
   }
   async componentDidMount() {
@@ -37,23 +34,23 @@ export default class StoreList extends Component {
         ordering: sortValue,
       },
     });
-<<<<<<< HEAD
-    // 여기다가 정렬과 관련된 정보를 받아올 까?
-=======
     this.setState({
       storeList,
       category,
       location,
     });
   }
->>>>>>> e65b66a1a0670a2cd726e35f92a0f9abfa547c3c
 
   onSortChange(value) {
     const locationXY = JSON.parse(sessionStorage.getItem('location'));
     // 주소 표시줄의 상태를 바꾼다.
     const { history, categoryId, location } = this.props;
 
-    history.push('/category/' + categoryId + '/?sort=' + value);
+    if (categoryId) {
+      history.push('/category/' + categoryId + '/?sort=' + value);
+    } else {
+      history.push('/category/?sort=' + value);
+    }
 
     // (history.push, URLSearchParams 사용)
     // 이후, location.search를 보고,
