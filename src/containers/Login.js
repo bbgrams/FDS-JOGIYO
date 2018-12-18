@@ -12,16 +12,32 @@ class Login extends Component {
       success: false,
     };
   }
+  handleChange = (target, value) => {
+    this.setState({
+      [target]: value,
+    });
+  };
+  handleLogin = async () => {
+    const { username, password } = this.state;
+    const { login } = this.props;
+    try {
+      await login(username, password);
+      this.setState({
+        success: true,
+      });
+    } catch (e) {
+      console.log('로그인 에러 남');
+    }
+  };
 
-  // async handleLoginButtonClick() {
-  //   const { username, password } = this.state;
-  //   await onLogin(username, password);
-  //   // 로그인이 성공적으로 끝났을 때
-  //   this.setState({ success: true });
-  // }
   render() {
-    const { login, handleLoginButtonClick } = this.props;
-    return <LoginView handleLoginButtonClick={handleLoginButtonClick} />;
+    return (
+      <LoginView
+        handleLogin={this.handleLogin}
+        handleChange={this.handleChange}
+        {...this.state}
+      />
+    );
   }
 }
 
