@@ -8,7 +8,6 @@
 .StoreDetail {
   background-color: #fff;
   border: 1px solid $border-color;
-  height: 147px;
 
   &__name {
     padding: 10px;
@@ -20,12 +19,63 @@
   &__info {
     border-top: 1px solid $border-color;
     padding: 10px;
-    height: 103px;
 
     &__logo {
       float: left;
       width: 80px;
       height: 80px;
+      padding: 5px;
+      border: 1px solid $border-color;
+      margin-right: 8px;
+    }
+    &__text {
+      font-size: 1.4rem;
+      float: left;
+      p {
+        color: $text-sub-color;
+        margin-bottom: 2px;
+        span {
+          margin-left: 3px;
+        }
+        .StoreDetail__info__text__yogi {
+          color: $main-color;
+        }
+        .StoreDetail__info__text__delivery_discount {
+          color: $main-color;
+          font-size: 1.1rem;
+          border: 1px solid $main-color;
+          padding: 0 3px;
+        }
+      }
+      &__btn {
+        position: relative;
+        display: inline-block;
+        &__text {
+          position: absolute;
+          font-size: 1.3rem;
+          line-height: 1.4;
+          width: 240px;
+          z-index: 9999;
+          background-color: #fff;
+          padding: 16px;
+          border: 1px solid $border-active-color;
+          top: calc(100% + 5px);
+          left: 50%;
+          margin-left: -120px;
+          &:before {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: 100%;
+            width: 0;
+            height: 0;
+            border: 7px solid transparent;
+            border-bottom-color: $border-active-color;
+            left: 50%;
+            margin-left: -7px;
+          }
+        }
+      }
     }
   }
 }
@@ -41,7 +91,12 @@
       display: inline-block;
       width: calc(100% / 3);
       height: 46px;
-      border: 1px solid $border-color;
+      border-bottom: 1px solid $border-color;
+      border-right: 1px solid $border-color;
+      background-color: #fff;
+    }
+    button:last-child {
+      border-right: none;
     }
   }
 }

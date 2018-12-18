@@ -27,6 +27,7 @@ export default class StoreDetail extends Component {
       exceptCash: null,
       paymentMethods: [],
       deliveryFee: 0,
+      additionalDiscountPerMenu: null,
     };
   }
 
