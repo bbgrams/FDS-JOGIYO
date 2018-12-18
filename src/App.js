@@ -19,7 +19,8 @@ class App extends Component {
           <BrowserRouter>
             <React.Fragment>
               <Route exact path="/" component={FoodCategoryPage} />
-              <Route path="/category/:id?" component={StoreListPage} />
+              <Route exact path="/category" componet={StoreListPage} />
+              <Route path="/category/:id" component={StoreListPage} />
               <Route path="/store/:id" component={StoreDetailPage} />
               <Route path="/login" component={LoginPage} />
               <Route path="/register" compon0ent={RegisterPage} />

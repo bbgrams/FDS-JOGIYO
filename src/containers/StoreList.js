@@ -13,7 +13,7 @@ export default class StoreList extends Component {
     this.state = {
       storeList: [],
       filter: false,
-      category: [],
+      // category,
       selectValue: '',
       // location: {},
     };
@@ -24,9 +24,18 @@ export default class StoreList extends Component {
     const location = JSON.parse(sessionStorage.getItem('location'));
     console.log(location.x, location.y);
     const { categoryId } = this.props;
+
     // 카테고리 목록을 보여주는 데이터
     const { data: category } = await api.get('/restaurants/api/category/');
 
+    // if {
+    //   const { data: storeList } = await api.get('restaurants/api/restaurant/',{
+    //     params: {
+    //       lng: location.x,
+    //       lan: location.y,
+    //     }
+    //   })
+    // } else {
     const { data: storeList } = await api.get('restaurants/api/restaurant/', {
       params: {
         lng: location.x,
@@ -35,6 +44,7 @@ export default class StoreList extends Component {
         ordering: sortValue,
       },
     });
+    // }
     // 여기다가 정렬과 관련된 정보를 받아올 까?
     this.setState({
       storeList,
