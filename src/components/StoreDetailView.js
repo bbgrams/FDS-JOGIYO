@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './StoreDetailView.scss';
+import classNames from 'classnames';
 
 import Menu from '../containers/Menu';
 
@@ -59,6 +60,7 @@ export default class StoreDetailView extends Component {
     }));
   }
   render() {
+    // TODO : this.state.selected가 menu,user-review,store-info일때 해당 버튼에 active 클래스 추가하고싶다.
     const { infoShow } = this.state;
     const {
       name,
@@ -110,7 +112,7 @@ export default class StoreDetailView extends Component {
                 </span>
               </p>
               <p>
-                배달시간 <span>{estimatedDeliveryTime}</span>{' '}
+                배달시간 <span>{estimatedDeliveryTime}</span>
                 <p className="StoreDetail__info__text__btn">
                   <button onClick={() => this.handleInfoClick()}>
                     <FontAwesomeIcon icon={faQuestionCircle} />
@@ -125,7 +127,6 @@ export default class StoreDetailView extends Component {
               </p>
               <p>
                 <span className="StoreDetail__info__text__delivery_discount">
-                  {' '}
                   배달할인 {additionalDiscountPerMenu}원
                 </span>
               </p>
@@ -136,11 +137,26 @@ export default class StoreDetailView extends Component {
         {/* 원산지 정보는 어디다 넣어야 할까...? */}
         <div className="StoreDetail__menu">
           <div className="StoreDetail__menu__select">
-            <button onClick={() => this.handleMenuPage()}>메뉴</button>
-            <button onClick={() => this.handleUserReviewPage()}>
+            <button
+              onClick={() => this.handleMenuPage()}
+              className={this.state.selected === 'menu' ? 'active' : null}
+            >
+              메뉴
+            </button>
+            <button
+              onClick={() => this.handleUserReviewPage()}
+              className={
+                this.state.selected === 'user-review' ? 'active' : null
+              }
+            >
               클린리뷰 {reviewCount}
             </button>
-            <button onClick={() => this.handleStoreInfoPage()}>정보</button>
+            <button
+              onClick={() => this.handleStoreInfoPage()}
+              className={this.state.selected === 'store-info' ? 'active' : null}
+            >
+              정보
+            </button>
           </div>
           {/* 컨텐츠 내용 양의 따라 늘어나야 한다 */}
           <div className="StoreDetail__menu__box">
