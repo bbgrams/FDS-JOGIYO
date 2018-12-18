@@ -79,12 +79,15 @@ export default class Modal extends Component {
         <div className="Modal__main">
           <div className="Madal__order">
             <h1 className="Madal__order__title">계란짐{name}</h1>
-            <div className="Madal__order__img">
-              <img src={image} alt={name} />
+            <div
+              className="Madal__order__img"
+              style={{ backgroundImage: 'url(' + image + ')' }}
+            >
+              {name}
             </div>
             <div className="Madal__order__price">
               <span className="Madal__order__price__title">가격</span>
-              <span className="Madal__order__price__num">{price}</span>
+              <span className="Madal__order__price__num">{price}원</span>
             </div>
 
             <div className="Madal__order__quantity">
