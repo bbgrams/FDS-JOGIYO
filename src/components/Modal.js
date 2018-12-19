@@ -49,6 +49,7 @@ export default class Modal extends Component {
       storeName,
       storeId,
       deliveryFee,
+      history,
     } = this.props;
 
     const { quantity } = this.state;
@@ -92,7 +93,25 @@ export default class Modal extends Component {
             >
               추가
             </button>
-            <button>주문하기</button>
+            <button
+              onClick={() => {
+                this.props.toPay(
+                  id,
+                  name,
+                  quantity,
+                  storeName,
+                  storeId,
+                  totalPrice,
+                  price,
+                  minAmount,
+                  deliveryFee,
+                  this.handleToCart
+                );
+                history.push('/cart');
+              }}
+            >
+              주문하기
+            </button>
           </div>
           <button onClick={() => this.handleModalClose()}>닫기</button>
         </div>

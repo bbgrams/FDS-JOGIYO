@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import Modal from '../components/Modal';
+import { withRouter } from 'react-router-dom';
 
 let cart = JSON.parse(sessionStorage.getItem('cart')) || [];
 
 sessionStorage.setItem('cart', JSON.stringify(cart));
-export default class ModalContainer extends Component {
+class ModalContainer extends Component {
   // menuview에서 받을 prop들
   static defaultProps = {
     show: null,
@@ -25,12 +26,66 @@ export default class ModalContainer extends Component {
       // 선생님은 여기서 세션스토라지에 담겨있는 것을 불러온 뒤, setState에서 cart값을 조정해서 넘겨주는 것 보다 배열을 하나 만들어서 사용한 뒤 최종적으로 넘겨주는 것이 더 낫다고 말하심
       cart: JSON.parse(sessionStorage.cart),
     };
+    this.handleToPay = this.handleToPay.bind(this);
     this.handleAddToCart = this.handleAddToCart.bind(this);
     this.checkFoodId = this.checkFoodId.bind(this);
 
     this.checkRestaurantId = this.checkRestaurantId.bind(this);
   }
+  // 주문하기 -> 바로 pay로 이동
+  handleToPay(
+    id,
+    name,
+    quantity,
+    storeName,
+    storeId,
+    totalPrice,
+    price,
+    minAmount,
+    deliveryFee
+  ) {
+    const selectedItem = {
+      id,
+      name,
+      totalPrice,
+      quantity,
+      storeId,
+      storeName,
+      minAmount,
+      price,
+      deliveryFee,
+      ordered: false,
+    };
+    let cartArray = this.state.cart;
 
+    let foodId = id;
+
+    if (
+      JSON.parse(sessionStorage.getItem('cart')).length > 0 &&
+      !this.checkRestaurantId(storeId)
+    ) {
+      cartArray = [];
+      alert('다른 음식점 선택 시, 장바구니가 초기화 됩니다.');
+    }
+
+    if (this.checkFoodId(foodId)) {
+      let foodIndex = cartArray.findIndex(i => {
+        return i.id === foodId;
+      });
+
+      cartArray[foodIndex].quantity += quantity;
+
+      cartArray[foodIndex].totalPrice = cartArray[foodIndex].quantity * price;
+    } else {
+      cartArray.push(selectedItem);
+    }
+
+    this.setState({ cart: cartArray });
+    sessionStorage.setItem('cart', JSON.stringify(cartArray));
+    // 여기서 주문 페이지로 넘기는 것이 필요
+    // this.props.history.push('/cart');
+  }
+  // 주문표에 추가하기
   handleAddToCart(
     id,
     name,
@@ -88,10 +143,9 @@ export default class ModalContainer extends Component {
     }
     // 배열의 최종 결과를 sessionStorage에 저장
     // 추가한다고 하여 페이지가 새로 그려지지 않기 때문에, 다른 음식점을 선택한 후 음식을 추가하면 계속 초기화를 시켜버리기 때문에 여기에서 setState에도 업데이트를 해주어야 한다.
-    this.setState({
-      cart: cartArray,
-    });
+    this.setState({ cart: cartArray });
     sessionStorage.setItem('cart', JSON.stringify(cartArray));
+    this.props.handleClose();
   }
   // 장바구니에 이미 중복된 것들이 있는지를 확인하기 위해 설정된 함수
   checkFoodId(foodId) {
@@ -109,6 +163,14 @@ export default class ModalContainer extends Component {
   }
 
   render() {
-    return <Modal addToCart={this.handleAddToCart} {...this.props} />;
+    return (
+      <Modal
+        toPay={this.handleToPay}
+        addToCart={this.handleAddToCart}
+        {...this.props}
+      />
+    );
   }
 }
+
+export default withRouter(ModalContainer);
