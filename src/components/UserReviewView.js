@@ -8,20 +8,40 @@ export default class UserReviewView extends Component {
 
   render() {
     // 유저 아이디를 어떻게 불러올까? 사용자가 시킨 메뉴는 백엔드에 요청?
-    const { review, ownerReplyCount, reviewStar } = this.props;
+    const { review, ownerReplyCount, reviewStar, reviewAvg } = this.props;
     return (
       <div className="UserReview">
         <div className="UserReview__avg">
           {/* 점수의 평균을 구하는 법을 알아야 한다 */}
           {/* 점수에 따라 별의 개수를 표현 */}
-          <span>평균리뷰점수</span>
-          <span>맛평균</span>
-          <span>양평균</span>
-          <span>배달평균</span>
+          <div className="UserReview__avg__sum">
+            <p>{parseFloat(reviewAvg).toFixed(1)}</p>
+            <p>{reviewStar(reviewAvg)}</p>
+          </div>
+          <div className="UserReview__avg__mini">
+            <p className="UserReview__avg__mini__item">
+              <span>맛</span>
+              <span>
+                {reviewStar(reviewAvg)} {parseFloat(reviewAvg).toFixed(1)}
+              </span>
+            </p>
+            <p className="UserReview__avg__mini__item">
+              <span>양</span>
+              <span>
+                {reviewStar(reviewAvg)} {parseFloat(reviewAvg).toFixed(1)}
+              </span>
+            </p>
+            <p className="UserReview__avg__mini__item">
+              <span>배달</span>
+              <span>
+                {reviewStar(reviewAvg)} {parseFloat(reviewAvg).toFixed(1)}
+              </span>
+            </p>
+          </div>
         </div>
         {/* 어떻게 구해야 할까 */}
         <div className="UserReview__count">
-          리뷰 <strong>{review.length}</strong>개, 사장님 댓글
+          리뷰 <strong>{review.length}</strong>개, 사장님 댓글{' '}
           <strong>{ownerReplyCount}</strong>개
         </div>
         <div>

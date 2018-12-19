@@ -4,8 +4,42 @@
 }
 
 .UserReview__avg {
-  height: 102px;
+  text-align: center;
   border-bottom: 1px solid $border-color;
+  padding: 12px 0;
+  &__sum {
+    display: inline-block;
+    border-right: 1px solid $border-color;
+    padding-right: 30px;
+    box-sizing: content-box;
+    p:first-child {
+      font-size: 4.4rem;
+      font-weight: 600;
+      line-height: 1;
+    }
+    p:last-child {
+      color: $star-color;
+      line-height: 1;
+      margin-top: 5px;
+    }
+  }
+  &__mini {
+    display: inline-block;
+    font-size: 1.3rem;
+    text-align: left;
+    padding-left: 30px;
+    p {
+      margin-top: 3px;
+      span:first-child {
+        width: 40px;
+        display: inline-block;
+        text-align: left;
+      }
+      span:last-child {
+        color: $star-color;
+      }
+    }
+  }
 }
 
 .UserReview__count {

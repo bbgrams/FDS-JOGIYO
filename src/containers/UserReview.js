@@ -25,13 +25,14 @@ export default class UserReview extends Component {
 
   render() {
     const { review } = this.state;
-    const { ownerReplyCount, reviewStar } = this.props;
+    const { ownerReplyCount, reviewStar, reviewAvg } = this.props;
     return (
       <div>
         <UserReviewView
           review={review}
           reviewStar={reviewStar}
           ownerReplyCount={ownerReplyCount}
+          reviewAvg={reviewAvg}
         />
       </div>
     );
