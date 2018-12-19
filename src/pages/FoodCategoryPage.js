@@ -19,31 +19,31 @@ export default class FoodCategoryPage extends Component {
             <Link className="FoodCategory__link--franchise" to="/category/2">
               프랜차이즈
             </Link>
-            <Link className="FoodCategory__link--chicken" to="/category/7">
+            <Link className="FoodCategory__link--chicken" to="/category/4">
               치킨
             </Link>
             <Link className="FoodCategory__link--pizza" to="/category/1">
               피자/양식
             </Link>
-            <Link className="FoodCategory__link--chinese" to="/category/11">
+            <Link className="FoodCategory__link--chinese" to="/category/7">
               중식
             </Link>
-            <Link className="FoodCategory__link--korean" to="/category/6">
+            <Link className="FoodCategory__link--korean" to="/category/10">
               한식
             </Link>
             <Link className="FoodCategory__link--japanese" to="/category/12">
               일식/돈까스
             </Link>
-            <Link className="FoodCategory__link--pig" to="/category/4">
+            <Link className="FoodCategory__link--pig" to="/category/3">
               족발/보쌈
             </Link>
-            <Link className="FoodCategory__link--night" to="/category/10">
+            <Link className="FoodCategory__link--night" to="/category/9">
               야식
             </Link>
-            <Link className="FoodCategory__link--snack" to="/category/9">
+            <Link className="FoodCategory__link--snack" to="/category/11">
               분식
             </Link>
-            <Link className="FoodCategory__link--cafe" to="/category/3">
+            <Link className="FoodCategory__link--cafe" to="/category/5">
               카페/디저트
             </Link>
           </div>

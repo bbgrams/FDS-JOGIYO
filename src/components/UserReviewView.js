@@ -8,7 +8,7 @@ export default class UserReviewView extends Component {
 
   render() {
     // 유저 아이디를 어떻게 불러올까? 사용자가 시킨 메뉴는 백엔드에 요청?
-    const { review } = this.props;
+    const { review, ownerReplyCount, reviewStar } = this.props;
     return (
       <div className="UserReview">
         <div className="UserReview__avg">
@@ -20,22 +20,27 @@ export default class UserReviewView extends Component {
           <span>배달평균</span>
         </div>
         {/* 어떻게 구해야 할까 */}
-        <div className="UserReview__count">리뷰 갯수, 사장님 댓글 갯수</div>
+        <div className="UserReview__count">
+          리뷰 <strong>{review.length}</strong>개, 사장님 댓글
+          <strong>{ownerReplyCount}</strong>개
+        </div>
         <div>
           {review.map(r => (
             <div className="UserReview__content" key={r.id}>
-              <span className="UserReview__content__name">작성자 </span>
+              <span className="UserReview__content__name">작성자 </span>
               <span className="UserReview__content__time"> 10시간 전 </span>
               <div className="UserReview__content__ratings">
                 {/* 소수점 이하는 버리면 된다. */}
-                <p>
-                  <span className="UserReview_)content__stars">
-                    별 {r.rating}
+                <div>
+                  <span className="UserReview__content__stars">
+                    {reviewStar(r.rating)}
                   </span>
-                  맛★ {Math.trunc(r.ratingTaste)}
-                  양★ {Math.trunc(r.ratingQuantity)}
-                  배달★ {Math.trunc(r.ratingDelivery)}
-                </p>
+                  <div className="UserReview__content__star">
+                    맛 <strong>★ {Math.trunc(r.ratingTaste)}</strong>양{' '}
+                    <strong>★ {Math.trunc(r.ratingQuantity)}</strong>
+                    배달 <strong>★ {Math.trunc(r.ratingDelivery)}</strong>
+                  </div>
+                </div>
               </div>
               <div className="UserReview__content__order">주문한 음식</div>
               <p className="UserReview__content__comment">{r.comment}</p>

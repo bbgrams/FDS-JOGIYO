@@ -30,6 +30,12 @@ export default class StoreDetail extends Component {
       additionalDiscountPerMenu: null,
     };
   }
+  reviewStar(count) {
+    const num = Math.floor(count);
+    const empty = 5 - num;
+    const star = '★'.repeat(num) + '☆'.repeat(empty);
+    return star;
+  }
 
   async componentDidMount() {
     const { storeId } = this.props;
@@ -46,7 +52,11 @@ export default class StoreDetail extends Component {
     const { storeId } = this.props;
     return (
       <div>
-        <StoreDetailView {...this.state} id={storeId} />
+        <StoreDetailView
+          {...this.state}
+          id={storeId}
+          reviewStar={this.reviewStar.bind(this)}
+        />
       </div>
     );
   }
