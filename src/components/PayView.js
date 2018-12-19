@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import { faCoins } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 export default class PayView extends Component {
   static defaultProps = {
@@ -14,12 +15,37 @@ export default class PayView extends Component {
   };
   constructor(props) {
     super(props);
-
+    const { list } = props;
+    // const foodInPay = list.map(l => {
+    //   const {
+    //     quantity,
+    //     id,
+    //     name,
+    //     storeName,
+    //     storeId,
+    //     ordered,
+    //     price,
+    //     deliveryFee,
+    //   } = l;
+    //   return {
+    //     id,
+    //     name,
+    //     quantity,
+    //     storeName,
+    //     price,
+    //     storeId,
+    //     ordered,
+    //     deliveryFee,
+    //     totalPrice: quantity * price,
+    //   };
+    // });
     this.state = {
       show: true,
       infoShow: false,
+      list,
     };
   }
+
   handleInfoClick() {
     this.setState(prevState => ({
       infoShow: !prevState.infoShow,
@@ -27,9 +53,16 @@ export default class PayView extends Component {
   }
 
   render() {
-    const { infoShow } = this.state;
     const { list } = this.props;
-    const menu = list.menu;
+    const {
+      infoShow,
+      // foodInPay
+    } = this.state;
+    const deliveryFee = list[0].deliveryFee ? list[0].deliveryFee : 0;
+
+    let addrShow = JSON.parse(sessionStorage.getItem('addrShow'));
+    console.log(addrShow);
+
     return (
       <form className="Pay">
         <fieldset>
@@ -44,7 +77,7 @@ export default class PayView extends Component {
                 </label>
                 <input
                   type="text"
-                  defaultValue="서울 성동구 성수2가3동"
+                  defaultValue={addrShow}
                   id="address1"
                   disabled
                 />
@@ -150,19 +183,86 @@ export default class PayView extends Component {
             <div className="Menu">
               <span className="Menu__title">주문내역</span>
             </div>
-            <p className="Pay__list__store">{list.store}</p>
+            <p className="Pay__list__store">{list[0].storeName}</p>
             <ul className="Pay__list__menu">
-              {menu.map(m => (
-                <li>
-                  <span className="Pay__list__menu__title">{m}</span>
-                  <span className="Pay__list__menu__price">11000원</span>
+              {list.map((item, i) => (
+                <li className="clearfix">
+                  <div className="Pay__list__menu__orderName">
+                    <span className="Pay__list__menu__orderName__title">
+                      {item.name}
+                    </span>
+                    <span className="Pay__list__menu__orderName__amount">
+                      {item.quantity}개
+                    </span>
+                  </div>
+                  <span className="Pay__list__menu__price">
+                    {item.totalPrice.toLocaleString()}원
+                  </span>
                 </li>
               ))}
               <li className="Pay__list__menu__all">
-                <span className="Pay__list__menu__title">총 결제 금액</span>
-                <span className="Pay__list__menu__price">11,000원</span>
+                <span className="Pay__list__menu__all__title">
+                  총 결제 금액
+                </span>
+                <span className="Pay__list__menu__all__price">
+                  {(
+                    list.reduce((acc, item) => acc + item.totalPrice, 0) +
+                    deliveryFee
+                  ).toLocaleString()}
+                  원
+                </span>
               </li>
             </ul>
+            <ul className="Pay__list__terms__listGroup">
+              <li className="Pay__list__terms__listGroup__item">
+                <div className="checkbox">
+                  <input type="checkbox" id="all" name="all" />
+                  <label htmlFor="all">전체동의</label>
+                </div>
+              </li>
+              <li className="Pay__list__terms__listGroup__item">
+                <div className="checkbox">
+                  <input type="checkbox" id="sms" name="sms" />
+                  <label htmlFor="sms">
+                    {/* <span /> */}
+                    <span className="">SMS 수신 동의</span>
+                    <Link to="#">(전문보기)</Link>
+                  </label>
+                </div>
+              </li>
+              <li className="Pay__list__terms__listGroup__item">
+                <div className="checkbox">
+                  <input type="checkbox" id="userterms" name="userterms" />
+                  <label htmlFor="userterms">
+                    {/* <span /> */}
+                    요기요 이용약관에 동의합니다.
+                    <Link to="#">(전문보기)</Link>
+                  </label>
+
+                  <input
+                    type="checkbox"
+                    id="personalInfo"
+                    name="personalInfo"
+                  />
+                  <label htmlFor="personalInfo">
+                    <span className="sj">
+                      개인정보 수집 및 이용에 동의합니다.
+                      <Link to="#">(전문보기)</Link>
+                    </span>
+                  </label>
+                </div>
+              </li>
+              <li className="Pay__list__terms__listGroup__item">
+                <div className="checkbox">
+                  <input type="checkbox" id="push" name="push" />
+                  <label htmlFor="push">
+                    개인정보 제3자 제공에 동의합니다.
+                    <Link to="#">(전문보기)</Link>
+                  </label>
+                </div>
+              </li>
+            </ul>
+            <button>주문완료</button>
           </div>
         </fieldset>
       </form>

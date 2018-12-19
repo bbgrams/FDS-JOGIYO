@@ -69,7 +69,7 @@ export default class CartView extends Component {
   }
 
   renderItem(productInCart) {
-    const {
+    let {
       id,
       name,
       quantity,
