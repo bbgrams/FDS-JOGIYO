@@ -57,11 +57,12 @@ export default class MenuView extends Component {
                   this.handleShowModal();
                 }}
               >
-                <img
+                <div
                   className="PhotoMenu__content__img"
-                  src={f.image}
-                  alt={f.name}
-                />
+                  style={{ backgroundImage: 'url(' + f.image + ')' }}
+                >
+                  {f.name}
+                </div>
                 <div className="PhotoMenu__content__name">{f.name}</div>
                 <div className="PhotoMenu__content__price">
                   {f.price.toLocaleString()} 원
