@@ -138,6 +138,7 @@ export default class StoreDetailView extends Component {
             </div>
           </div>
         </div>
+
         {/* 3개 메뉴 셀렉트 */}
         {/* 원산지 정보는 어디다 넣어야 할까...? */}
         <div className="StoreDetail__menu">
@@ -192,6 +193,12 @@ export default class StoreDetailView extends Component {
               ) : null}
             </div>
           </div>
+        </div>
+        <div className="StoreDetail__btn">
+          <button className="StoreDetail__btn__cart" disabled>
+            주문표(1)
+          </button>
+          <button className="StoreDetail__btn__order">바로 주문하기</button>
         </div>
       </div>
     );

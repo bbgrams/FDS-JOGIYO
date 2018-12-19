@@ -28,8 +28,7 @@
   }
   &__star {
     display: inline-block;
-    position: relative;
-    padding-left: 21px;
+    padding-left: 10px;
     font-size: 1.4rem;
     strong {
       color: $star-color;
@@ -38,12 +37,11 @@
     }
     &::before {
       content: '';
+      display: inline-block;
       width: 1px;
-      position: absolute;
       height: 12px;
+      margin-right: 10px;
       background-color: $border-color;
-      left: 10px;
-      top: 5px;
     }
   }
 
