@@ -8,7 +8,7 @@ export default class UserReviewView extends Component {
 
   render() {
     // 유저 아이디를 어떻게 불러올까? 사용자가 시킨 메뉴는 백엔드에 요청?
-    const { review } = this.props;
+    const { review, ownerReplyCount } = this.props;
     return (
       <div className="UserReview">
         <div className="UserReview__avg">
@@ -20,11 +20,14 @@ export default class UserReviewView extends Component {
           <span>배달평균</span>
         </div>
         {/* 어떻게 구해야 할까 */}
-        <div className="UserReview__count">리뷰 갯수, 사장님 댓글 갯수</div>
+        <div className="UserReview__count">
+          리뷰 <strong>{review.length}</strong>개, 사장님 댓글
+          <strong>{ownerReplyCount}</strong>개
+        </div>
         <div>
           {review.map(r => (
             <div className="UserReview__content" key={r.id}>
-              <span className="UserReview__content__name">작성자 </span>
+              <span className="UserReview__content__name">작성자 </span>
               <span className="UserReview__content__time"> 10시간 전 </span>
               <div className="UserReview__content__ratings">
                 {/* 소수점 이하는 버리면 된다. */}

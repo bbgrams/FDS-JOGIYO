@@ -80,6 +80,7 @@ export default class StoreDetailView extends Component {
       paymentMethods,
       deliveryFee,
       additionalDiscountPerMenu,
+      ownerReplyCount,
     } = this.props;
 
     return (
@@ -164,7 +165,7 @@ export default class StoreDetailView extends Component {
               {this.state.selected === 'menu' ? (
                 <Menu storeId={id} />
               ) : this.state.selected === 'user-review' ? (
-                <UserReview storeId={id} />
+                <UserReview storeId={id} ownerReplyCount={ownerReplyCount} />
               ) : this.state.selected === 'store-info' ? (
                 <StoreInfo
                   storeId={id}

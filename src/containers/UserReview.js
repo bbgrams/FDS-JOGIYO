@@ -25,9 +25,10 @@ export default class UserReview extends Component {
 
   render() {
     const { review } = this.state;
+    const { ownerReplyCount } = this.props;
     return (
       <div>
-        <UserReviewView review={review} />
+        <UserReviewView review={review} ownerReplyCount={ownerReplyCount} />
       </div>
     );
   }
