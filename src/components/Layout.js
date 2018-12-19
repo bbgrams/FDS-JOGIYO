@@ -44,9 +44,10 @@ export default class Layout extends Component {
               </>
             )}
             {/* 스프라이트 기법을 이용한 이미지 배치 */}
-            <div className="Layout__header__location">
+            {/* TODO : 인풋박스로 대신함. 추후에 기능 추가 필요  */}
+            {/* <div className="Layout__header__location">
               위치 알 수 없음 <FontAwesomeIcon icon={faMapMarkerAlt} />
-            </div>
+            </div> */}
           </div>
         </div>
         <Hero />
