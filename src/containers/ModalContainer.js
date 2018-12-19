@@ -51,6 +51,7 @@ export default class ModalContainer extends Component {
       storeName,
       minAmount,
       price,
+      deliveryFee,
       ordered: false,
     };
     let cartArray = this.state.cart;
