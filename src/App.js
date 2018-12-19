@@ -23,7 +23,7 @@ class App extends Component {
               <Route path="/category/:id?" component={StoreListPage} />
               <Route path="/store/:id" component={StoreDetailPage} />
               <Route path="/login" component={LoginPage} />
-              <Route path="/register" compon0ent={RegisterPage} />
+              <Route path="/register" component={RegisterPage} />
               <Route path="/pay" component={PayPage} />
               <Route path="/cart" component={CartPage} />
             </React.Fragment>
