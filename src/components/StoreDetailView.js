@@ -61,6 +61,7 @@ export default class StoreDetailView extends Component {
   }
   render() {
     // TODO : this.state.selected가 menu,user-review,store-info일때 해당 버튼에 active 클래스 추가하고싶다.
+    const { reviewStar } = this.props;
     const { infoShow } = this.state;
     const {
       name,
@@ -80,6 +81,7 @@ export default class StoreDetailView extends Component {
       paymentMethods,
       deliveryFee,
       additionalDiscountPerMenu,
+      ownerReplyCount,
     } = this.props;
 
     return (
@@ -93,9 +95,12 @@ export default class StoreDetailView extends Component {
               <img src={logoUrl} alt={name} />
             </div>
             <div className="StoreDetail__info__text">
-              <p>평점: {reviewAvg}</p>
+              <p className="StoreDetail__info__text__star">
+                <span>{reviewStar(reviewAvg)}</span>
+                <span>{reviewAvg}</span>
+              </p>
               <p>
-                최소주문금액 <span>{minOrderAmount}원</span>
+                최소주문금액 <span>{minOrderAmount.toLocaleString()}원</span>
               </p>
               <p>
                 결제 <span>{exceptCash ? '현금' : null}, </span>
@@ -133,6 +138,7 @@ export default class StoreDetailView extends Component {
             </div>
           </div>
         </div>
+
         {/* 3개 메뉴 셀렉트 */}
         {/* 원산지 정보는 어디다 넣어야 할까...? */}
         <div className="StoreDetail__menu">
@@ -164,7 +170,11 @@ export default class StoreDetailView extends Component {
               {this.state.selected === 'menu' ? (
                 <Menu storeId={id} />
               ) : this.state.selected === 'user-review' ? (
-                <UserReview storeId={id} />
+                <UserReview
+                  storeId={id}
+                  ownerReplyCount={ownerReplyCount}
+                  reviewStar={reviewStar}
+                />
               ) : this.state.selected === 'store-info' ? (
                 <StoreInfo
                   storeId={id}
@@ -183,6 +193,12 @@ export default class StoreDetailView extends Component {
               ) : null}
             </div>
           </div>
+        </div>
+        <div className="StoreDetail__btn">
+          <button className="StoreDetail__btn__cart" disabled>
+            주문표(1)
+          </button>
+          <button className="StoreDetail__btn__order">바로 주문하기</button>
         </div>
       </div>
     );

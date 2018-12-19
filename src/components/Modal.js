@@ -90,7 +90,9 @@ export default class Modal extends Component {
             </div>
             <div className="Modal__order__price">
               <span className="Modal__order__price__title">가격</span>
-              <span className="Modal__order__price__num">{price}원</span>
+              <span className="Modal__order__price__num">
+                {price.toLocaleString()}원
+              </span>
             </div>
 
             <div className="Modal__order__quantity">

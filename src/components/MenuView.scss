@@ -9,19 +9,21 @@
     padding: 8px;
     &__content {
       margin-right: 8px;
-      padding: 8px;
       display: inline-block;
       border: 1px solid $border-color;
       width: 138px;
       text-align: center;
+      background-color: white;
 
-      img {
+      &__img {
         height: 98px;
-        width: auto;
+        width: 136px;
+        text-indent: -9999px;
+        background-size: cover;
       }
 
       &__name {
-        padding: 4px;
+        padding: 4px 10px;
         text-align: left;
         font-size: 1.4rem;
         font-weight: 700;
@@ -30,7 +32,7 @@
         overflow: hidden;
       }
       &__price {
-        padding-left: 4px;
+        padding: 0px 10px 10px 10px;
         text-align: left;
         font-size: 1.2rem;
       }
@@ -45,12 +47,13 @@
         padding: 12px 10px 12px 15px;
         clear: both;
         height: 105px;
+        background-color: white;
         &__text {
           // 마진 값으로 위치이동 하는게 옳아?
           margin-top: 12px;
           padding-right: 12px;
           float: left;
-          width: calc(100% - 112px);
+          width: calc(100% - 113px);
           &__name {
             font-size: 1.6rem;
             font-weight: 700;

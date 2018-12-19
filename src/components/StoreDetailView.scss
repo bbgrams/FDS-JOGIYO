@@ -76,6 +76,43 @@
           }
         }
       }
+      &__star {
+        span:first-child {
+          color: $star-color;
+        }
+      }
+    }
+  }
+  // 최하단 고정된 주문 버튼
+  &__btn {
+    background-color: white;
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    padding: 8px;
+    button {
+      border: 1px solid $btn-gray;
+      height: 46px;
+      line-height: 44px;
+      font-size: 2rem;
+    }
+    &__cart {
+      width: 30%;
+      margin-right: 8px;
+      color: $btn-gray;
+      &:hover {
+        color: $main-color;
+        border-color: $main-color;
+      }
+    }
+    &__order {
+      width: calc(70% - 8px);
+      background-color: $btn-gray;
+      color: white;
+      &:hover {
+        background-color: $main-color;
+      }
     }
   }
 }
