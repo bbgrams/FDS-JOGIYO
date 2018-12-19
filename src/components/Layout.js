@@ -6,6 +6,7 @@ import './Layout.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { publicDecrypt } from 'crypto';
 import Login from '../containers/Login';
 
@@ -48,6 +49,13 @@ export default class Layout extends Component {
                   <button className="Layout__header__register-btn">
                     회원가입
                   </button>
+                </Link>
+                <Link to="/cart">
+                  <span className="Layout__header__cart">
+                    <FontAwesomeIcon icon={faShoppingCart} color={'white'} />
+                    {/* 노란색 동그라미 숫자 */}
+                    <span className="Layout__header__cart__count">1</span>
+                  </span>
                 </Link>
               </>
             )}
