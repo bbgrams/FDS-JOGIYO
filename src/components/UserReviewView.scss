@@ -23,8 +23,28 @@
   border-bottom: 1px solid $border-color;
   padding: 20px 16px 16px 16px;
   &__stars {
-    // span에는 보더 속성이 적용이 안되나요?
-    border-right: 1px solid $border-color;
+    color: $star-color;
+    font-size: 1.3rem;
+  }
+  &__star {
+    display: inline-block;
+    position: relative;
+    padding-left: 21px;
+    font-size: 1.4rem;
+    strong {
+      color: $star-color;
+      font-weight: 600;
+      margin-right: 8px;
+    }
+    &::before {
+      content: '';
+      width: 1px;
+      position: absolute;
+      height: 12px;
+      background-color: $border-color;
+      left: 10px;
+      top: 5px;
+    }
   }
 
   &__name {

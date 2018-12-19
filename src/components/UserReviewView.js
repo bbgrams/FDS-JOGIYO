@@ -8,7 +8,7 @@ export default class UserReviewView extends Component {
 
   render() {
     // 유저 아이디를 어떻게 불러올까? 사용자가 시킨 메뉴는 백엔드에 요청?
-    const { review, ownerReplyCount } = this.props;
+    const { review, ownerReplyCount, reviewStar } = this.props;
     return (
       <div className="UserReview">
         <div className="UserReview__avg">
@@ -31,14 +31,16 @@ export default class UserReviewView extends Component {
               <span className="UserReview__content__time"> 10시간 전 </span>
               <div className="UserReview__content__ratings">
                 {/* 소수점 이하는 버리면 된다. */}
-                <p>
-                  <span className="UserReview_)content__stars">
-                    별 {r.rating}
+                <div>
+                  <span className="UserReview__content__stars">
+                    {reviewStar(r.rating)}
                   </span>
-                  맛★ {Math.trunc(r.ratingTaste)}
-                  양★ {Math.trunc(r.ratingQuantity)}
-                  배달★ {Math.trunc(r.ratingDelivery)}
-                </p>
+                  <div className="UserReview__content__star">
+                    맛 <strong>★ {Math.trunc(r.ratingTaste)}</strong>양{' '}
+                    <strong>★ {Math.trunc(r.ratingQuantity)}</strong>
+                    배달 <strong>★ {Math.trunc(r.ratingDelivery)}</strong>
+                  </div>
+                </div>
               </div>
               <div className="UserReview__content__order">주문한 음식</div>
               <p className="UserReview__content__comment">{r.comment}</p>
