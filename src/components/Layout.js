@@ -12,14 +12,6 @@ import Login from '../containers/Login';
 export default class Layout extends Component {
   render() {
     const { isLogin, logout, history } = this.props;
-    // const addrInput = JSON.parse(sessionStorage.getItem('addrString'));
-    // const addrShow =
-    //   addrInput &&
-    //   addrInput.firstRegion +
-    //     ' ' +
-    //     addrInput.secondRegion +
-    //     ' ' +
-    //     addrInput.thirdRegion;
     return (
       <React.Fragment>
         <div className="Layout__header">
@@ -53,7 +45,6 @@ export default class Layout extends Component {
             )}
             {/* 스프라이트 기법을 이용한 이미지 배치 */}
             <div className="Layout__header__location">
-              {/* {addrShow? addrShow : 위치 알 수 없음}  */}
               위치 알 수 없음
               <FontAwesomeIcon icon={faMapMarkerAlt} />
             </div>

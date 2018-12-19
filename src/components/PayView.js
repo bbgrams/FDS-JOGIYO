@@ -29,7 +29,12 @@ export default class PayView extends Component {
   render() {
     const { infoShow } = this.state;
     const { list } = this.props;
+    const store = list.store;
     const menu = list.menu;
+    const totalPrice = list.totalPrice;
+
+    let addrShow = JSON.parse(sessionStorage.getItem('addrShow'));
+
     return (
       <form className="Pay">
         <fieldset>
@@ -44,7 +49,7 @@ export default class PayView extends Component {
                 </label>
                 <input
                   type="text"
-                  defaultValue="서울 성동구 성수2가3동"
+                  defaultValue={addrShow}
                   id="address1"
                   disabled
                 />

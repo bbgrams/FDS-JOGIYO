@@ -177,6 +177,9 @@
         border-top: none;
         background-color: #fff8eb;
       }
+      li:first-child::after {
+        content: 'x';
+      }
       span {
         display: inline-block;
       }
@@ -188,9 +191,12 @@
         text-align: right;
         width: 30%;
       }
-      &__all span {
-        font-weight: 600;
-        color: $main-color;
+
+      &__all {
+        span {
+          font-weight: 600;
+          color: $main-color;
+        }
       }
     }
   }
