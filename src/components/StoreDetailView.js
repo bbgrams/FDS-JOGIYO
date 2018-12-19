@@ -97,7 +97,7 @@ export default class StoreDetailView extends Component {
             <div className="StoreDetail__info__text">
               <p className="StoreDetail__info__text__star">
                 <span>{reviewStar(reviewAvg)}</span>
-                <span>{reviewAvg}</span>
+                <span>{parseFloat(reviewAvg).toFixed(1)}</span>
               </p>
               <p>
                 최소주문금액 <span>{minOrderAmount.toLocaleString()}원</span>
@@ -174,6 +174,7 @@ export default class StoreDetailView extends Component {
                   storeId={id}
                   ownerReplyCount={ownerReplyCount}
                   reviewStar={reviewStar}
+                  reviewAvg={reviewAvg}
                 />
               ) : this.state.selected === 'store-info' ? (
                 <StoreInfo
