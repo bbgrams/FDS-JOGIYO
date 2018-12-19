@@ -60,7 +60,6 @@ export default class StoreListView extends Component {
               </ul>
             )}
           </div>
-
           <div className="StoreList__sort">
             <select
               className="StoreList__sort__select"

@@ -94,9 +94,19 @@
       border-bottom: 1px solid $border-color;
       border-right: 1px solid $border-color;
       background-color: #fff;
+      font-size: 1.5rem;
     }
     button:last-child {
       border-right: none;
+    }
+    button.active {
+      background: linear-gradient(
+        to top,
+        $main-color 0%,
+        $main-color 4px,
+        #fff 4px
+      );
+      color: $main-color;
     }
   }
 }

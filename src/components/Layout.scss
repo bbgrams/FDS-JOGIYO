@@ -4,6 +4,7 @@
   box-sizing: content-box;
   padding: 12px 8px;
   background-color: $main-color;
+  text-align: right;
 
   &__logo {
     position: absolute;
@@ -15,13 +16,16 @@
   }
   &__button {
     margin-left: 90px;
+    a {
+      margin-left: 6px;
+    }
   }
   &__login-btn,
   &__register-btn,
   &__logout-btn {
     color: #fff;
     border: 1px solid #fff;
-    padding: 5px 4px;
+    padding: 5px 6px;
     margin-left: 4px;
   }
   &__location {
