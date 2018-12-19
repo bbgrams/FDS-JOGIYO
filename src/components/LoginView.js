@@ -5,27 +5,14 @@ import logo from '../images/logo-yogiyo.png';
 import './LoginView.scss';
 
 export default class LoginView extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { username: '', password: '', success: false };
-    //로그인에 성공하면,  sucess를 true를 바꿔주고 Redirect를 호출
-  }
-
-  handleFieldChange(e, name) {
-    this.setState({ [name]: e.target.value });
-  }
-
-  async handleLoginButtonClick() {
-    const { onLogin } = this.props;
-    const { username, password } = this.state;
-    await onLogin(username, password);
-    // 로그인이 성공적으로 끝났을 때
-    this.setState({ success: true });
-    // Redirect 컴포넌트를 렌더링 -> 주소표시줄의 상태가 바뀜
-  }
   render() {
-    const { username, password, success } = this.state;
+    const {
+      handleLogin,
+      handleChange,
+      success,
+      username,
+      password,
+    } = this.props;
     if (success) {
       return <Redirect to="/" />;
     } else {
@@ -42,9 +29,12 @@ export default class LoginView extends Component {
                     <input
                       type="text"
                       value={username}
+                      name="username"
                       className="Login__list__item-email"
                       placeholder="이메일 주소 입력(필수)"
-                      onChange={e => this.handleFieldChange(e, 'username')}
+                      onChange={e =>
+                        handleChange(e.target.name, e.target.value)
+                      }
                       required
                     />
                   </li>
@@ -52,9 +42,12 @@ export default class LoginView extends Component {
                     <input
                       type="password"
                       value={password}
+                      name="password"
                       className="Login__list__item-password"
                       placeholder="비밀번호 입력(필수)"
-                      onChange={e => this.handleFieldChange(e, 'password')}
+                      onChange={e =>
+                        handleChange(e.target.name, e.target.value)
+                      }
                       required
                     />
                   </li>
@@ -82,7 +75,10 @@ export default class LoginView extends Component {
               <button
                 type="button"
                 className="Login__button__login-btn"
-                onClick={() => this.handleLoginButtonClick()}
+                onClick={e => {
+                  e.preventDefault();
+                  handleLogin();
+                }}
               >
                 로그인
               </button>

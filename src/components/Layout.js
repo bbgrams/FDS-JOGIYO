@@ -12,6 +12,14 @@ import Login from '../containers/Login';
 export default class Layout extends Component {
   render() {
     const { isLogin, logout, history } = this.props;
+    // const addrInput = JSON.parse(sessionStorage.getItem('addrString'));
+    // const addrShow =
+    //   addrInput &&
+    //   addrInput.firstRegion +
+    //     ' ' +
+    //     addrInput.secondRegion +
+    //     ' ' +
+    //     addrInput.thirdRegion;
     return (
       <React.Fragment>
         <div className="Layout__header">
