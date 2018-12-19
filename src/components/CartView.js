@@ -8,6 +8,7 @@ export default class CartView extends Component {
   constructor(props) {
     super(props);
 
+    // CC의 상태를 공유한다고 보면 된다.
     const { orderList } = props;
     const foodInCart = orderList.map(o => {
       const {
@@ -19,6 +20,7 @@ export default class CartView extends Component {
         ordered,
         price,
         deliveryFee,
+        minAmount,
       } = o;
 
       return {
@@ -31,6 +33,7 @@ export default class CartView extends Component {
         ordered,
         deliveryFee,
         totalPrice: quantity * price,
+        minAmount,
       };
     });
 
@@ -137,6 +140,9 @@ export default class CartView extends Component {
           <div>배달료: {foodInCart[0].deliveryFee}원</div>
         ) : null}
         {cartLength > 0 ? (
+          <div>최소주문가격: {foodInCart[0].minAmount}</div>
+        ) : null}
+        {cartLength > 0 ? (
           <div>
             총가격:
             {foodInCart.reduce((acc, item) => acc + item.totalPrice, 0)}
@@ -146,7 +152,13 @@ export default class CartView extends Component {
         {/* 누르면 매장으로 */}
         {cartLength > 0 ? (
           <Link to={`/store/${foodInCart[0].storeId}`}>
-            <button>메뉴 추가하기</button>
+            <button
+              onClick={() => {
+                this.props.handleAddMenu();
+              }}
+            >
+              메뉴 추가하기
+            </button>
           </Link>
         ) : (
           <Link to="/">
@@ -157,8 +169,12 @@ export default class CartView extends Component {
         {/* 주문 창으로 */}
         {/* 배열의 길이가 0이면 기능이 작동 안됨. */}
         {/* 세션에 마지막으로 수정된 사항을 저장하기  */}
-        {cartLength > 0 ? (
-          <button>주문하기</button>
+        {cartLength > 0 &&
+        foodInCart.reduce((acc, item) => acc + item.totalPrice, 0) >
+          foodInCart[0].minAmount ? (
+          <Link to="/pay">
+            <button onClick={() => this.props.handleToPay()}>주문하기</button>
+          </Link>
         ) : (
           <button disabled>주문하기</button>
         )}
