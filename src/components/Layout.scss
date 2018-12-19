@@ -28,6 +28,27 @@
     padding: 5px 6px;
     margin-left: 4px;
   }
+  &__cart {
+    margin-left: 10px;
+    font-size: 2rem;
+    position: relative;
+    padding-right: 14px;
+    &__count {
+      position: absolute;
+      top: 0;
+      left: 14px;
+      display: inline-block;
+      color: $main-color;
+      background-color: yellow;
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      text-align: center;
+      line-height: 16px;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+  }
   &__location {
     float: right;
     font-size: 1.6rem;
