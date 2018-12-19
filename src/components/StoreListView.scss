@@ -69,6 +69,7 @@
       border: 1px solid $border-color;
       font-size: 1.5rem;
       font-weight: 300;
+      background-color: white;
     }
   }
 
@@ -129,5 +130,14 @@
     text-align: right;
     font-size: 1.1rem;
     color: $text-sub-color;
+  }
+  &__delivery_discount {
+    margin-left: 78px;
+    span {
+      color: $main-color;
+      font-size: 1.1rem;
+      border: 1px solid $main-color;
+      padding: 0 3px;
+    }
   }
 }

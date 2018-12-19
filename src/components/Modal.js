@@ -63,6 +63,7 @@ export default class Modal extends Component {
       storeName,
       storeId,
       deliveryFee,
+      history,
     } = this.props;
     console.log(this.props);
 
@@ -89,7 +90,9 @@ export default class Modal extends Component {
             </div>
             <div className="Modal__order__price">
               <span className="Modal__order__price__title">가격</span>
-              <span className="Modal__order__price__num">{price}원</span>
+              <span className="Modal__order__price__num">
+                {price.toLocaleString()}원
+              </span>
             </div>
 
             <div className="Modal__order__quantity">
@@ -139,8 +142,26 @@ export default class Modal extends Component {
               >
                 주문표에 추가
               </button>
-              <button>주문하기</button>
             </div>
+            <button
+              onClick={() => {
+                this.props.toPay(
+                  id,
+                  name,
+                  quantity,
+                  storeName,
+                  storeId,
+                  totalPrice,
+                  price,
+                  minAmount,
+                  deliveryFee,
+                  this.handleToCart
+                );
+                history.push('/cart');
+              }}
+            >
+              주문하기
+            </button>
           </div>
           <button
             onClick={() => this.handleModalClose()}
