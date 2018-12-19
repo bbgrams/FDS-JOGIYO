@@ -20,21 +20,22 @@ export default class CartView extends Component {
         price,
         storeId,
         ordered,
+        totalPrice: quantity * price,
       };
     });
 
     this.state = {
       foodInCart,
-      totalAmount: [],
+      total: [],
     };
-    this.handlePriceChange.bind(this);
   }
 
-  handleQuantityChange(id, quantity) {
+  handleQuantityChange(id, quantity, price) {
     const { foodInCart } = this.state;
     const newFoodInCart = foodInCart.map(f => {
       if (f.id === id) {
         f.quantity = quantity;
+        f.totalPrice = quantity * price;
       }
       return f;
     });
@@ -44,9 +45,10 @@ export default class CartView extends Component {
     console.log(newFoodInCart);
     console.log(this.state.foodInCart);
   }
-  handlePriceChange(e) {
-    this.state.totalAmount.push(parseInt(e.target.value));
-  }
+  // handlePriceChange(e) {
+  //   // this.state.totalAmount.push(parseInt(e.target.value));
+  //   console.log(e.target.textContent);
+  // }
 
   renderItem(productInCart) {
     const {
@@ -64,18 +66,22 @@ export default class CartView extends Component {
       <div key={id}>
         <div>{storeName}</div>
         <div>{name}</div>
+
         <div>{price * quantity}</div>
         <input
           type="number"
           name="quantity"
           value={quantity}
           onChange={e =>
-            this.handleQuantityChange(parseInt(id), parseInt(e.target.value))
+            this.handleQuantityChange(
+              parseInt(id),
+              parseInt(e.target.value),
+              parseInt(price)
+            )
           }
         />
         {/* key로 준 id값을 온클릭 할 때의 매개변수 */}
         <button onClick={() => this.props.handleDelete(id)}>삭제</button>
-        <div>총 가격: </div>
       </div>
     );
   }
@@ -84,7 +90,7 @@ export default class CartView extends Component {
   render() {
     const { foodInCart } = this.state;
     // console.log(this.props.orderList);
-
+    console.log(foodInCart);
     return (
       <div className="Cart">
         <div className="Cart__subTitle">
@@ -120,6 +126,9 @@ export default class CartView extends Component {
           ) : (
             <p>no order</p>
           )}
+        </div>
+        <div>
+          총가격: {foodInCart.reduce((acc, item) => acc + item.totalPrice, 0)}
         </div>
       </div>
     );
