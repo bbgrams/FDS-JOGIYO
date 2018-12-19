@@ -11,6 +11,7 @@ export default class Modal extends Component {
     price: 0,
     minAmount: 0,
     storeName: '',
+    deliveryFee: 0,
 
     cart: [],
   };
@@ -47,6 +48,7 @@ export default class Modal extends Component {
       minAmount,
       storeName,
       storeId,
+      deliveryFee,
     } = this.props;
 
     const { quantity } = this.state;
@@ -82,7 +84,9 @@ export default class Modal extends Component {
                   storeName,
                   storeId,
                   totalPrice,
-                  price
+                  price,
+                  minAmount,
+                  deliveryFee
                 )
               }
             >

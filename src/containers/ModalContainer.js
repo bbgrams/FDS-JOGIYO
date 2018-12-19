@@ -15,6 +15,7 @@ export default class ModalContainer extends Component {
     price: 0,
     minAmount: 0,
     storeName: '',
+    deliveryFee: 0,
   };
 
   constructor(props) {
@@ -30,11 +31,17 @@ export default class ModalContainer extends Component {
     this.checkRestaurantId = this.checkRestaurantId.bind(this);
   }
 
-  handleAddToCart(id, name, quantity, storeName, storeId, totalPrice, price) {
-    alert(
-      `${id}, ${name}, ${quantity}, ${storeName},${storeId}, ${totalPrice}, ${price}`
-    );
-
+  handleAddToCart(
+    id,
+    name,
+    quantity,
+    storeName,
+    storeId,
+    totalPrice,
+    price,
+    minAmount,
+    deliveryFee
+  ) {
     const selectedItem = {
       id,
       name,
@@ -42,6 +49,9 @@ export default class ModalContainer extends Component {
       quantity,
       storeId,
       storeName,
+      minAmount,
+      price,
+      deliveryFee,
       ordered: false,
     };
     let cartArray = this.state.cart;
@@ -77,6 +87,10 @@ export default class ModalContainer extends Component {
       cartArray.push(selectedItem);
     }
     // 배열의 최종 결과를 sessionStorage에 저장
+    // 추가한다고 하여 페이지가 새로 그려지지 않기 때문에, 다른 음식점을 선택한 후 음식을 추가하면 계속 초기화를 시켜버리기 때문에 여기에서 setState에도 업데이트를 해주어야 한다.
+    this.setState({
+      cart: cartArray,
+    });
     sessionStorage.setItem('cart', JSON.stringify(cartArray));
   }
   // 장바구니에 이미 중복된 것들이 있는지를 확인하기 위해 설정된 함수
