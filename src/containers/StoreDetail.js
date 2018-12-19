@@ -28,6 +28,9 @@ export default class StoreDetail extends Component {
       paymentMethods: [],
       deliveryFee: 0,
       additionalDiscountPerMenu: null,
+      ratingDeliveryAvg: 0,
+      ratingQuantityAvg: 0,
+      ratingTasteAvg: 0,
     };
   }
   reviewStar(count) {

@@ -59,6 +59,7 @@ export default class KakaoApiProvider extends Component {
         },
       }
     );
+
     // console.log(res.data);
     // console.log(res.data.documents[0].address.region_1depth_name);
     // console.log(res.data.documents[0].address.region_2depth_name);

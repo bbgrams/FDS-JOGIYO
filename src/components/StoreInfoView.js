@@ -55,7 +55,7 @@ export default class StoreInfoView extends Component {
           </h3>
           <p>
             <span>최소주문금액</span>
-            <span>{minOrderAmount}</span>
+            <span>{minOrderAmount.toLocaleString()}원</span>
           </p>
           <p>
             <span>결제수단</span>
@@ -64,8 +64,8 @@ export default class StoreInfoView extends Component {
               {paymentMethods.map(m => (
                 <span key={m.id}>
                   {m.name === 'creditcard'
-                    ? ' 신용카드 ,'
-                    : ' online ,'
+                    ? ' 신용카드,'
+                    : ' online, '
                     ? ' 요기서결제 '
                     : null}
                 </span>

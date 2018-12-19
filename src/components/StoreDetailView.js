@@ -26,6 +26,9 @@ export default class StoreDetailView extends Component {
     exceptCash: null,
     paymentMethods: [],
     deliveryFee: 0,
+    ratingDeliveryAvg: 0,
+    ratingQuantityAvg: 0,
+    ratingTasteAvg: 0,
   };
 
   constructor(props) {
@@ -82,6 +85,9 @@ export default class StoreDetailView extends Component {
       deliveryFee,
       additionalDiscountPerMenu,
       ownerReplyCount,
+      ratingDeliveryAvg,
+      ratingQuantityAvg,
+      ratingTasteAvg,
     } = this.props;
 
     return (
@@ -175,6 +181,9 @@ export default class StoreDetailView extends Component {
                   ownerReplyCount={ownerReplyCount}
                   reviewStar={reviewStar}
                   reviewAvg={reviewAvg}
+                  deliveryAvg={ratingDeliveryAvg}
+                  quantityAvg={ratingQuantityAvg}
+                  tasteAvg={ratingTasteAvg}
                 />
               ) : this.state.selected === 'store-info' ? (
                 <StoreInfo

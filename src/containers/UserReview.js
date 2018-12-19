@@ -23,21 +23,6 @@ export default class UserReview extends Component {
     });
   }
 
-  // postTimeCheck(input) {
-  //   let dd = input.getDate();
-  //   let mm = input.getMonth() + 1;
-  //   let yyyy = input.getFullYear();
-
-  //   if (dd < 10) {
-  //     dd = '0' + dd;
-  //   }
-  //   if (mm < 10) {
-  //     mm = '0' + mm;
-  //   }
-
-  //   return (input = yyyy + '년 ' + mm + '월 ' + dd + '일 ');
-  // }
-
   timeDiff(time) {
     const currentTime = new Date();
     const postTime = new Date(time);
@@ -69,7 +54,14 @@ export default class UserReview extends Component {
 
   render() {
     const { review } = this.state;
-    const { ownerReplyCount, reviewStar, reviewAvg } = this.props;
+    const {
+      ownerReplyCount,
+      reviewStar,
+      reviewAvg,
+      deliveryAvg,
+      quantityAvg,
+      tasteAvg,
+    } = this.props;
     return (
       <div>
         <UserReviewView
@@ -78,6 +70,9 @@ export default class UserReview extends Component {
           reviewStar={reviewStar}
           ownerReplyCount={ownerReplyCount}
           reviewAvg={reviewAvg}
+          deliveryAvg={deliveryAvg}
+          quantityAvg={quantityAvg}
+          tasteAvg={tasteAvg}
         />
       </div>
     );

@@ -7,15 +7,17 @@ export default class UserReviewView extends Component {
   };
 
   render() {
-    // 유저 아이디를 어떻게 불러올까? 사용자가 시킨 메뉴는 백엔드에 요청?
-
     const {
       review,
       ownerReplyCount,
       reviewStar,
       reviewAvg,
       timeDiff,
+      tasteAvg,
+      deliveryAvg,
+      quantityAvg,
     } = this.props;
+    console.log(review);
     return (
       <div className="UserReview">
         <div className="UserReview__avg">
@@ -29,19 +31,19 @@ export default class UserReviewView extends Component {
             <p className="UserReview__avg__mini__item">
               <span>맛</span>
               <span>
-                {reviewStar(reviewAvg)} {parseFloat(reviewAvg).toFixed(1)}
+                {reviewStar(tasteAvg)} {parseFloat(tasteAvg).toFixed(1)}
               </span>
             </p>
             <p className="UserReview__avg__mini__item">
               <span>양</span>
               <span>
-                {reviewStar(reviewAvg)} {parseFloat(reviewAvg).toFixed(1)}
+                {reviewStar(quantityAvg)} {parseFloat(quantityAvg).toFixed(1)}
               </span>
             </p>
             <p className="UserReview__avg__mini__item">
               <span>배달</span>
               <span>
-                {reviewStar(reviewAvg)} {parseFloat(reviewAvg).toFixed(1)}
+                {reviewStar(deliveryAvg)} {parseFloat(deliveryAvg).toFixed(1)}
               </span>
             </p>
           </div>
