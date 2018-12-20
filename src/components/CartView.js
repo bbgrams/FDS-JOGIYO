@@ -158,7 +158,9 @@ export default class CartView extends Component {
               {foodInCart.map(f => this.renderItem(f))}
             </div>
           ) : (
-            <p>주문표에 담긴 메뉴가 없습니다.</p>
+            <div className="Cart__orders__empty">
+              주문표에 담긴 메뉴가 없습니다.
+            </div>
           )}
         </div>
         {/* foodInCart[0] -> 이렇게 표시한 이유는 그냥 첫번째 배열의 배달값만 가져오면 되기 때문  */}
@@ -213,7 +215,9 @@ export default class CartView extends Component {
               <button onClick={() => this.props.handleToPay()}>주문하기</button>
             </Link>
           ) : (
-            <button disabled>주문하기</button>
+            <Link to="#none" id="Cart__btn-disabled">
+              <button disabled>주문하기</button>
+            </Link>
           )}
         </div>
       </div>
