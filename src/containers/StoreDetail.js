@@ -85,7 +85,6 @@ render() {
         id={storeId}
         pullCartItem={this.pullCartItem}
         reviewStar={this.reviewStar.bind(this)}
-        loading={loading}
       />
     </div>
   );
