@@ -146,11 +146,13 @@ export default class StoreDetailView extends Component {
                   ) : null}
                 </p>
               </p>
-              <p>
-                <span className="StoreDetail__info__text__delivery_discount">
-                  배달할인 {additionalDiscountPerMenu}원
-                </span>
-              </p>
+              {additionalDiscountPerMenu ? (
+                <p>
+                  <span className="StoreDetail__info__text__delivery_discount">
+                    배달할인 {additionalDiscountPerMenu}원
+                  </span>
+                </p>
+              ) : null}
             </div>
           </div>
         </div>

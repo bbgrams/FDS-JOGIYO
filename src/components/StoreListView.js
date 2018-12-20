@@ -107,6 +107,12 @@ export default class StoreListView extends Component {
                     {l.minOrderAmount}원 이상 배달
                   </span>
                 </div>
+
+                {l.additionalDiscountPerMenu ? (
+                  <p className="StoreList__delivery_discount">
+                    <span>배달할인 {l.additionalDiscountPerMenu}원</span>
+                  </p>
+                ) : null}
                 <div className="StoreList__delivery-time">
                   {l.estimatedDeliveryTime}
                 </div>

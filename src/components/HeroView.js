@@ -18,22 +18,17 @@ export default class HeroView extends Component {
 
   render() {
     const { findMyAddress } = this.props;
-    const addrInput = JSON.parse(sessionStorage.getItem('addrString'));
-    // console.log(
-    //   addrInput.firstRegion +
-    //     ' ' +
-    //     addrInput.secondRegion +
-    //     ' ' +
-    //     addrInput.thirdRegion
-    // );
+    let addrInput = JSON.parse(sessionStorage.getItem('addrString'));
 
-    const addrShow =
+    let addrShow =
       addrInput &&
       addrInput.firstRegion +
         ' ' +
         addrInput.secondRegion +
         ' ' +
         addrInput.thirdRegion;
+    sessionStorage.setItem('addrShow', JSON.stringify(addrShow));
+
     return (
       <form className="Hero">
         <fieldset>
