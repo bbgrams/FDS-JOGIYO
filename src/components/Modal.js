@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import './Modal.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { faMinus } from '@fortawesome/free-solid-svg-icons';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 export default class Modal extends Component {
   static defaultProps = {
