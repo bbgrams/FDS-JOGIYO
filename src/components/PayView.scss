@@ -232,6 +232,7 @@
         &__price {
           text-align: right;
           padding-left: 5px;
+          width: 30%;
         }
         span {
           font-weight: 600;
@@ -242,5 +243,15 @@
         }
       }
     }
+  }
+  &__order_btn {
+    background-color: $main-color;
+    color: white;
+    font-size: 2rem;
+    text-align: center;
+    height: 50px;
+    width: 100%;
+    line-height: 48px;
+    margin-top: 8px;
   }
 }
