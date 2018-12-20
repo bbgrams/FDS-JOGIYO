@@ -10,6 +10,7 @@ class Login extends Component {
       username: '',
       password: '',
       success: false,
+      login: true,
     };
   }
   handleChange = (target, value) => {
@@ -24,6 +25,7 @@ class Login extends Component {
       await login(username, password);
       this.setState({
         success: true,
+        loading: false,
       });
     } catch (e) {
       console.log('로그인 에러 남');
@@ -31,10 +33,12 @@ class Login extends Component {
   };
 
   render() {
+    const { loading } = this.state;
     return (
       <LoginView
         handleLogin={this.handleLogin}
         handleChange={this.handleChange}
+        loading={loading}
         {...this.state}
       />
     );

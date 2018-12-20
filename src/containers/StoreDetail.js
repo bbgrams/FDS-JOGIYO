@@ -28,15 +28,8 @@ class StoreDetail extends Component {
       paymentMethods: [],
       deliveryFee: 0,
       additionalDiscountPerMenu: null,
-      ratingDeliveryAvg: 0,
-      ratingQuantityAvg: 0,
-      ratingTasteAvg: 0,
-      // cart: JSON.parse(sessionStorage.cart),
-      cartLength: JSON.parse(sessionStorage.cart).reduce(
-        (acc, item) => acc + item.quantity,
-        0
-      ),
-    }; // sessionStorage에서 가져오는 정보들
+      loading: true,
+    };
   }
   reviewStar(count) {
     const num = Math.floor(count);
@@ -53,35 +46,20 @@ class StoreDetail extends Component {
     );
     this.setState({
       ...storeInfo,
+      loading: false,
     });
   }
 
-  // 주문표 옆의 숫자를 업데이트 시키기 위한 함수
-  pullCartItem = () => {
-    this.setState({
-      cartLength: JSON.parse(sessionStorage.cart).reduce(
-        (acc, item) => acc + item.quantity,
-        0
-      ),
-    });
-  };
-
   render() {
-    console.log(
-      JSON.parse(sessionStorage.cart).reduce(
-        (acc, item) => acc + item.quantity,
-        0
-      )
-    );
-
     const { storeId } = this.props;
+    const { loading } = this.state;
     return (
       <div>
         <StoreDetailView
           {...this.state}
           id={storeId}
-          pullCartItem={this.pullCartItem}
           reviewStar={this.reviewStar.bind(this)}
+          loading={loading}
         />
       </div>
     );

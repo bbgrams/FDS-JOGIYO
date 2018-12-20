@@ -5,7 +5,9 @@ export default class Cart extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { orderList: JSON.parse(sessionStorage.cart) };
+    this.state = {
+      orderList: JSON.parse(sessionStorage.cart),
+    };
 
     this.handleAddMenu.bind(this);
     this.handleToPay.bind(this);
@@ -45,7 +47,7 @@ export default class Cart extends Component {
 
     newOrderList.splice(currentIndex, 1);
 
-    this.setState({ orderList: newOrderList });
+    this.setState({ orderList: newOrderList, loading: false });
 
     sessionStorage.setItem('cart', JSON.stringify(newOrderList));
   }
@@ -64,9 +66,11 @@ export default class Cart extends Component {
     newOrderList.splice(0, newOrderList.length);
     this.setState({ orderList: newOrderList });
     sessionStorage.setItem('cart', JSON.stringify(newOrderList));
+    this.setState({ loading: false });
   }
 
   render() {
+    const { loading } = this.state;
     console.log(this.state.orderList);
     return (
       <CartView

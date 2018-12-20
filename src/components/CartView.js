@@ -4,6 +4,7 @@ import './CartView.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { faStore } from '@fortawesome/free-solid-svg-icons';
+import withLoading from '../hoc/WithLoading';
 
 export default class CartView extends Component {
   static defaultProps = {
@@ -126,7 +127,7 @@ export default class CartView extends Component {
 
   // handleDelete... foodkey가 맞으면, 그건 없애버리기..
   render() {
-    const { foodInCart } = this.state;
+    const { foodInCart, loading } = this.state;
     let cartLength = foodInCart.length;
 
     // console.log(this.props.orderList);
