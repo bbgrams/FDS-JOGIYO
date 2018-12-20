@@ -6,8 +6,9 @@ import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import { faCoins } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
-export default class PayView extends Component {
+class PayView extends Component {
   static defaultProps = {
     show: true,
     // 주문 내역 리스트
@@ -50,6 +51,11 @@ export default class PayView extends Component {
     this.setState(prevState => ({
       infoShow: !prevState.infoShow,
     }));
+  }
+
+  handleOrder() {
+    alert('주문이 완료되었습니다.');
+    this.props.history.replace('/');
   }
 
   render() {
@@ -100,7 +106,7 @@ export default class PayView extends Component {
               <p className="Pay__info">휴대전화번호</p>
               <div className="Pay__input-phone">
                 {/* input 휴대폰번호 입력 창이 비어있을 때 클래스에 -required 추가 */}
-                <div className="Pay__check-required">
+                <div className="Pay__check">
                   <label htmlFor="phone" className="readable-hidden">
                     휴대전화번호 입력 창
                   </label>
@@ -213,7 +219,7 @@ export default class PayView extends Component {
                 </span>
               </li>
             </ul>
-            <ul className="Pay__list__terms__listGroup">
+            {/* <ul className="Pay__list__terms__listGroup">
               <li className="Pay__list__terms__listGroup__item">
                 <div className="checkbox">
                   <input type="checkbox" id="all" name="all" />
@@ -224,7 +230,6 @@ export default class PayView extends Component {
                 <div className="checkbox">
                   <input type="checkbox" id="sms" name="sms" />
                   <label htmlFor="sms">
-                    {/* <span /> */}
                     <span className="">SMS 수신 동의</span>
                     <Link to="#">(전문보기)</Link>
                   </label>
@@ -234,7 +239,6 @@ export default class PayView extends Component {
                 <div className="checkbox">
                   <input type="checkbox" id="userterms" name="userterms" />
                   <label htmlFor="userterms">
-                    {/* <span /> */}
                     요기요 이용약관에 동의합니다.
                     <Link to="#">(전문보기)</Link>
                   </label>
@@ -261,11 +265,15 @@ export default class PayView extends Component {
                   </label>
                 </div>
               </li>
-            </ul>
-            <button>주문완료</button>
+            </ul> */}
           </div>
+          <button onClick={() => this.handleOrder()} className="Pay__order_btn">
+            주문완료
+          </button>
         </fieldset>
       </form>
     );
   }
 }
+
+export default withRouter(PayView);
