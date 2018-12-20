@@ -14,11 +14,13 @@ export default class Menu extends Component {
       info: [],
       rest: [],
       cart: JSON.parse(sessionStorage.cart),
+      loading: true,
     };
   }
 
   async componentDidMount() {
     const { storeId } = this.props;
+    const { loading } = this.state;
 
     const { data: menu } = await api.get(
       '/restaurants/api/' + storeId + '/menu/'
@@ -30,11 +32,12 @@ export default class Menu extends Component {
       food: first.food,
       info: first.restaurant,
       rest,
+      loading: false,
     });
   }
 
   render() {
-    const { food, rest, info } = this.state;
+    const { food, rest, info, loading } = this.state;
 
     return (
       <div>
@@ -44,6 +47,7 @@ export default class Menu extends Component {
           info={info}
           key={this.state.cart.length}
           pullCartItem={this.props.pullCartItem}
+          loading={loading}
         />
       </div>
     );

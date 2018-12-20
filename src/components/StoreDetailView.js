@@ -9,7 +9,10 @@ import UserReview from '../containers/UserReview';
 import StoreInfo from '../containers/StoreInfo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
-export default class StoreDetailView extends Component {
+
+import withLoading from '../hoc/WithLoading';
+
+class StoreDetailView extends Component {
   static defaultProps = {
     id: null,
     name: '',
@@ -236,3 +239,5 @@ export default class StoreDetailView extends Component {
     );
   }
 }
+
+export default withLoading(StoreDetailView);
