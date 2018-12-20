@@ -82,7 +82,6 @@ export default class CartView extends Component {
 
     return (
       <div key={id}>
-        <div>{storeName}</div>
         <div>{name}</div>
 
         <div>{price * quantity}</div>

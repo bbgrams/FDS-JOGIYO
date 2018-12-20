@@ -136,7 +136,9 @@ export default class Modal extends Component {
                     storeName,
                     storeId,
                     totalPrice,
-                    price
+                    price,
+                    minAmount,
+                    deliveryFee
                   );
                   this.props.pullCartItem();
                 }}

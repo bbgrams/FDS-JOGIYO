@@ -65,7 +65,9 @@ class ModalContainer extends Component {
       !this.checkRestaurantId(storeId)
     ) {
       cartArray = [];
-      alert('다른 음식점 선택 시, 장바구니가 초기화 됩니다.');
+      window.confirm(
+        "'다른 음식점에서 이미 담은 메뉴가 있습니다.담긴 메뉴를 취소하고 새로운 음식점에서 메뉴를 담을까요 ?"
+      );
     }
 
     if (this.checkFoodId(foodId)) {
@@ -119,7 +121,9 @@ class ModalContainer extends Component {
       !this.checkRestaurantId(storeId)
     ) {
       cartArray = [];
-      alert('다른 음식점 선택 시, 장바구니가 초기화 됩니다.');
+      window.confirm(
+        "'다른 음식점에서 이미 담은 메뉴가 있습니다.담긴 메뉴를 취소하고 새로운 음식점에서 메뉴를 담을까요 ?"
+      );
     }
 
     // 음식 담기...

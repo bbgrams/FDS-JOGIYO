@@ -13,6 +13,8 @@ import Login from '../containers/Login';
 export default class Layout extends Component {
   render() {
     const { isLogin, logout, history } = this.props;
+    console.log(this.props.itemLength);
+    console.log(this.props);
     return (
       <React.Fragment>
         <div className="Layout__header">

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './StoreDetailView.scss';
 import classNames from 'classnames';
+import { Link } from 'react-router-dom';
 
 import Menu from '../containers/Menu';
 
@@ -30,16 +31,17 @@ export default class StoreDetailView extends Component {
     ratingQuantityAvg: 0,
     ratingTasteAvg: 0,
     cart: [],
+    cartLength: 0,
   };
 
   constructor(props) {
     super(props);
-    const cart = this.props.cart;
+
     // 현재 선택된 페이지
     // page === 'menu' -> 메뉴 정보 페이지
     // page === 'user-review' -> 사용자 리뷰 페이지
     // page === 'store-info' -> 음식점 정보 페이지
-    this.state = { selected: 'menu', infoShow: false, cart };
+    this.state = { selected: 'menu', infoShow: false };
   }
 
   componentDidUpdate(prevProps) {
@@ -217,9 +219,17 @@ export default class StoreDetailView extends Component {
           </div>
         </div>
         <div className="StoreDetail__btn">
-          <button className="StoreDetail__btn__cart" disabled>
-            주문표({this.state.cart.length})
-          </button>
+          {this.props.cartLength > 0 ? (
+            <Link to="/cart">
+              <button className="StoreDetail__btn__cart">
+                주문표({this.props.cartLength})
+              </button>
+            </Link>
+          ) : (
+            <button className="StoreDetail__btn__cart" disabled>
+              주문표({this.props.cartLength})
+            </button>
+          )}
           <button className="StoreDetail__btn__order">바로 주문하기</button>
         </div>
       </div>

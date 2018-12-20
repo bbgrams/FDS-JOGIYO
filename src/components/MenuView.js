@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import './MenuView.scss';
 
 import Collapse from './Collapse';
-import Modal from './Modal';
+
 import ModalContainer from '../containers/ModalContainer';
 
 export default class MenuView extends Component {

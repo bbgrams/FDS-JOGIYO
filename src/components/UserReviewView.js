@@ -18,6 +18,7 @@ export default class UserReviewView extends Component {
       quantityAvg,
     } = this.props;
     console.log(review);
+    console.log(review.menuSummary);
     return (
       <div className="UserReview">
         <div className="UserReview__avg">
@@ -73,7 +74,11 @@ export default class UserReviewView extends Component {
                   </div>
                 </div>
               </div>
-              <div className="UserReview__content__order">주문한 음식</div>
+              <div className="UserReview__content__order">
+                {r.menuSummary.map(item => (
+                  <span key={item.id}>{item.name + ' '} </span>
+                ))}
+              </div>
               <p className="UserReview__content__comment">{r.comment}</p>
             </div>
           ))}
