@@ -132,7 +132,9 @@ export default class Modal extends Component {
                     storeName,
                     storeId,
                     totalPrice,
-                    price
+                    price,
+                    minAmount,
+                    deliveryFee
                   )
                 }
               >
