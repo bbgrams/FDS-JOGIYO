@@ -29,16 +29,25 @@ export default class StoreDetailView extends Component {
     ratingDeliveryAvg: 0,
     ratingQuantityAvg: 0,
     ratingTasteAvg: 0,
+    cart: [],
   };
 
   constructor(props) {
     super(props);
-
+    const cart = this.props.cart;
     // 현재 선택된 페이지
     // page === 'menu' -> 메뉴 정보 페이지
     // page === 'user-review' -> 사용자 리뷰 페이지
     // page === 'store-info' -> 음식점 정보 페이지
-    this.state = { selected: 'menu', infoShow: false };
+    this.state = { selected: 'menu', infoShow: false, cart };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.cart !== prevProps.cart) {
+      this.setState({
+        cart: this.props.cart,
+      });
+    }
   }
 
   handleMenuPage() {
@@ -62,9 +71,10 @@ export default class StoreDetailView extends Component {
       infoShow: !prevState.infoShow,
     }));
   }
+
   render() {
     // TODO : this.state.selected가 menu,user-review,store-info일때 해당 버튼에 active 클래스 추가하고싶다.
-    const { reviewStar } = this.props;
+    const { reviewStar, cart, pullCartItem } = this.props;
     const { infoShow } = this.state;
     const {
       name,
@@ -174,7 +184,7 @@ export default class StoreDetailView extends Component {
           <div className="StoreDetail__menu__box">
             <div>
               {this.state.selected === 'menu' ? (
-                <Menu storeId={id} />
+                <Menu storeId={id} pullCartItem={pullCartItem} />
               ) : this.state.selected === 'user-review' ? (
                 <UserReview
                   storeId={id}
@@ -206,7 +216,7 @@ export default class StoreDetailView extends Component {
         </div>
         <div className="StoreDetail__btn">
           <button className="StoreDetail__btn__cart" disabled>
-            주문표(1)
+            주문표({this.state.cart.length})
           </button>
           <button className="StoreDetail__btn__order">바로 주문하기</button>
         </div>

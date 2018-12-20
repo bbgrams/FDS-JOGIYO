@@ -165,6 +165,7 @@ class ModalContainer extends Component {
   render() {
     return (
       <Modal
+        pullCartItem={this.props.pullCartItem}
         toPay={this.handleToPay}
         addToCart={this.handleAddToCart}
         {...this.props}

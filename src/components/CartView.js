@@ -39,7 +39,6 @@ export default class CartView extends Component {
 
     this.state = {
       foodInCart,
-      total: [],
     };
   }
 

@@ -13,6 +13,7 @@ export default class Menu extends Component {
       food: [],
       info: [],
       rest: [],
+      cart: JSON.parse(sessionStorage.cart),
     };
   }
 
@@ -37,7 +38,13 @@ export default class Menu extends Component {
 
     return (
       <div>
-        <MenuView food={food} rest={rest} info={info} />
+        <MenuView
+          food={food}
+          rest={rest}
+          info={info}
+          key={this.state.cart.length}
+          pullCartItem={this.props.pullCartItem}
+        />
       </div>
     );
   }

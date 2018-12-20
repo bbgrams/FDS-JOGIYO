@@ -30,7 +30,8 @@ export default class StoreDetail extends Component {
       additionalDiscountPerMenu: null,
       ratingDeliveryAvg: 0,
       ratingQuantityAvg: 0,
-      ratingTasteAvg: 0,
+      ratingTasteAvg: 0, // sessionStorage에서 가져오는 정보들
+      cart: JSON.parse(sessionStorage.cart),
     };
   }
   reviewStar(count) {
@@ -51,13 +52,20 @@ export default class StoreDetail extends Component {
     });
   }
 
+  // 주문표 옆의 숫자를 업데이트 시키기 위한 함수
+  pullCartItem = () => {
+    this.setState({ cart: JSON.parse(sessionStorage.cart) });
+  };
+
   render() {
+    console.log(this.state.cart.length);
     const { storeId } = this.props;
     return (
       <div>
         <StoreDetailView
           {...this.state}
           id={storeId}
+          pullCartItem={this.pullCartItem}
           reviewStar={this.reviewStar.bind(this)}
         />
       </div>

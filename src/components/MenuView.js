@@ -107,6 +107,7 @@ export default class MenuView extends Component {
         </div>
 
         <ModalContainer
+          pullCartItem={this.props.pullCartItem}
           show={this.state.show}
           handleClose={this.handleHideModal}
           id={this.state.foodId}

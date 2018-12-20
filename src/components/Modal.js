@@ -128,7 +128,7 @@ export default class Modal extends Component {
             </div>
             <div className="Modal__order__btn">
               <button
-                onClick={() =>
+                onClick={() => {
                   this.props.addToCart(
                     id,
                     name,
@@ -137,8 +137,9 @@ export default class Modal extends Component {
                     storeId,
                     totalPrice,
                     price
-                  )
-                }
+                  );
+                  this.props.pullCartItem();
+                }}
               >
                 주문표에 추가
               </button>

@@ -77,12 +77,7 @@ export default class KakaoApiProvider extends Component {
 
     sessionStorage.setItem('location', JSON.stringify(location));
     sessionStorage.setItem('addrString', JSON.stringify(addrString));
-    this.setState({
-      addrString: sessionStorage.setItem(
-        'addrString',
-        JSON.stringify(addrString)
-      ),
-    });
+    this.setState({ addrString: JSON.parse(sessionStorage.addrString) });
   };
 
   render() {
