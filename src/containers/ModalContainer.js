@@ -84,8 +84,6 @@ class ModalContainer extends Component {
 
     this.setState({ cart: cartArray });
     sessionStorage.setItem('cart', JSON.stringify(cartArray));
-    // 여기서 주문 페이지로 넘기는 것이 필요
-    // this.props.history.push('/cart');
   }
   // 주문표에 추가하기
   handleAddToCart(

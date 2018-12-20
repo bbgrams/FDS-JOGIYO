@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import StoreDetailView from '../components/StoreDetailView';
 import api from '../api';
-
-export default class StoreDetail extends Component {
+import { withRouter } from 'react-router-dom';
+class StoreDetail extends Component {
   static defaultProps = {
     // 표시해주어야 하는 상점의 id
     storeId: null,
@@ -87,3 +87,5 @@ export default class StoreDetail extends Component {
     );
   }
 }
+
+export default withRouter(StoreDetail);

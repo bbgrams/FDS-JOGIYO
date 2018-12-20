@@ -43,6 +43,9 @@ export default class StoreDetailView extends Component {
     // page === 'store-info' -> 음식점 정보 페이지
     this.state = { selected: 'menu', infoShow: false };
   }
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
 
   componentDidUpdate(prevProps) {
     if (this.props.cart !== prevProps.cart) {
@@ -230,7 +233,9 @@ export default class StoreDetailView extends Component {
               주문표({this.props.cartLength})
             </button>
           )}
-          <button className="StoreDetail__btn__order">바로 주문하기</button>
+          <Link to="/pay">
+            <button className="StoreDetail__btn__order">바로 주문하기</button>
+          </Link>
         </div>
       </div>
     );

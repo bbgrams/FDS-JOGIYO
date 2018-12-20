@@ -45,6 +45,9 @@ export default class CartView extends Component {
       foodInCart,
     };
   }
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
 
   handleQuantityPlus(id, price) {
     const { foodInCart } = this.state;

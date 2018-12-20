@@ -48,7 +48,7 @@ export default class Layout extends Component {
                   <span className="Layout__header__cart">
                     <FontAwesomeIcon icon={faShoppingCart} color={'white'} />
                     {/* 노란색 동그라미 숫자 */}
-                    <span className="Layout__header__cart__count">1</span>
+                    {/* <span className="Layout__header__cart__count">1</span> */}
                   </span>
                 </Link>
               </>

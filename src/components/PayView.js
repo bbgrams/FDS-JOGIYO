@@ -9,8 +9,7 @@ import { Link } from 'react-router-dom';
 
 export default class PayView extends Component {
   static defaultProps = {
-    show: true,
-    // 주문 내역 리스트
+    show: true, // 주문 내역 리스트
     list: [],
   };
   constructor(props) {
@@ -39,11 +38,10 @@ export default class PayView extends Component {
     //     totalPrice: quantity * price,
     //   };
     // });
-    this.state = {
-      show: true,
-      infoShow: false,
-      list,
-    };
+    this.state = { show: true, infoShow: false, list };
+  }
+  componentDidMount() {
+    window.scrollTo(0, 0);
   }
 
   handleInfoClick() {
@@ -54,10 +52,8 @@ export default class PayView extends Component {
 
   render() {
     const { list } = this.props;
-    const {
-      infoShow,
-      // foodInPay
-    } = this.state;
+    const { infoShow } = this.state;
+    // foodInPay
     const deliveryFee = list[0].deliveryFee ? list[0].deliveryFee : 0;
 
     let addrShow = JSON.parse(sessionStorage.getItem('addrShow'));
