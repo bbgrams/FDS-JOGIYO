@@ -30,6 +30,11 @@ export default class Modal extends Component {
       quantity: parseInt(e.target.value),
     });
   }
+  handleQuantityReset() {
+    this.setState({
+      quantity: 1,
+    });
+  }
 
   handleModalClose() {
     this.props.handleClose();
@@ -137,6 +142,7 @@ export default class Modal extends Component {
                     deliveryFee
                   );
                   this.props.pullCartItem();
+                  this.handleQuantityReset();
                 }}
               >
                 주문표에 추가

@@ -25,12 +25,12 @@ class StoreListView extends Component {
       { id: 3, name: '1인분주문' },
       { id: 4, name: '중식' },
       { id: 5, name: '야식' },
-      { id: 6, name: '일식돈까스' },
+      { id: 6, name: '일식/돈까스' },
       { id: 7, name: '한식' },
       { id: 8, name: '분식' },
-      { id: 9, name: '족발보쌈' },
-      { id: 10, name: '피자양식' },
-      { id: 11, name: '카페디저트' },
+      { id: 9, name: '족발/보쌈' },
+      { id: 10, name: '피자/양식' },
+      { id: 11, name: '카페/디저트' },
     ];
 
     // console.log(categoryId);
