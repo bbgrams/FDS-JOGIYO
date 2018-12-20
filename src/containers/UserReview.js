@@ -11,6 +11,7 @@ export default class UserReview extends Component {
 
     this.state = {
       review: [],
+      loading: true,
     };
   }
   async componentDidMount() {
@@ -20,6 +21,7 @@ export default class UserReview extends Component {
     );
     this.setState({
       review,
+      loading: false,
     });
   }
 
@@ -68,7 +70,7 @@ export default class UserReview extends Component {
   }
 
   render() {
-    const { review } = this.state;
+    const { review, loading } = this.state;
     const { ownerReplyCount, reviewStar, reviewAvg } = this.props;
     return (
       <div>
@@ -78,6 +80,7 @@ export default class UserReview extends Component {
           reviewStar={reviewStar}
           ownerReplyCount={ownerReplyCount}
           reviewAvg={reviewAvg}
+          loading={loading}
         />
       </div>
     );

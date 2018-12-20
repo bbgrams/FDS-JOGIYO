@@ -18,8 +18,15 @@ export default class KakaoApiProvider extends Component {
       locationY: 0,
       handleGpsClick: this.handleGpsClick,
       addrString: {},
+      click: false,
+      handleClick: this.handleClick.bind(this),
     };
     this.handleGpsClick = this.handleGpsClick.bind(this);
+  }
+  handleClick() {
+    this.setState({
+      click: true,
+    });
   }
 
   async componentDidMount() {

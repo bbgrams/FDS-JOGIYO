@@ -5,8 +5,9 @@ import './StoreListView.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUtensils } from '@fortawesome/free-solid-svg-icons';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
+import withLoading from '../hoc/WithLoading';
 
-export default class StoreListView extends Component {
+class StoreListView extends Component {
   static defaultProps = { storeList: [] };
   constructor(props) {
     super(props);
@@ -128,3 +129,5 @@ export default class StoreListView extends Component {
     );
   }
 }
+
+export default withLoading(StoreListView);

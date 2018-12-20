@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './HeroView.scss';
+import { withKakao } from '../contexts/kakaoApiContext';
 
-export default class HeroView extends Component {
+class HeroView extends Component {
   constructor(props) {
     super(props);
 
@@ -10,14 +11,10 @@ export default class HeroView extends Component {
     };
   }
 
-  async componentDidMount() {
-    // console.log(addrString.firstRegion);
-    // console.log(addrString.secondRegion);
-    // console.log(addrString.thirdRegion);
-  }
+  async componentDidMount() {}
 
   render() {
-    const { findMyAddress } = this.props;
+    const { findMyAddress, handleClick } = this.props;
     let addrInput = JSON.parse(sessionStorage.getItem('addrString'));
 
     let addrShow =
@@ -28,13 +25,19 @@ export default class HeroView extends Component {
         ' ' +
         addrInput.thirdRegion;
     sessionStorage.setItem('addrShow', JSON.stringify(addrShow));
-
+    const isLocationEmpty = JSON.parse(sessionStorage.getItem('location'));
     return (
       <form className="Hero">
         <fieldset>
           <legend className="readable-hidden">위치 검색</legend>
-          <button onClick={e => findMyAddress(e)} className="Hero__gps-icon">
-            현재위치 찾기
+          <button
+            onClick={e => {
+              handleClick();
+              findMyAddress(e);
+            }}
+            className="Hero__gps-icon"
+          >
+            현재 위치 찾기
           </button>
           <label className="readable-hidden" htmlFor="location-search">
             위치 검색
@@ -52,3 +55,5 @@ export default class HeroView extends Component {
     );
   }
 }
+
+export default withKakao(HeroView);

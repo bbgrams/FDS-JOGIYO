@@ -5,8 +5,9 @@ import './MenuView.scss';
 import Collapse from './Collapse';
 import Modal from './Modal';
 import ModalContainer from '../containers/ModalContainer';
+import withLoading from '../hoc/WithLoading';
 
-export default class MenuView extends Component {
+class MenuView extends Component {
   static defaultProps = {
     food: [],
     info: [],
@@ -121,3 +122,4 @@ export default class MenuView extends Component {
     );
   }
 }
+export default withLoading(MenuView);

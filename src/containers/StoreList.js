@@ -16,6 +16,7 @@ export default class StoreList extends Component {
       // category,
       selectValue: '',
       // location: {},
+      loading: true,
     };
   }
   async componentDidMount() {
@@ -41,6 +42,7 @@ export default class StoreList extends Component {
         category,
         location,
         selectValue: sortValue,
+        loading: false,
       });
     } else {
       const { data: storeList } = await api.get('restaurants/api/restaurant/', {
@@ -56,6 +58,7 @@ export default class StoreList extends Component {
         category,
         location,
         selectValue: sortValue,
+        loading: false,
       });
     }
   }
@@ -76,7 +79,7 @@ export default class StoreList extends Component {
   }
 
   render() {
-    const { storeList, category, selectValue } = this.state;
+    const { storeList, category, selectValue, loading } = this.state;
     const { categoryId } = this.props;
     console.log('스토어리스트');
     console.log(storeList, category, selectValue);
@@ -87,6 +90,7 @@ export default class StoreList extends Component {
         categoryId={categoryId}
         onSortChange={value => this.onSortChange(value)}
         selectValue={selectValue}
+        loading={loading}
       />
     );
   }

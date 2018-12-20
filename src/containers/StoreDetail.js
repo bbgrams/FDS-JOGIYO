@@ -28,6 +28,7 @@ export default class StoreDetail extends Component {
       paymentMethods: [],
       deliveryFee: 0,
       additionalDiscountPerMenu: null,
+      loading: true,
     };
   }
   reviewStar(count) {
@@ -45,17 +46,19 @@ export default class StoreDetail extends Component {
     );
     this.setState({
       ...storeInfo,
+      loading: false,
     });
   }
 
   render() {
-    const { storeId } = this.props;
+    const { storeId, loading } = this.props;
     return (
       <div>
         <StoreDetailView
           {...this.state}
           id={storeId}
           reviewStar={this.reviewStar.bind(this)}
+          loading={loading}
         />
       </div>
     );

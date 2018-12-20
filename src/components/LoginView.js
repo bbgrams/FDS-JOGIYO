@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import logo from '../images/logo-yogiyo.png';
 import './LoginView.scss';
+import withLoading from '../hoc/WithLoading';
 
-export default class LoginView extends Component {
+class LoginView extends Component {
   render() {
     const {
       handleLogin,
@@ -13,6 +14,7 @@ export default class LoginView extends Component {
       username,
       password,
     } = this.props;
+    const { loading } = this.state;
     if (success) {
       return <Redirect to="/" />;
     } else {
@@ -99,3 +101,5 @@ export default class LoginView extends Component {
     }
   }
 }
+
+export default withLoading(LoginView);

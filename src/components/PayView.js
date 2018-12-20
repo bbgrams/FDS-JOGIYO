@@ -6,6 +6,7 @@ import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
 import { faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import { faCoins } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
+import withLoading from '../hoc/WithLoading';
 
 export default class PayView extends Component {
   static defaultProps = {

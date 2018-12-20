@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import './UserReviewView.scss';
+import withLoading from '../hoc/WithLoading';
 
-export default class UserReviewView extends Component {
+class UserReviewView extends Component {
   static defaultProps = {
     review: [],
   };
@@ -80,3 +81,5 @@ export default class UserReviewView extends Component {
     );
   }
 }
+
+export default withLoading(UserReviewView);

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './CartView.scss';
+import withLoading from '../hoc/WithLoading';
+
 export default class CartView extends Component {
   static defaultProps = {
     orderList: [],
@@ -107,7 +109,7 @@ export default class CartView extends Component {
 
   // handleDelete... foodkey가 맞으면, 그건 없애버리기..
   render() {
-    const { foodInCart } = this.state;
+    const { foodInCart, loading } = this.state;
     let cartLength = foodInCart.length;
     // console.log(this.props.orderList);
     console.log(foodInCart);
