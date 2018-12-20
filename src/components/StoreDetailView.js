@@ -9,7 +9,10 @@ import UserReview from '../containers/UserReview';
 import StoreInfo from '../containers/StoreInfo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
-export default class StoreDetailView extends Component {
+
+import withLoading from '../hoc/WithLoading';
+
+class StoreDetailView extends Component {
   static defaultProps = {
     id: null,
     name: '',
@@ -42,6 +45,9 @@ export default class StoreDetailView extends Component {
     // page === 'user-review' -> 사용자 리뷰 페이지
     // page === 'store-info' -> 음식점 정보 페이지
     this.state = { selected: 'menu', infoShow: false };
+  }
+  componentDidMount() {
+    window.scrollTo(0, 0);
   }
 
   componentDidUpdate(prevProps) {
@@ -230,9 +236,13 @@ export default class StoreDetailView extends Component {
               주문표({this.props.cartLength})
             </button>
           )}
-          <button className="StoreDetail__btn__order">바로 주문하기</button>
+          <Link to="/pay">
+            <button className="StoreDetail__btn__order">바로 주문하기</button>
+          </Link>
         </div>
       </div>
     );
   }
 }
+
+export default withLoading(StoreDetailView);

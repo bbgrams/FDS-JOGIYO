@@ -17,12 +17,13 @@ export default class RegisterFormView extends Component {
       success: false,
     };
   }
+  componentDidMount() {
+    window.scrollTo(0, 0);
+  }
 
   handleFieldChange(e, name) {
     // name 변수에 저장되어 있는 문자열을 그대로 속성 이름으로 사용하기
-    this.setState({
-      [name]: e.target.value,
-    });
+    this.setState({ [name]: e.target.value });
   }
 
   async handleSubmit(e) {
@@ -36,9 +37,7 @@ export default class RegisterFormView extends Component {
 
     await this.props.onRegister({ ...value });
     // 회원가입이 성공적으로 되었을 때
-    this.setState({
-      success: true,
-    });
+    this.setState({ success: true });
   }
 
   render() {
@@ -202,7 +201,7 @@ export default class RegisterFormView extends Component {
                   <li className="Register__form__form__terms__list-group__item">
                     <div className="checkbox">
                       <input type="checkbox" id="policy" name="policy" />
-                      <label htmlFor="collect">이용약관동의(필수)</label>
+                      <label htmlFor="policy">이용약관동의(필수)</label>
                       <Link to="#">내용 보기 > </Link>
                       <span className="err-msg">
                         요기요 약관에 동의해주세요.

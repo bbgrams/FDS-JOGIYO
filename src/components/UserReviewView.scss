@@ -91,8 +91,10 @@
 
   &__order {
     margin-top: 10px;
-    color: goldenrod;
-    font-size: 1.2rem;
+    span {
+      color: goldenrod;
+      font-size: 1.2rem;
+    }
   }
 
   &__comment {
