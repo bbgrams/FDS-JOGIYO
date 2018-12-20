@@ -16,8 +16,21 @@ export default class StoreListView extends Component {
     };
   }
   render() {
-    const { storeList, category, categoryId, selectValue } = this.props;
+    const { storeList, categoryId, selectValue } = this.props;
     const { show } = this.state;
+    const category = [
+      { id: 1, name: '프랜차이즈' },
+      { id: 2, name: '치킨' },
+      { id: 3, name: '1인분주문' },
+      { id: 4, name: '중식' },
+      { id: 5, name: '야식' },
+      { id: 6, name: '일식돈까스' },
+      { id: 7, name: '한식' },
+      { id: 8, name: '분식' },
+      { id: 9, name: '족발보쌈' },
+      { id: 10, name: '피자양식' },
+      { id: 11, name: '카페디저트' },
+    ];
 
     // console.log(categoryId);
     // let btnTitle = category[categoryId - 1];
