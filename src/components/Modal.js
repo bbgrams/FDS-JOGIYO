@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import './Modal.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { faMinus } from '@fortawesome/free-solid-svg-icons';
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 export default class Modal extends Component {
   static defaultProps = {
@@ -136,32 +132,34 @@ export default class Modal extends Component {
                     storeName,
                     storeId,
                     totalPrice,
-                    price
+                    price,
+                    minAmount,
+                    deliveryFee
                   )
                 }
               >
                 주문표에 추가
               </button>
+              <button
+                onClick={() => {
+                  this.props.toPay(
+                    id,
+                    name,
+                    quantity,
+                    storeName,
+                    storeId,
+                    totalPrice,
+                    price,
+                    minAmount,
+                    deliveryFee,
+                    this.handleToCart
+                  );
+                  history.push('/cart');
+                }}
+              >
+                주문하기
+              </button>
             </div>
-            <button
-              onClick={() => {
-                this.props.toPay(
-                  id,
-                  name,
-                  quantity,
-                  storeName,
-                  storeId,
-                  totalPrice,
-                  price,
-                  minAmount,
-                  deliveryFee,
-                  this.handleToCart
-                );
-                history.push('/cart');
-              }}
-            >
-              주문하기
-            </button>
           </div>
           <button
             onClick={() => this.handleModalClose()}
