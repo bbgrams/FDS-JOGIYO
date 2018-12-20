@@ -13,7 +13,6 @@ export default class StoreList extends Component {
     this.state = {
       storeList: [],
       filter: false,
-      // category,
       selectValue: '',
       // location: {},
     };
@@ -25,8 +24,6 @@ export default class StoreList extends Component {
     console.log(location.x, location.y);
     const { categoryId } = this.props;
     console.log(categoryId);
-    // 카테고리 목록을 보여주는 데이터
-    const { data: category } = await api.get('/restaurants/api/category/');
 
     if (categoryId == null) {
       const { data: storeList } = await api.get('restaurants/api/restaurant/', {
@@ -38,7 +35,6 @@ export default class StoreList extends Component {
       });
       this.setState({
         storeList,
-        category,
         location,
         selectValue: sortValue,
       });
@@ -53,7 +49,6 @@ export default class StoreList extends Component {
       });
       this.setState({
         storeList,
-        category,
         location,
         selectValue: sortValue,
       });
@@ -76,14 +71,13 @@ export default class StoreList extends Component {
   }
 
   render() {
-    const { storeList, category, selectValue } = this.state;
+    const { storeList, selectValue } = this.state;
     const { categoryId } = this.props;
     console.log('스토어리스트');
-    console.log(storeList, category, selectValue);
+    console.log(storeList, selectValue);
     return (
       <StoreListView
         storeList={storeList}
-        category={category}
         categoryId={categoryId}
         onSortChange={value => this.onSortChange(value)}
         selectValue={selectValue}
