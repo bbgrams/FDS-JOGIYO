@@ -28,65 +28,36 @@ export default class StoreDetail extends Component {
       paymentMethods: [],
       deliveryFee: 0,
       additionalDiscountPerMenu: null,
-      ratingDeliveryAvg: 0,
-      ratingQuantityAvg: 0,
-      ratingTasteAvg: 0,
-      loading: true,
-      // cart: JSON.parse(sessionStorage.cart),
-      cartLength: JSON.parse(sessionStorage.cart).reduce(
-        (acc, item) => acc + item.quantity,
-        0
-      ),
-    }; // sessionStorage에서 가져오는 정보들
-  };
+    };
+  }
+  reviewStar(count) {
+    const num = Math.floor(count);
+    const empty = 5 - num;
+    const star = '★'.repeat(num) + '☆'.repeat(empty);
+    return star;
+  }
+
+  async componentDidMount() {
+    const { storeId } = this.props;
+
+    const { data: storeInfo } = await api.get(
+      `/restaurants/api/${storeId}/info/`
+    );
+    this.setState({
+      ...storeInfo,
+    });
+  }
+
+  render() {
+    const { storeId } = this.props;
+    return (
+      <div>
+        <StoreDetailView
+          {...this.state}
+          id={storeId}
+          reviewStar={this.reviewStar.bind(this)}
+        />
+      </div>
+    );
+  }
 }
-reviewStar(count) {
-  const num = Math.floor(count);
-  const empty = 5 - num;
-  const star = '★'.repeat(num) + '☆'.repeat(empty);
-  return star;
-}
-
- async componentDidMount() {
-  const { storeId } = this.props;
-
-  const { data: storeInfo } = await api.get(
-    `/restaurants/api/${storeId}/info/`
-  );
-  this.setState({
-    ...storeInfo,
-    loading: false,
-  });
-};
-
-// 주문표 옆의 숫자를 업데이트 시키기 위한 함수
-pullCartItem = () => {
-  this.setState({
-    cartLength: JSON.parse(sessionStorage.cart).reduce(
-      (acc, item) => acc + item.quantity,
-      0
-    ),
-  });
-};
-
-render() {
-  console.log(
-    JSON.parse(sessionStorage.cart).reduce(
-      (acc, item) => acc + item.quantity,
-      0
-    )
-  );
-
-  const { storeId, loading } = this.props;
-  return (
-    <div>
-      <StoreDetailView
-        {...this.state}
-        id={storeId}
-        pullCartItem={this.pullCartItem}
-        reviewStar={this.reviewStar.bind(this)}
-      />
-    </div>
-  );
-}
-
